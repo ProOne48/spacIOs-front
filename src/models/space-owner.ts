@@ -1,5 +1,5 @@
 import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
-import { Space } from './Space';
+import { Space } from './space';
 
 export class SpaceOwner {
   /**
@@ -27,12 +27,7 @@ export class SpaceOwner {
    */
   private readonly _spaceOwner = true;
 
-  constructor(
-    id?: number,
-    name?: string,
-    email?: string,
-    spaces?: Space[]
-  ) {
+  constructor(id?: number, name?: string, email?: string, spaces?: Space[]) {
     this.id = id;
     this.name = name;
     this.email = email;
