@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { MainComponent } from './main/main.component';
+import { ActiveSessionGuard } from '../services/auth/active-session.guard';
 import { AuthGuard } from '../services/auth/auth.guard';
 import { LoginComponent } from './login/login.component';
-import { ActiveSessionGuard } from '../services/auth/active-session.guard';
+import { MainComponent } from './main/main.component';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {

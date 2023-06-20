@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavbarItemInterface, navbarItems } from '../../definitions/navbar.interface';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',

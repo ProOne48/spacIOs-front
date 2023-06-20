@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-
 import { ActiveSessionGuard } from './active-session.guard';
+
+import { TestBed } from '@angular/core/testing';
 
 describe('ActiveSessionGuard', () => {
   let guard: ActiveSessionGuard;
