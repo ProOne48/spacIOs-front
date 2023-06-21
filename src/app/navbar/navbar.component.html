@@ -1,7 +1,11 @@
-<mat-toolbar class="nav">
+<mat-toolbar>
   <div class="elements">
-    <ng-container *ngFor="let item of navbarItems">
-      <a routerLink="{{ item.path }}">{{ item.label }}</a>
-    </ng-container>
+    <div class="elements_item center gap-sm">
+      <ng-container *ngFor="let item of navbarItems">
+        <a class="navbar-item" routerLink="{{ item.path }}">{{ item.label }}</a>
+      </ng-container>
+    </div>
   </div>
 </mat-toolbar>
+
+

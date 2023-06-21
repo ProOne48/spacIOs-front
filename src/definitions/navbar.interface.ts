@@ -7,7 +7,7 @@ export interface NavbarItemInterface {
 export const navbarItems: NavbarItemInterface[] = [
   {
     label: 'Home',
-    path: '/'
+    path: '/home'
   },
   {
     label: 'Spaces',

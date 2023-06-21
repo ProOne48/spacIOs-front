@@ -23,19 +23,29 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.socialAuthService.authState.subscribe((user: SocialUser) => {
       if(user != null) {
-        this.user = user;
-        this.login()
+        const loginData: GoogleCredentialsInterface = {
+          email: user.email,
+          token: user.idToken,
+          name: user.name,
+          remember: true
+        }
+        this.login(loginData)
       }
     });
   }
 
-  login(): void {
-    const loginData: GoogleCredentialsInterface = {
-      email: this.user?.email,
-      token: this.user?.idToken,
-      name: this.user?.name,
-    }
-    this.authService.login();
-    this.router.navigate(['']);
+  login(loginData: GoogleCredentialsInterface): void {
+
+    this.authService.login(loginData).subscribe(
+      (loginOk: boolean) => {
+        this.authService.checkLoginAndRedirect(loginOk)
+      }
+    )
+
+  }
+
+  loginMock(): void {
+    this.authService.loginMock()
+    this.authService.checkLoginAndRedirect(true)
   }
 }

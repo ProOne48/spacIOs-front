@@ -20,11 +20,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { AuthContainerComponent } from './auth-container/auth-container.component';
+import { HomeComponent } from './home/home.component';
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { MatChipsModule } from "@angular/material/chips";
 
 export const materialImports = [
   MatToolbarModule,
   MatSnackBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatIconModule,
+  MatButtonModule,
+  MatChipsModule
 ];
 
 export const globalImports = [
@@ -33,14 +40,23 @@ export const globalImports = [
   AppRoutingModule,
   HttpClientModule,
   FormsModule,
+  GoogleSigninButtonModule,
   SocialLoginModule,
   ReactiveFormsModule,
   RouterModule
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainComponent, NavbarComponent, FooterComponent, AuthContainerComponent],
-  imports: [...globalImports, ...materialImports, GoogleSigninButtonModule],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MainComponent,
+    NavbarComponent,
+    FooterComponent,
+    AuthContainerComponent,
+    HomeComponent
+  ],
+  imports: [...globalImports, ...materialImports],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

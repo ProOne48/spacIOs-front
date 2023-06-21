@@ -6,6 +6,7 @@ import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { AuthContainerComponent } from "./auth-container/auth-container.component";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
     component: MainComponent,
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always',
-    children: []
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      }
+    ]
   },
   {
     path: '',
