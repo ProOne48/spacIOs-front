@@ -18,6 +18,10 @@ export class AuthService {
     private spaceOwnerService: SpaceOwnerService
   ) {}
 
+  login(): void {
+
+  }
+
   logout(): void {
     this.socialAuthService.signOut();
     removeStorageObject('userData');

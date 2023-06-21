@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { SpaceOwnerService } from "../../services/space-owner.service";
-import { AuthService } from "../../services/auth/auth.service";
+import { SpaceOwnerService } from "../../../services/space-owner.service";
+import { AuthService } from "../../../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
-import { GoogleCredentialsInterface } from "../../definitions/credentials.interface";
+import { GoogleCredentialsInterface } from "../../../definitions/credentials.interface";
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         this.user = user;
         this.login()
       }
-    }
+    });
   }
 
   login(): void {
@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
       name: this.user?.name,
     }
     this.authService.login();
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
   }
 }

@@ -9,7 +9,7 @@ export class ActiveSessionGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   canActivate(): boolean {
     if (this.authService.loggedIn()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
     }
 
     return true;

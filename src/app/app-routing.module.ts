@@ -1,9 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
+
 import { ActiveSessionGuard } from '../services/auth/active-session.guard';
 import { AuthGuard } from '../services/auth/auth.guard';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
+import { AuthContainerComponent } from "./auth-container/auth-container.component";
 
 const routes: Routes = [
   {
@@ -15,9 +17,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginComponent,
+    component: AuthContainerComponent,
     canActivate: [ActiveSessionGuard],
-    children: []
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      }
+    ]
   }
 ];
 
