@@ -1,0 +1,11 @@
+div{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 18rem;
+  flex: 0 1 30rem;
+  gap: 1rem;
+  margin: auto;
+}

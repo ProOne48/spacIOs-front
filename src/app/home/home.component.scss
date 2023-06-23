@@ -1,0 +1,6 @@
+@import 'src/scss/utils/mixins';
+
+:host {
+  @include center;
+  height: 100%;
+}

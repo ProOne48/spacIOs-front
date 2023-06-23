@@ -1,0 +1,33 @@
+@use '@angular/material' as mat;
+@import 'src/scss/utils/mixins';
+@import 'src/scss/palette';
+
+%button {
+  border-radius: 18px !important;
+  font-weight: 600;
+  padding: 1.2rem 1.2rem !important;
+  font-size: 0.95rem;
+  gap: 0.5rem;
+
+}
+
+.btn {
+  @extend %button;
+
+  &:disabled,
+  .mat-button-disabled {
+    opacity: 0.5;
+  }
+
+  &.mat-primary,
+  &.btn--primary {
+    background: $button-primary-gradient !important;
+    color: mat.get-contrast-color-from-palette($primary-palette, 500) !important;
+
+    &:hover:enabled {
+      background-color: mat.get-color-from-palette($primary-palette, 700) !important;
+    }
+  }
+
+}
+
