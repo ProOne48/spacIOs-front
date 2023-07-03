@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthContainerComponent } from './auth-container.component';
+import { HttpClientModule } from "@angular/common/http";
 
 describe('AuthContainerComponent', () => {
   let component: AuthContainerComponent;
