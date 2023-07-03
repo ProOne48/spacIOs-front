@@ -23,6 +23,7 @@ import { AuthContainerComponent } from './auth-container/auth-container.componen
 import { HomeComponent } from './home/home.component';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import { MatChipsModule } from "@angular/material/chips";
 
 export const materialImports = [
@@ -31,7 +32,8 @@ export const materialImports = [
   MatSelectModule,
   MatIconModule,
   MatButtonModule,
-  MatChipsModule
+  MatChipsModule,
+  MatCardModule
 ];
 
 export const globalImports = [

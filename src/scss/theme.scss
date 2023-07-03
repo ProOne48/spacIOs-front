@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+@use 'palette';
+
+$global-font-family: 'Roboto', sans-serif;
+
+$typography-config: mat.define-typography-config(
+  $font-family: $global-font-family,
+
+  $headline-4: mat.define-typography-level(18px, 20px, 600),
+  // <h1> or .mat-h1 or .mat-headline-5
+  $headline-5: mat.define-typography-level(32px, 38px, 600),
+  // <h2> or .mat-h2 or .mat-headline-6
+  $headline-6: mat.define-typography-level(28px, 30px, 600),
+  // <h3> or .mat-subtitle-1
+  $subtitle-1: mat.define-typography-level(22px, 24px, 600),
+  // <h4> or .mat-body-1
+  $body-1: mat.define-typography-level(16px, 24px, 400),
+  // <p>
+  $body-2: mat.define-typography-level(16px, 20px, 400),
+  $button: mat.define-typography-level(14px, 20px, 500),
+  $caption: mat.define-typography-level(12px, 16px, 400, 0.4)
+);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: palette.$app-primary,
+      accent: palette.$app-primary
+    ),
+    typography: $typography-config,
+    density: 0
+  )
+);
+
+@include mat.all-component-typographies($typography-config);
+@include mat.all-component-themes($my-theme);
+@include mat.core();

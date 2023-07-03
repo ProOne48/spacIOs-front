@@ -1,0 +1,6 @@
+@use '@angular/material' as mat;
+@import 'src/scss/utils/mixins';
+
+.form-wrapper{
+  @include column
+}
