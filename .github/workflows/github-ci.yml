@@ -2,27 +2,26 @@ name: SpacIOs Frontend CI
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
-
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Lint
-      run: |
-        npm ci
-        npm run lint
+      - uses: actions/checkout@v3
+      - name: Lint
+        run: |
+          npm ci
+          npm run lint
 
   tests:
+    needs: lint
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Run Tests
-      run: |
-        npm ci
-        npm run test -- --code-coverage --progress false --watch=false --browsers ChromeHeadless
+      - uses: actions/checkout@v3
+      - name: Run Tests
+        run: |
+          npm ci
+          npm run test -- --code-coverage --progress false --watch=false --browsers ChromeHeadless

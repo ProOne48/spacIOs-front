@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './auth-container.component.html',
   styleUrls: ['./auth-container.component.scss']
 })
-export class AuthContainerComponent {
-
-}
+export class AuthContainerComponent {}

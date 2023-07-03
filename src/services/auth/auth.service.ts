@@ -1,15 +1,15 @@
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
+import { ApiService } from '../api.service';
+import { GoogleCredentialsInterface } from '../../definitions/credentials.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { SpaceOwner } from '../../models/space-owner';
 import { SpaceOwnerService } from '../space-owner.service';
-import { GoogleCredentialsInterface } from "../../definitions/credentials.interface";
-import { ApiService } from "../api.service";
-import { BehaviorSubject, map, Observable } from "rxjs";
-import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +25,13 @@ export class AuthService {
   ) {}
 
   login(loginData: GoogleCredentialsInterface): Observable<boolean> {
-    let loginOkSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    this.http.post(this.apiService.getApiUrl() + '/user/login-google', loginData)
+    const loginOkSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    this.http
+      .post(this.apiService.getApiUrl() + '/user/login-google', loginData)
       .pipe(map((response: any) => Deserialize(response, () => SpaceOwner)))
       .subscribe(
         (data: any) => {
-
-          if(data.loginOk){
+          if (data.loginOk) {
             loginOkSubject.next(true);
             this.fillUserData(loginData.remember);
           }
@@ -41,22 +41,25 @@ export class AuthService {
             duration: 5000
           });
         }
-      )
+      );
 
     return loginOkSubject.asObservable();
   }
 
   loginMock(): void {
-    let spaceOwnerMock: SpaceOwner = new SpaceOwner();
+    const spaceOwnerMock: SpaceOwner = new SpaceOwner();
     spaceOwnerMock.id = 1;
     spaceOwnerMock.name = 'Mock';
 
-    setStorageObject('userData', Serialize(spaceOwnerMock, () => SpaceOwner), 'local');
-
+    setStorageObject(
+      'userData',
+      Serialize(spaceOwnerMock, () => SpaceOwner),
+      'local'
+    );
   }
 
   checkLoginAndRedirect(loginOK: boolean): void {
-    if(loginOK){
+    if (loginOK) {
       this.router.navigate(['/home']);
     }
   }
