@@ -21,9 +21,8 @@
 }
 
 @mixin center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-content: center;
 }
 
 @mixin horizontal-start() {
