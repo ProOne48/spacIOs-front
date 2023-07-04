@@ -1,18 +1,17 @@
 import { AuthService } from './auth.service';
 
-import { HttpClientModule } from "@angular/common/http";
-import { MockAuthService } from "../../../test_assets/mocks/auth-service.mock";
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { materialImports } from "../../app/app.module";
+import { materialImports } from '../../app/app.module';
 
 describe('AuthService', () => {
-  let service: MockAuthService;
+  let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, ...materialImports]
     });
-    service = TestBed.inject(MockAuthService);
+    service = TestBed.inject(AuthService);
   });
 
   it('should be created', () => {

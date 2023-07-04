@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { AuthService } from "../../src/services/auth/auth.service";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { AuthService } from '../../src/services/auth/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MockAuthService extends AuthService {
@@ -23,26 +23,21 @@ export class MockAuthService extends AuthService {
     return of();
   }
 
-
   override fillUserData(remember?: boolean) {
     return of();
   }
-
 
   override loggedIn(): boolean {
     return true;
   }
 
-
   override logout() {
     return;
   }
 
-
   override checkLoginAndRedirect(loginOK: boolean) {
     return;
   }
-
 
   override loginMock() {
     return;

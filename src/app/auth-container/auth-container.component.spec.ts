@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { globalImports, materialImports } from '../app.module';
 import { AuthContainerComponent } from './auth-container.component';
-import { globalImports, materialImports } from "../app.module";
 
 describe('AuthContainerComponent', () => {
   let component: AuthContainerComponent;

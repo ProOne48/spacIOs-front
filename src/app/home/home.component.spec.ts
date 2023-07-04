@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { globalImports, materialImports } from '../app.module';
 import { HomeComponent } from './home.component';
-import { globalImports, materialImports } from "../app.module";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

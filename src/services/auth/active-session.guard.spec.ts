@@ -1,7 +1,7 @@
 import { ActiveSessionGuard } from './active-session.guard';
 
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
 
 describe('ActiveSessionGuard', () => {
   let guard: ActiveSessionGuard;
@@ -9,7 +9,7 @@ describe('ActiveSessionGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [ { provide: ActiveSessionGuard, useValue: {} } ]
+      providers: [{ provide: ActiveSessionGuard, useValue: {} }]
     });
     guard = TestBed.inject(ActiveSessionGuard);
   });

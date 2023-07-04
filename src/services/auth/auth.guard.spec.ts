@@ -1,9 +1,9 @@
-import { AuthGuard } from './auth.guard';
+import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 
+import { AuthGuard } from './auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
-import { materialImports } from "../../app/app.module";
-import { GoogleLoginProvider, SocialAuthServiceConfig } from "@abacritt/angularx-social-login";
+import { materialImports } from '../../app/app.module';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
@@ -11,8 +11,9 @@ describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, ...materialImports],
-      providers: [ { provide: AuthGuard, useValue: {} },
-      {
+      providers: [
+        { provide: AuthGuard, useValue: {} },
+        {
           provide: 'SocialAuthServiceConfig',
           useValue: {
             autoLogin: false,
@@ -24,7 +25,7 @@ describe('AuthGuard', () => {
             ]
           } as SocialAuthServiceConfig
         }
-        ]
+      ]
     });
     guard = TestBed.inject(AuthGuard);
   });
