@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainComponent } from './main.component';
+import { globalImports, materialImports } from "../app.module";
+import { NavbarComponent } from "../navbar/navbar.component";
+import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
+import { FooterComponent } from "../footer/footer.component";
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -8,7 +12,25 @@ describe('MainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MainComponent]
+      declarations: [MainComponent, NavbarComponent, FooterComponent],
+      imports: [
+        ...materialImports,
+        ...globalImports
+      ],
+      providers: [
+        {
+          provide: 'SocialAuthServiceConfig',
+          useValue: {
+            autoLogin: false,
+            providers: [
+              {
+                id: GoogleLoginProvider.PROVIDER_ID,
+                provider: new GoogleLoginProvider('CLIENT_ID_DE_GOOGLE')
+              }
+            ]
+          }
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MainComponent);
