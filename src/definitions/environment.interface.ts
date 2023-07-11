@@ -6,4 +6,5 @@ export interface EnvironmentInterface {
   apiDomain?: string;
   googleClientId: string;
   apiProtocol?: string;
+  mockToken?: string;
 }

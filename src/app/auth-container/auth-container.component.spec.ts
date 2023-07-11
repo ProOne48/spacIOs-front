@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { globalImports, materialImports } from '../app.module';
 import { AuthContainerComponent } from './auth-container.component';
 
 describe('AuthContainerComponent', () => {
@@ -8,9 +9,9 @@ describe('AuthContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthContainerComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthContainerComponent],
+      imports: [...materialImports, ...globalImports]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AuthContainerComponent);
     component = fixture.componentInstance;
