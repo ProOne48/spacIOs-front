@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { GoogleCredentialsInterface } from '../../../definitions/credentials.interface';
 import { Router } from '@angular/router';
 import { SpaceOwnerService } from '../../../services/space-owner.service';
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
 
   loginMock(): void {
     this.authService.loginMock();
-    this.authService.checkLoginAndRedirect(true);
   }
+
+  protected readonly environment = environment;
 }

@@ -7,14 +7,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
 import { SpaceOwner } from '../../models/space-owner';
 import { SpaceOwnerService } from '../space-owner.service';
+import { environment } from "../../environments/environment";
+import { LoginResponse } from "../../models/login-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  /**
+   * API path
+   */
+  path = '/auth';
+
+  /**
+   * Constructor
+   *
+   * @param http
+   * @param snackbar
+   * @param router
+   * @param apiService
+   * @param socialAuthService
+   * @param spaceOwnerService
+   */
   constructor(
     private http: HttpClient,
     private snackbar: MatSnackBar,
@@ -22,15 +40,18 @@ export class AuthService {
     private apiService: ApiService,
     private socialAuthService: SocialAuthService,
     private spaceOwnerService: SpaceOwnerService
-  ) {}
+  ) {
+    this.path = this.apiService.getApiUrl() + this.path;
+  }
 
   login(loginData: GoogleCredentialsInterface): Observable<boolean> {
     const loginOkSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
     this.http
-      .post(this.apiService.getApiUrl() + '/user/login-google', loginData)
-      .pipe(map((response: any) => Deserialize(response, () => SpaceOwner)))
+      .post(`${this.path}/google-login`, loginData)
+      .pipe(map((response: any) => Deserialize(response, () => LoginResponse)))
       .subscribe(
         (data: any) => {
+          console.log(data)
           if (data.loginOk) {
             loginOkSubject.next(true);
             this.fillUserData(loginData.remember);
@@ -47,15 +68,19 @@ export class AuthService {
   }
 
   loginMock(): void {
-    const spaceOwnerMock: SpaceOwner = new SpaceOwner();
-    spaceOwnerMock.id = 1;
-    spaceOwnerMock.name = 'Mock';
+    const token = environment.mockToken;
+    const credentials: GoogleCredentialsInterface = {
+      email: 'mock@gmail.com',
+      name: 'mock',
+      token: token,
+      remember: true
+    }
 
-    setStorageObject(
-      'userData',
-      Serialize(spaceOwnerMock, () => SpaceOwner),
-      'local'
-    );
+    this.login(credentials).subscribe((loginOk: boolean) => {
+      this.checkLoginAndRedirect(loginOk);
+    });
+
+
   }
 
   checkLoginAndRedirect(loginOK: boolean): void {
