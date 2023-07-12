@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, Subject } from "rxjs";
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
 import { ApiService } from '../api.service';
@@ -51,10 +51,10 @@ export class AuthService {
       .pipe(map((response: any) => Deserialize(response, () => LoginResponse)))
       .subscribe(
         (data: any) => {
-          console.log(data)
           if (data.loginOk) {
+            console.log(data);
+
             loginOkSubject.next(true);
-            this.fillUserData(loginData.remember);
           }
         },
         (error: any) => {
@@ -77,15 +77,17 @@ export class AuthService {
     }
 
     this.login(credentials).subscribe((loginOk: boolean) => {
-      this.checkLoginAndRedirect(loginOk);
+      this.checkLoginAndRedirect(loginOk, credentials.remember);
     });
 
 
   }
 
-  checkLoginAndRedirect(loginOK: boolean): void {
+  checkLoginAndRedirect(loginOK: boolean, remember?: boolean): void {
     if (loginOK) {
-      this.router.navigate(['/home']);
+      this.fillUserData(remember).subscribe((spaceOwner: SpaceOwner) => {
+        this.router.navigateByUrl('/home');
+      });
     }
   }
 
@@ -94,14 +96,18 @@ export class AuthService {
     removeStorageObject('userData');
   }
 
-  fillUserData(remember?: boolean): void {
+  fillUserData(remember?: boolean): Observable<SpaceOwner> {
+    const spaceOwnerData = new Subject<SpaceOwner>();
     this.spaceOwnerService.getActualSpaceOwner().subscribe((spaceOwner: SpaceOwner) => {
       setStorageObject(
         'userData',
         Serialize(spaceOwner, () => SpaceOwner),
         remember ? 'local' : 'session'
       );
+      spaceOwnerData.next(spaceOwner);
     });
+
+    return spaceOwnerData.asObservable();
   }
 
   static getSpaceOwnerData(): SpaceOwner | undefined {

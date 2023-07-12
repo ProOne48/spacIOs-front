@@ -1,0 +1,14 @@
+<table mat-table [dataSource]="spaces">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let space"> {{space.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="capacity">
+    <th mat-header-cell *matHeaderCellDef> Capacity </th>
+    <td mat-cell *matCellDef="let space">{{space.capacity}}/{{space.maxCapacity}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

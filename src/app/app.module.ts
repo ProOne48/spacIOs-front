@@ -25,6 +25,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
+import { SpacesTableComponent } from './spaces-table/spaces-table.component';
+import { MatTableModule } from "@angular/material/table";
+import { SpacesComponent } from './spaces/spaces.component';
 
 export const materialImports = [
   MatToolbarModule,
@@ -56,9 +59,11 @@ export const globalImports = [
     NavbarComponent,
     FooterComponent,
     AuthContainerComponent,
-    HomeComponent
+    HomeComponent,
+    SpacesTableComponent,
+    SpacesComponent
   ],
-  imports: [...globalImports, ...materialImports],
+  imports: [...globalImports, ...materialImports, MatTableModule],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
