@@ -1,9 +1,8 @@
 import { EnvironmentInterface } from '../definitions/environment.interface';
 
 export const environment: EnvironmentInterface = {
-  production: false,
+  production: true,
   apiPath: 'api',
   googleClientId: '',
-  apiPort: 5000,
-  mockToken: 'Aasdkjbauypesd23lkjadk*-%asdkjbasd'
+  apiPort: 5000
 };

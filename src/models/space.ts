@@ -26,3 +26,26 @@ export class Space {
    */
   @autoserializeAs(() => Number, 'space_owner_id') spaceOwnerId?: number;
 }
+
+export class SpaceList {
+
+  /**
+   * The list of spaces-table
+   */
+  @autoserializeAs(() => Space) items?: Space[];
+
+  /**
+   * The total of spaces-table
+   */
+  @autoserializeAs(() => Number) total?: number;
+
+  /**
+   * Constructor
+   * @param items The list of spaces-table
+   * @param total The total of spaces-table
+   */
+  constructor(items?: Space[], total?: number) {
+    this.items = items;
+    this.total = total;
+  }
+}

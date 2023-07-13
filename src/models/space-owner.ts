@@ -18,9 +18,9 @@ export class SpaceOwner {
   @autoserializeAs(() => String) email?: string;
 
   /**
-   * The spaces of the space owner
+   * The spaces-table of the space owner
    */
-  @autoserializeAsArray(() => Space, () => []) spaces?: Space[];
+  @autoserializeAsArray(() => Space) spaces?: Space[];
 
   /**
    * Hack to prevent the mistaken assignment of objects from one class to a different class

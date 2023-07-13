@@ -8,7 +8,7 @@ import { SpaceOwner } from '../models/space-owner';
   providedIn: 'root'
 })
 export class SpaceOwnerService {
-  path = 'space-owner';
+  path = '/space-owner';
 
   constructor(private http: HttpClient, private apiService: ApiService) {
     this.path = this.apiService.getApiUrl() + this.path;
