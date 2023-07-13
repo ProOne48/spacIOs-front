@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpaceService } from "../../services/space.service";
 
 @Component({
   selector: 'app-spaces',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class SpacesComponent {
 
+  constructor(
+    private spaceService: SpaceService,
+  ) {
+  }
+
+  addSpace(){
+
+  }
 }

@@ -21,7 +21,7 @@ export class NavbarComponent {
   logout(): void {
     this.authService.logout();
     this.socialAuthService.signOut();
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/login');
   }
 
   protected readonly AuthService = AuthService;

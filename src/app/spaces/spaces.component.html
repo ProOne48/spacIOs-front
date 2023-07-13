@@ -1,1 +1,10 @@
-<p>spaces works!</p>
+<div>
+  <header class="row vertical-center">
+    <h1 class="margin-sm"> Your Spaces </h1>
+    <button mat-raised-button class="margin-sm btn btn--primary" (click)="addSpace()">
+      <mat-icon>add</mat-icon>
+      Add Space
+    </button>
+  </header>
+  <app-spaces-table></app-spaces-table>
+</div>
