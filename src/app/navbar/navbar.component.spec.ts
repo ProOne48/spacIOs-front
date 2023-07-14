@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { globalImports, materialImports } from '../app.module';
 import { AuthService } from '../../services/auth/auth.service';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { MockAuthService } from '../../../test_assets/mocks/auth-service.mock';
 import { NavbarComponent } from './navbar.component';
-import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -25,7 +25,7 @@ describe('NavbarComponent', () => {
             providers: [
               {
                 id: GoogleLoginProvider.PROVIDER_ID,
-                provider: new GoogleLoginProvider("1234567890")
+                provider: new GoogleLoginProvider('1234567890')
               }
             ]
           }

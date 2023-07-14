@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { globalImports, materialImports } from '../app.module';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HomeComponent } from './home.component';
-import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
