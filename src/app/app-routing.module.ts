@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
-import { SpacesTableComponent } from './spaces-table/spaces-table.component';
 import { SpacesComponent } from './spaces/spaces.component';
 
 const routes: Routes = [

@@ -1,4 +1,4 @@
-export interface createSpaceInterface {
+export interface CreateSpaceInterface {
   /**
    * The name of the space
    */

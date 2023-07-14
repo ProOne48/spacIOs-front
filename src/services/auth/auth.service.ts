@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, map, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
 import { ApiService } from '../api.service';
@@ -17,7 +17,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
   /**
    * API path
    */
@@ -82,14 +81,14 @@ export class AuthService {
 
   checkLoginAndRedirect(loginOK: boolean, remember?: boolean): void {
     if (loginOK) {
-      this.fillUserData(remember).subscribe((spaceOwner: SpaceOwner) => {
+      this.fillUserData(remember).subscribe(() => {
         this.router.navigateByUrl('/home');
       });
     }
   }
 
   logout(): void {
-    this.http.delete(`${this.path}/logout`).subscribe((response: any) => {
+    this.http.delete(`${this.path}/logout`).subscribe(() => {
       this.socialAuthService.signOut();
       removeStorageObject('userData');
       this.router.navigateByUrl('/login');

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Space } from '../../models/space';
 import { Router } from '@angular/router';
+import { Space } from '../../models/space';
 import { SpaceService } from '../../services/space.service';
 
 @Component({
@@ -15,8 +15,12 @@ export class SpacesTableComponent implements OnInit {
   constructor(private spaceService: SpaceService, private router: Router) {}
   ngOnInit() {
     this.spaceService.getActualSpaces().subscribe((spaces) => {
-      if (spaces.items) this.spaces = spaces.items;
-      else this.spaces = [];
+      if (spaces.items){
+        this.spaces = spaces.items;
+      }
+      else{
+        this.spaces = [];
+      }
     });
   }
 

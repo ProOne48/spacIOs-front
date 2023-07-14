@@ -1,6 +1,6 @@
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { Observable, map } from 'rxjs';
 import { Space, SpaceList } from '../models/space';
-import { map, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
