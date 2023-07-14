@@ -1,22 +1,23 @@
-import { BehaviorSubject, Observable, map, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, map, Subject } from "rxjs";
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
 import { ApiService } from '../api.service';
 import { GoogleCredentialsInterface } from '../../definitions/credentials.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../../models/login-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { SpaceOwner } from '../../models/space-owner';
 import { SpaceOwnerService } from '../space-owner.service';
 import { environment } from '../../environments/environment';
-import { LoginResponse } from '../../models/login-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   /**
    * API path
    */
@@ -51,9 +52,8 @@ export class AuthService {
       .subscribe(
         (data: any) => {
           if (data.loginOk) {
-            console.log(data);
-
             loginOkSubject.next(true);
+            this.fillUserData(loginData.remember);
           }
         },
         (error: any) => {

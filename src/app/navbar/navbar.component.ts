@@ -20,5 +20,5 @@ export class NavbarComponent {
     this.router.navigateByUrl('/login');
   }
 
-  protected readonly AuthService = AuthService;
+  protected readonly authServiceClass = AuthService;
 }
