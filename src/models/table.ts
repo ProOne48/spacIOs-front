@@ -1,4 +1,4 @@
-import { autoserializeAs } from "dcerialize";
+import { autoserializeAs } from 'dcerialize';
 
 export class Table {
   /**
@@ -82,10 +82,7 @@ export class TableList {
    * @param items The list of tables
    * @param total The total of tables
    */
-  constructor(
-    items?: Table[],
-    total?: number
-  ) {
+  constructor(items?: Table[], total?: number) {
     this.items = items;
     this.total = total;
   }

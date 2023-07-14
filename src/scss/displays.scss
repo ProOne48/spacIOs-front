@@ -1,5 +1,4 @@
-@import "utils/mixins";
-
+@import 'utils/mixins';
 
 /**
   Displays
@@ -95,4 +94,3 @@
 .margin-lg {
   @include margin-lg;
 }
-

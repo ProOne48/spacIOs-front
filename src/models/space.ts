@@ -1,5 +1,5 @@
-import { autoserializeAs, autoserializeAsArray } from "dcerialize";
-import { Table } from "./table";
+import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+import { Table } from './table';
 
 export class Space {
   /**
@@ -68,7 +68,6 @@ export class Space {
 }
 
 export class SpaceList {
-
   /**
    * The list of spaces-table
    */

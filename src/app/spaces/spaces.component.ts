@@ -1,10 +1,10 @@
-import { Component, ViewChild } from "@angular/core";
-import { SpaceService } from "../../services/space.service";
-import { MatDialog } from "@angular/material/dialog";
-import { SpaceInfoModalComponent } from "../space-info-modal/space-info-modal.component";
-import { createSpaceInterface } from "../../definitions/space.interface";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { SpacesTableComponent } from "../spaces-table/spaces-table.component";
+import { Component, ViewChild } from '@angular/core';
+import { SpaceService } from '../../services/space.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SpaceInfoModalComponent } from '../space-info-modal/space-info-modal.component';
+import { createSpaceInterface } from '../../definitions/space.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SpacesTableComponent } from '../spaces-table/spaces-table.component';
 
 @Component({
   selector: 'app-spaces',
@@ -12,17 +12,10 @@ import { SpacesTableComponent } from "../spaces-table/spaces-table.component";
   styleUrls: ['./spaces.component.scss']
 })
 export class SpacesComponent {
-
-
   @ViewChild('spacesTable') spacesTable?: SpacesTableComponent;
-  constructor(
-    private spaceService: SpaceService,
-    private dialog: MatDialog,
-    private snackbarService: MatSnackBar
-  ) {
-  }
+  constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbarService: MatSnackBar) {}
 
-  addSpace(){
+  addSpace() {
     const dialogRef = this.dialog.open(SpaceInfoModalComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -30,11 +23,10 @@ export class SpacesComponent {
 
       if (space) {
         this.spaceService.createSpace(space).subscribe((newSpace) => {
-          this.snackbarService.open('Space created successfully', '', {duration: 2000});
+          this.snackbarService.open('Space created successfully', '', { duration: 2000 });
           this.spacesTable?.ngOnInit();
         });
       }
-
-    })
+    });
   }
 }

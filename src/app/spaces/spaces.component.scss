@@ -1,8 +1,6 @@
-@import "../../scss/utils/mixins";
+@import '../../scss/utils/mixins';
 
 h1 {
   @include margin-sm;
   flex: 1;
 }
-
-

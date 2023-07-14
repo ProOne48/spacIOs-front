@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, map, Subject } from "rxjs";
+import { BehaviorSubject, Observable, map, Subject } from 'rxjs';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
 import { ApiService } from '../api.service';
@@ -7,17 +7,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 import { SpaceOwner } from '../../models/space-owner';
 import { SpaceOwnerService } from '../space-owner.service';
-import { environment } from "../../environments/environment";
-import { LoginResponse } from "../../models/login-response";
+import { environment } from '../../environments/environment';
+import { LoginResponse } from '../../models/login-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   /**
    * API path
    */
@@ -74,13 +73,11 @@ export class AuthService {
       name: 'mock',
       token: token,
       remember: true
-    }
+    };
 
     this.login(credentials).subscribe((loginOk: boolean) => {
       this.checkLoginAndRedirect(loginOk, credentials.remember);
     });
-
-
   }
 
   checkLoginAndRedirect(loginOK: boolean, remember?: boolean): void {
@@ -93,11 +90,10 @@ export class AuthService {
 
   logout(): void {
     this.http.delete(`${this.path}/logout`).subscribe((response: any) => {
-
       this.socialAuthService.signOut();
       removeStorageObject('userData');
       this.router.navigateByUrl('/login');
-    })
+    });
   }
 
   fillUserData(remember?: boolean): Observable<SpaceOwner> {

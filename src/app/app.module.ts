@@ -18,7 +18,7 @@ import { MainComponent } from './main/main.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -27,10 +27,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { SpacesTableComponent } from './spaces-table/spaces-table.component';
-import { MatTableModule } from "@angular/material/table";
+import { MatTableModule } from '@angular/material/table';
 import { SpacesComponent } from './spaces/spaces.component';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
-import { MatInputModule } from "@angular/material/input";
+import { MatInputModule } from '@angular/material/input';
 
 export const materialImports = [
   MatToolbarModule,

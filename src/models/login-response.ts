@@ -1,4 +1,4 @@
-import { autoserializeAs } from "dcerialize";
+import { autoserializeAs } from 'dcerialize';
 
 export class LoginResponse {
   /**
@@ -8,8 +8,8 @@ export class LoginResponse {
 
   /**
    * Boolean indicating if the login was successful
-    */
-  @autoserializeAs(() => Boolean, 'login_ok') loginOk?: boolean
+   */
+  @autoserializeAs(() => Boolean, 'login_ok') loginOk?: boolean;
 
   /**
    * Constructor
@@ -17,12 +17,8 @@ export class LoginResponse {
    * @param token
    * @param loginOk
    */
-  constructor(
-    token?: string,
-    loginOk?: boolean
-  ) {
+  constructor(token?: string, loginOk?: boolean) {
     this.token = token;
     this.loginOk = loginOk;
   }
-
 }
