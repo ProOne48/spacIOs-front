@@ -17,21 +17,24 @@ $light-text: #eeeeee;
 */
 
 $primary-palette: (
-  300: #FAAFAA,
-  400: #FF9A75,
-  500: #C2531B, // default
-  600: #A13A16,
-  700: #8C503E,
+  300: #faafaa,
+  400: #ff9a75,
+  500: #c2531b,
+  // default
+  600: #a13a16,
+  700: #8c503e,
   contrast: (
     300: $dark-text,
     400: $dark-text,
-    500: $light-text, // Default contrast color
+    500: $light-text,
+    // Default contrast color
     600: $light-text,
-    700: $light-text, // Darker contrast color
+    700: $light-text,
+    // Darker contrast color
   )
 );
 
 $app-primary: mat.define-palette($primary-palette, 500, 300, 700);
 
-$navbar-gradient: linear-gradient(105deg, #FF9A75 5%, #ff7a4b 95%);
+$navbar-gradient: linear-gradient(105deg, #ff9a75 5%, #ff7a4b 95%);
 $button-primary-gradient: linear-gradient(105deg, #ff8559 5%, #ff916c 95%);

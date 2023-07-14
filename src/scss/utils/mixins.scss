@@ -21,9 +21,8 @@
 }
 
 @mixin center() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-content: center;
 }
 
 @mixin horizontal-start() {
@@ -87,6 +86,22 @@
 
 @mixin padding-lg() {
   padding: 3rem;
+}
+
+/**
+  Margin
+ */
+
+@mixin margin-sm() {
+  margin: 1rem;
+}
+
+@mixin margin() {
+  margin: 2rem;
+}
+
+@mixin margin-lg() {
+  margin: 3rem;
 }
 
 /**

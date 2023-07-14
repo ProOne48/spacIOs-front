@@ -1,6 +1,25 @@
 @import 'src/scss/utils/mixins';
 
 :host {
-  @include center;
-  height: 100%;
+  @include column;
+  @include padding;
+  @include gap;
+}
+
+.profile {
+  @include column;
+  @include gap;
+  @include padding;
+  @include primary-background(300);
+
+  flex: 0 1 25rem;
+}
+
+.spaces {
+  @include column;
+  @include gap;
+  @include padding;
+
+  @include margin;
+  flex: 1 1 25rem;
 }
