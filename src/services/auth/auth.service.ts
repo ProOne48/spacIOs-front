@@ -92,8 +92,12 @@ export class AuthService {
   }
 
   logout(): void {
-    this.socialAuthService.signOut();
-    removeStorageObject('userData');
+    this.http.delete(`${this.path}/logout`).subscribe((response: any) => {
+
+      this.socialAuthService.signOut();
+      removeStorageObject('userData');
+      this.router.navigateByUrl('/login');
+    })
   }
 
   fillUserData(remember?: boolean): Observable<SpaceOwner> {

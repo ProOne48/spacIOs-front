@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -28,6 +29,8 @@ import { environment } from '../environments/environment';
 import { SpacesTableComponent } from './spaces-table/spaces-table.component';
 import { MatTableModule } from "@angular/material/table";
 import { SpacesComponent } from './spaces/spaces.component';
+import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
+import { MatInputModule } from "@angular/material/input";
 
 export const materialImports = [
   MatToolbarModule,
@@ -36,7 +39,10 @@ export const materialImports = [
   MatIconModule,
   MatButtonModule,
   MatChipsModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatTableModule,
+  MatInputModule
 ];
 
 export const globalImports = [
@@ -61,9 +67,10 @@ export const globalImports = [
     AuthContainerComponent,
     HomeComponent,
     SpacesTableComponent,
-    SpacesComponent
+    SpacesComponent,
+    SpaceInfoModalComponent
   ],
-  imports: [...globalImports, ...materialImports, MatTableModule],
+  imports: [...globalImports, ...materialImports],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

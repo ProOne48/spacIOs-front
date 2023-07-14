@@ -10,7 +10,7 @@ import { SpaceService } from "../../services/space.service";
 })
 export class SpacesTableComponent implements OnInit {
   spaces: Space[] = [];
-  displayedColumns: string[] = ['name', 'capacity']
+  displayedColumns: string[] = ['name', 'capacity', 'actions']
 
   constructor(
     private spaceService: SpaceService,
@@ -25,7 +25,11 @@ export class SpacesTableComponent implements OnInit {
     })
   }
 
-  addSpace(){
+  editSpace(space: Space) {
+
+  }
+
+  deleteSpace(space: Space) {
 
   }
 }
