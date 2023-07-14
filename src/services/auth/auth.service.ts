@@ -5,19 +5,18 @@ import { ApiService } from '../api.service';
 import { GoogleCredentialsInterface } from '../../definitions/credentials.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../../models/login-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { SpaceOwner } from '../../models/space-owner';
 import { SpaceOwnerService } from '../space-owner.service';
-import { environment } from "../../environments/environment";
-import { LoginResponse } from "../../models/login-response";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   /**
    * API path
    */
@@ -51,7 +50,7 @@ export class AuthService {
       .pipe(map((response: any) => Deserialize(response, () => LoginResponse)))
       .subscribe(
         (data: any) => {
-          console.log(data)
+          console.log(data);
           if (data.loginOk) {
             loginOkSubject.next(true);
             this.fillUserData(loginData.remember);
@@ -74,13 +73,11 @@ export class AuthService {
       name: 'mock',
       token: token,
       remember: true
-    }
+    };
 
     this.login(credentials).subscribe((loginOk: boolean) => {
       this.checkLoginAndRedirect(loginOk);
     });
-
-
   }
 
   checkLoginAndRedirect(loginOK: boolean): void {

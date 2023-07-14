@@ -1,6 +1,6 @@
+import { AuthService } from '../../services/auth/auth.service';
 import { Component } from '@angular/core';
-import { Router } from "@angular/router";
-import { AuthService } from "../../services/auth/auth.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +10,5 @@ import { AuthService } from "../../services/auth/auth.service";
 export class HomeComponent {
   user = AuthService.getSpaceOwnerData();
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 }

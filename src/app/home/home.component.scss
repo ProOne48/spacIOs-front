@@ -15,7 +15,7 @@
   flex: 0 1 25rem;
 }
 
-.spaces{
+.spaces {
   @include column;
   @include gap;
   @include padding;
@@ -23,5 +23,3 @@
   @include margin;
   flex: 1 1 25rem;
 }
-
-
