@@ -4,6 +4,7 @@ import { Space, SpaceList } from '../models/space';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Table} from "../models/table";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,17 @@ export class SpaceService {
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 
+  addTableToSpace(space: Space, table: Table): Observable<Space> {
+    return this.http
+      .post<IJsonObject>(
+        `${this.path}/${space.id}/table`,
+        Serialize(table, () => Table)
+      )
+      .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
+  }
+
   updateSpace(space: Space): Observable<Space> {
+    console.log(space);
     return this.http
       .put<IJsonObject>(
         `${this.path}/${space.id}`,

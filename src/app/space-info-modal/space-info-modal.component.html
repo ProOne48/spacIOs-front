@@ -1,26 +1,30 @@
 <ng-container>
-  <h2 mat-dialog-title>
-    <span>Create a Space</span>
-  </h2>
-  <form [formGroup]="form" class="form-container">
-    <div class="form-wrapper">
-      <mat-form-field>
-        <mat-label>Space Name</mat-label>
-        <input matInput placeholder="Space Name" formControlName="name" />
-        <mat-error *ngIf="form.get('name')?.hasError('required')"> This name for the space is required </mat-error>
-      </mat-form-field>
+  <div class="center">
 
-      <mat-form-field>
-        <mat-label>Space Description</mat-label>
-        <textarea matInput placeholder="Space Description" formControlName="description"></textarea>
-      </mat-form-field>
+    <h2 mat-dialog-title>
+      <span>{{data ? 'Edit' : 'Create'}} a Space</span>
+    </h2>
+    <form [formGroup]="form" class="form-container">
+      <div class="form-wrapper">
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input matInput placeholder="Space Name" formControlName="name" />
+          <mat-error *ngIf="form.get('name')?.hasError('required')"> This name for the space is required </mat-error>
+        </mat-form-field>
 
-      <div mat-dialog-actions class="center">
-        <button mat-button class="btn" (click)="closeModal()">Cancel</button>
-        <button mat-button class="btn btn--primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">
-          Create
-        </button>
+        <mat-form-field>
+          <mat-label>Space Description</mat-label>
+          <textarea matInput placeholder="Space Description" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div mat-dialog-actions class="center">
+          <button mat-raised-button class="btn" (click)="closeModal()">Cancel</button>
+          <button mat-raised-button class="btn btn--primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">
+            {{data ?  'Edit' : 'Create' }}
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
 </ng-container>

@@ -7,6 +7,8 @@
 
 .form-wrapper {
   @include column;
+
+  width: 100%;
 }
 
 .form-container {

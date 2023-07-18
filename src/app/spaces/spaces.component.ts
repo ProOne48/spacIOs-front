@@ -16,7 +16,9 @@ export class SpacesComponent {
   constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbarService: MatSnackBar) {}
 
   addSpace(): void {
-    const dialogRef = this.dialog.open(SpaceInfoModalComponent);
+    const dialogRef = this.dialog.open(SpaceInfoModalComponent, {
+      width: '35%'
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       const space: CreateSpaceInterface = result;
