@@ -1,11 +1,19 @@
 <main class="row">
-  <mat-card class="profile">
-    <mat-card-title> Hi! {{ user?.name }}</mat-card-title>
-  </mat-card>
+  <div>
+    <mat-card class="profile">
+      <mat-card-title> Hi! {{ user?.name }}</mat-card-title>
+    </mat-card>
+  </div>
   <mat-card class="spaces">
     <mat-card-title>
-      Your Spaces
-      <app-spaces-table></app-spaces-table>
+      <h2 class="margin-lg">
+        Your Spaces
+      </h2>
+      <app-spaces-grid
+        #spacesGrid
+        [spaces]="spaces"
+      >
+      </app-spaces-grid>
     </mat-card-title>
   </mat-card>
 </main>

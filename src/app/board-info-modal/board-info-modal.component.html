@@ -1,0 +1,16 @@
+<ng-container>
+  <h2 mat-dialog-title>{{ data ? 'Edit' : 'Create' }} a table</h2>
+  <div mat-dialog-content>
+    <div class="form-container">
+      <form class="form-wrapper" [formGroup]="form">
+        <mat-form-field formControlName="table_number">
+          <input matInput placeholder="Table number" type="number" required>
+<!--          <mat-error *ngIf="form.get('table_number').hasError('required')">-->
+<!--            Table number is <strong>required</strong>-->
+<!--          </mat-error>-->
+        </mat-form-field>
+      </form>
+
+    </div>
+  </div>
+</ng-container>

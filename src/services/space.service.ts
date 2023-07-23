@@ -61,9 +61,8 @@ export class SpaceService {
       .pipe(map((response) => Deserialize(response, () => Space)));
   }
 
-  deleteSpace(space: Space): Observable<Space> {
+  deleteSpace(space: Space): Observable<void> {
     return this.http
-      .delete<IJsonObject>(`${this.path}/${space.id}`)
-      .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
+      .delete<void>(`${this.path}/${space.id}`)
   }
 }

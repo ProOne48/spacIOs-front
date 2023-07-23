@@ -18,7 +18,7 @@ export class SpaceInfoModalComponent {
     this.form = this.builder.group({
       name: this.builder.control(this.data?.name ? this.data.name : '', [Validators.required]),
       description: this.builder.control(this.data?.description ? this.data.description : ''),
-      id: this.builder.control(this.data?.id ? this.data.id : '')
+      id: this.builder.control(this.data?.id ? this.data.id : undefined)
     });
   }
 

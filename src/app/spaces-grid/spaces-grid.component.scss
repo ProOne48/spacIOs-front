@@ -1,0 +1,8 @@
+@import '../../scss/utils/mixins';
+
+.card {
+  @include column;
+  @include center;
+  height: 90%;
+  width: 90%;
+}

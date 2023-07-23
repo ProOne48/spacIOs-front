@@ -29,8 +29,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
 import { SpacesComponent } from './spaces/spaces.component';
-import { SpacesTableComponent } from './spaces-table/spaces-table.component';
+import { SpacesGridComponent } from './spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
+import { BoardsTableComponent } from './boards-table/boards-table.component';
+import { BoardInfoModalComponent } from './board-info-modal/board-info-modal.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 export const materialImports = [
   MatToolbarModule,
@@ -66,11 +69,13 @@ export const globalImports = [
     FooterComponent,
     AuthContainerComponent,
     HomeComponent,
-    SpacesTableComponent,
+    SpacesGridComponent,
     SpacesComponent,
-    SpaceInfoModalComponent
+    SpaceInfoModalComponent,
+    BoardsTableComponent,
+    BoardInfoModalComponent
   ],
-  imports: [...globalImports, ...materialImports],
+  imports: [...globalImports, ...materialImports, MatGridListModule],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

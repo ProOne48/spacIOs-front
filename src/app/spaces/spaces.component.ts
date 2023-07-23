@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpaceInfoModalComponent } from '../space-info-modal/space-info-modal.component';
 import { SpaceService } from '../../services/space.service';
-import { SpacesTableComponent } from '../spaces-table/spaces-table.component';
+import { SpacesGridComponent } from '../spaces-grid/spaces-grid.component';
 
 @Component({
   selector: 'app-spaces',
@@ -12,23 +12,10 @@ import { SpacesTableComponent } from '../spaces-table/spaces-table.component';
   styleUrls: ['./spaces.component.scss']
 })
 export class SpacesComponent {
-  @ViewChild('spacesTable') spacesTable?: SpacesTableComponent;
+  @ViewChild('spacesTable') spacesTable?: SpacesGridComponent;
   constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbarService: MatSnackBar) {}
 
   addSpace(): void {
-    const dialogRef = this.dialog.open(SpaceInfoModalComponent, {
-      width: '35%'
-    });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      const space: CreateSpaceInterface = result;
-
-      if (space) {
-        this.spaceService.createSpace(space).subscribe(() => {
-          this.snackbarService.open('Space created successfully', '', { duration: 2000 });
-          this.spacesTable?.ngOnInit();
-        });
-      }
-    });
   }
 }

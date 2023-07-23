@@ -7,6 +7,11 @@ export class Table {
   @autoserializeAs(() => Number) id?: number;
 
   /**
+   * The number of the table
+   */
+  @autoserializeAs(() => Number, 'table_number') tableNumber?: number;
+
+  /**
    * The number of chairs of the table
    */
   @autoserializeAs(() => Number, 'n_chairs') nChairs?: number;

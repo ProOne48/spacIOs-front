@@ -12,7 +12,9 @@
   @include padding;
   @include primary-background(300);
 
-  flex: 0 1 25rem;
+  flex: 1 1 25rem;
+
+  height: auto;
 }
 
 .spaces {
@@ -20,6 +22,7 @@
   @include gap;
   @include padding;
 
-  @include margin;
+  margin: 0 1rem;
+
   flex: 1 1 25rem;
 }
