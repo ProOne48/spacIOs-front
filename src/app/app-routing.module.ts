@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 
 import { ActiveSessionGuard } from '../services/auth/active-session.guard';
 import { AuthContainerComponent } from './auth-container/auth-container.component';
@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
-import { SpacesComponent } from './spaces/spaces.component';
+import { SpaceComponent } from './space/space.component';
 
 const routes: Routes = [
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'spaces',
-        component: SpacesComponent
+        path: 'space/:id',
+        component: SpaceComponent
       }
     ]
   },
@@ -39,6 +39,10 @@ const routes: Routes = [
     ]
   }
 ];
+
+const config: ExtraOptions = {
+
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

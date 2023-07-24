@@ -1,16 +1,18 @@
 export interface NavbarItemInterface {
   label: string;
   path: string;
-  icon?: string;
+  icon: string;
 }
 
 export const navbarItems: NavbarItemInterface[] = [
   {
     label: 'Home',
+    icon: 'home',
     path: '/home'
   },
   {
     label: 'Spaces',
-    path: '/spaces'
+    icon: 'space',
+    path: '/space'
   }
 ];

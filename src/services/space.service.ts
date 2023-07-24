@@ -23,7 +23,7 @@ export class SpaceService {
 
   getActualSpaces(): Observable<SpaceList> {
     return this.http
-      .get<IJsonObject>(this.path + '/actual-spaces')
+      .get<IJsonObject>(`${this.path}/actual-spaces`)
       .pipe(map((response: IJsonObject) => Deserialize(response, () => SpaceList)));
   }
 

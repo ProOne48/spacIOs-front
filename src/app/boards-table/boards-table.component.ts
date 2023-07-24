@@ -8,7 +8,7 @@ import {Table} from "../../models/table";
 })
 export class BoardsTableComponent {
 
-  @Input() boards: Table[] = [];
+  @Input() boards?: Table[] = [];
   @Input() deleteFunction: Function = () => {};
 
   @Input() editFunction: Function = () => {};

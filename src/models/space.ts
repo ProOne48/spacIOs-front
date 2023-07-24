@@ -69,19 +69,19 @@ export class Space {
 
 export class SpaceList {
   /**
-   * The list of spaces-grid
+   * The list of space-grid
    */
   @autoserializeAsArray(() => Space) items?: Space[];
 
   /**
-   * The total of spaces-grid
+   * The total of space-grid
    */
   @autoserializeAs(() => Number) total?: number;
 
   /**
    * Constructor
-   * @param items The list of spaces-grid
-   * @param total The total of spaces-grid
+   * @param items The list of space-grid
+   * @param total The total of space-grid
    */
   constructor(items?: Space[], total?: number) {
     this.items = items;

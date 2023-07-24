@@ -2,7 +2,11 @@
   <div class="elements">
     <div class="elements_item center gap-sm">
       <ng-container *ngFor="let item of navbarItems">
-        <a class="navbar-item" routerLink="{{ item.path }}">{{ item.label }}</a>
+        <a class="navbar-item" routerLink="{{ item.path }}">
+          <mat-icon>
+            {{ item.icon }}
+          </mat-icon>
+        </a>
       </ng-container>
     </div>
     <div class="logout-container" *ngIf="authServiceClass.getSpaceOwnerData()">

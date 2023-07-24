@@ -26,9 +26,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
-import { RouterModule } from '@angular/router';
+import {provideRouter, RouterModule} from '@angular/router';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
-import { SpacesComponent } from './spaces/spaces.component';
+import { SpaceComponent } from './space/space.component';
 import { SpacesGridComponent } from './spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
 import { BoardsTableComponent } from './boards-table/boards-table.component';
@@ -70,7 +70,7 @@ export const globalImports = [
     AuthContainerComponent,
     HomeComponent,
     SpacesGridComponent,
-    SpacesComponent,
+    SpaceComponent,
     SpaceInfoModalComponent,
     BoardsTableComponent,
     BoardInfoModalComponent

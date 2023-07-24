@@ -12,12 +12,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./spaces-grid.component.scss']
 })
 export class SpacesGridComponent {
-  @Input()  spaces?: Space[] = [];
+  @Input() spaces?: Space[] = [];
 
   @Input() deleteSpace: Function = () => {};
 
   @Input() editSpace: Function = () => {};
-  displayedColumns: string[] = ['name', 'capacity', 'actions'];
 
   constructor(
     private router: Router,
@@ -26,10 +25,7 @@ export class SpacesGridComponent {
     ) {}
 
   goToSpace(id?: number): void {
-    this.router.navigateByUrl(`/space/${id}`);
+    this.router.navigate(['/space', id]);
   }
-
-
-
 
 }

@@ -18,7 +18,7 @@ export class SpaceOwner {
   @autoserializeAs(() => String) email?: string;
 
   /**
-   * The spaces-grid of the space owner
+   * The space-grid of the space owner
    */
   @autoserializeAsArray(() => Space) spaces?: Space[];
 
