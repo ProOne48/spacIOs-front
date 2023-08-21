@@ -8,6 +8,7 @@ import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { SpaceComponent } from './space/space.component';
+import { PdfViewComponent } from './pdf-view/pdf-view.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'space/:id',
         component: SpaceComponent
+      },
+      {
+        path: 'space/:id/pdf',
+        component: PdfViewComponent
       }
     ]
   },
@@ -40,9 +45,7 @@ const routes: Routes = [
   }
 ];
 
-const config: ExtraOptions = {
-
-}
+const config: ExtraOptions = {};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

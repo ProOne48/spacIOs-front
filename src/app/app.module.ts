@@ -26,14 +26,21 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
-import {provideRouter, RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
 import { SpaceComponent } from './space/space.component';
 import { SpacesGridComponent } from './spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
 import { BoardsTableComponent } from './boards-table/boards-table.component';
 import { BoardInfoModalComponent } from './board-info-modal/board-info-modal.component';
-import {MatGridListModule} from "@angular/material/grid-list";
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component';
+import { PdfViewComponent } from './pdf-view/pdf-view.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { QrModalComponent } from './qr-modal/qr-modal.component';
+import {NgOptimizedImage} from "@angular/common";
 
 export const materialImports = [
   MatToolbarModule,
@@ -45,7 +52,10 @@ export const materialImports = [
   MatCardModule,
   MatDialogModule,
   MatTableModule,
-  MatInputModule
+  MatInputModule,
+  MatGridListModule,
+  MatDividerModule,
+  MatCheckboxModule
 ];
 
 export const globalImports = [
@@ -57,7 +67,8 @@ export const globalImports = [
   GoogleSigninButtonModule,
   SocialLoginModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
+  NgxExtendedPdfViewerModule
 ];
 
 @NgModule({
@@ -73,9 +84,12 @@ export const globalImports = [
     SpaceComponent,
     SpaceInfoModalComponent,
     BoardsTableComponent,
-    BoardInfoModalComponent
+    BoardInfoModalComponent,
+    PdfFormModalComponent,
+    PdfViewComponent,
+    QrModalComponent
   ],
-  imports: [...globalImports, ...materialImports, MatGridListModule],
+  imports: [...globalImports, ...materialImports, NgOptimizedImage],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

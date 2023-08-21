@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardsTableComponent } from './boards-table.component';
+import { PdfViewComponent } from './pdf-view.component';
 
-describe('BoardsTableComponent', () => {
-  let component: BoardsTableComponent;
-  let fixture: ComponentFixture<BoardsTableComponent>;
+describe('PdfViewComponent', () => {
+  let component: PdfViewComponent;
+  let fixture: ComponentFixture<PdfViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BoardsTableComponent]
+      declarations: [PdfViewComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BoardsTableComponent);
+    fixture = TestBed.createComponent(PdfViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

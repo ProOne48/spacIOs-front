@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardsTableComponent } from './boards-table.component';
+import { PdfFormModalComponent } from './pdf-form-modal.component';
 
-describe('BoardsTableComponent', () => {
-  let component: BoardsTableComponent;
-  let fixture: ComponentFixture<BoardsTableComponent>;
+describe('PdfFormModalComponent', () => {
+  let component: PdfFormModalComponent;
+  let fixture: ComponentFixture<PdfFormModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BoardsTableComponent]
+      declarations: [PdfFormModalComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BoardsTableComponent);
+    fixture = TestBed.createComponent(PdfFormModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

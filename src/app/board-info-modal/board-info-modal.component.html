@@ -3,14 +3,34 @@
   <div mat-dialog-content>
     <div class="form-container">
       <form class="form-wrapper" [formGroup]="form">
-        <mat-form-field formControlName="table_number">
-          <input matInput placeholder="Table number" type="number" required>
-<!--          <mat-error *ngIf="form.get('table_number').hasError('required')">-->
-<!--            Table number is <strong>required</strong>-->
-<!--          </mat-error>-->
-        </mat-form-field>
-      </form>
+        <mat-form-field>
+          <mat-label>Table Number</mat-label>
+          <input matInput placeholder="Table number" formControlName="tableNumber" type="number" [min]="1" />
 
+          <mat-error *ngIf="form.get('tableNumber')?.hasError('required')">
+            Table number is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('tableNumber')?.hasError('min')">
+            Table number must be <strong>greater than 0</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Number of chairs</mat-label>
+          <input matInput placeholder="Number of chairs" formControlName="nChairs" type="number" [min]="1" [max]="50" />
+        </mat-form-field>
+
+        <div class="row vertical-center">
+          <p>Reservable</p>
+          <mat-checkbox formControlName="reservable" />
+        </div>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button class="btn" (click)="closeModal()">Cancel</button>
+      <button mat-raised-button class="btn btn--primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">
+        Ok
+      </button>
     </div>
   </div>
 </ng-container>

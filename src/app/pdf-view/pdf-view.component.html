@@ -1,0 +1,16 @@
+<div>
+  <div *ngIf="pdfSrc">
+    <ngx-extended-pdf-viewer
+      [src]="pdfSrc"
+      [height]="'auto'"
+      [filenameForDownload]="space.name + '.pdf'"
+      [showOpenFileButton]="false"
+      [enableDragAndDrop]="false"
+    >
+    </ngx-extended-pdf-viewer>
+  </div>
+
+  <div *ngIf="!pdfSrc">
+    <p>PDF not found</p>
+  </div>
+</div>

@@ -27,7 +27,7 @@ export class SpaceOwner {
    */
   private readonly _spaceOwner = true;
 
-  constructor(id?: number, name?: string, email?: string, spaces?: Space[]) {
+  constructor(id?: number, name?: string, email?: string, spaces: Space[] = []) {
     this.id = id;
     this.name = name;
     this.email = email;

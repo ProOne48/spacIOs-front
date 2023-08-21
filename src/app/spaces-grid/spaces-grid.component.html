@@ -1,6 +1,6 @@
-<mat-grid-list cols="3" rowHeight="3:2">
+<mat-grid-list class="grid" cols="5" rowHeight="3:2">
   <mat-grid-tile class="margin" *ngFor="let space of spaces">
-    <mat-card class="column card center">
+    <mat-card class="column card padding margin-sm center">
       <mat-card-header>
         <mat-card-title class="vertical-center">{{ space.name }}</mat-card-title>
       </mat-card-header>
@@ -11,6 +11,7 @@
       </mat-card-content>
       <mat-card-actions>
         {{ space.capacity }} / {{ space.maxCapacity }}
+        <br />
         <button mat-raised-button class="btn btn--primary" (click)="goToSpace(space.id)">Go to space</button>
       </mat-card-actions>
     </mat-card>

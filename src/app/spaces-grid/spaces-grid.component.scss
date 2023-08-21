@@ -2,7 +2,5 @@
 
 .card {
   @include column;
-  @include center;
-  height: 90%;
-  width: 90%;
+  @include primary-background(300);
 }
