@@ -40,10 +40,12 @@ import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { QrModalComponent } from './qr-modal/qr-modal.component';
-import { NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from '@angular/common';
 import { SpacesComponent } from './spaces/spaces.component';
 import { OverviewComponent } from './overview/overview.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SpaceItemComponent } from './space/space-item/space-item.component';
+import { SpaceListComponent } from './space/space-list/space-list.component';
 
 export const materialImports = [
   MatToolbarModule,
@@ -92,7 +94,9 @@ export const globalImports = [
     PdfViewComponent,
     QrModalComponent,
     SpacesComponent,
-    OverviewComponent
+    OverviewComponent,
+    SpaceItemComponent,
+    SpaceListComponent
   ],
   imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
   providers: [

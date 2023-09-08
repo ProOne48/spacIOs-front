@@ -9,8 +9,8 @@ import { Table } from '../../models/table';
 import { TableService } from '../../services/table.service';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
-import {QRCodeModalInterface} from "../../definitions/table.interface";
-import {QrModalComponent} from "../qr-modal/qr-modal.component";
+import { QRCodeModalInterface } from '../../definitions/table.interface';
+import { QrModalComponent } from '../qr-modal/qr-modal.component';
 @Component({
   selector: 'app-space',
   templateUrl: './space.component.html',
@@ -107,7 +107,7 @@ export class SpaceComponent implements OnInit {
       this.space.tables = this.space.tables?.filter((table: Table) => table.id !== board.id);
       this.snackbar.open('Board deleted successfully', '', { duration: 2000 });
     });
-    if(this.space.maxCapacity != null && board.nChairs != undefined)
+    if (this.space.maxCapacity != null && board.nChairs != undefined)
       this.space.maxCapacity = this.space.maxCapacity - board.nChairs;
   }
 
@@ -117,13 +117,12 @@ export class SpaceComponent implements OnInit {
       const modalData: QRCodeModalInterface = {
         qrCode: response,
         tableNumber: board.tableNumber
-      }
+      };
 
       const dialogRef = this.dialog.open(QrModalComponent, {
         data: modalData,
         width: '35%'
       });
-    })
-
+    });
   }
 }

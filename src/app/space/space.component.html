@@ -1,3 +1,4 @@
+]
 <div>
   <header class="row vertical-center">
     <h1 class="margin-sm">{{ space?.name }}</h1>
@@ -9,7 +10,9 @@
     <button mat-raised-button class="btn btn--primary margin-sm" (click)="deleteSpace()">
       <mat-icon>delete</mat-icon> Delete Space
     </button>
-    <button mat-raised-button class="btn btn--primary margin-sm" [routerLink]="['/space/'+ space.id+ '/pdf']">See PDF</button>
+    <button mat-raised-button class="btn btn--primary margin-sm" [routerLink]="['/space/' + space.id + '/pdf']">
+      See PDF
+    </button>
     <button mat-raised-button class="btn btn--primary margin-sm" (click)="uploadPDF()">
       <mat-icon>upload</mat-icon>
       Upload PDF
@@ -19,7 +22,9 @@
     <mat-card class="padding-sm">
       <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
       <mat-card-content>
-        <span class=""><b class="title">{{ space.capacity}} / {{ space.maxCapacity }}</b></span>
+        <span class=""
+          ><b class="title">{{ space.capacity }} / {{ space.maxCapacity }}</b></span
+        >
         <p>{{ space?.description }}</p>
         <mat-divider *ngIf="space?.description" />
         <header class="vertical-center row">

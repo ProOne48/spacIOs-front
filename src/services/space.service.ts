@@ -53,9 +53,7 @@ export class SpaceService {
 
   deleteTableFromSpace(space_id?: number, table_id?: number): Observable<Space> {
     return this.http
-      .delete<IJsonObject>(
-        `${this.path}/${space_id}/table/${table_id}`
-      )
+      .delete<IJsonObject>(`${this.path}/${space_id}/table/${table_id}`)
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 

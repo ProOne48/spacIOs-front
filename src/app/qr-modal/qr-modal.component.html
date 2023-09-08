@@ -1,13 +1,12 @@
 <ng-container>
   <div class="center">
     <img [src]="QRurl" alt="QR Code" />
-    <p>QR Code for table number: {{data.tableNumber}}</p>
+    <p>QR Code for table number: {{ data.tableNumber }}</p>
     <button mat-raised-button class="btn btn--primary">
-      <a [download]="'QRtable-'+data.tableNumber + '.jpeg'" [href]="QRurl" class="vertical-center">
+      <a [download]="'QRtable-' + data.tableNumber + '.jpeg'" [href]="QRurl" class="vertical-center">
         <mat-icon>download</mat-icon>
         Download
       </a>
     </button>
   </div>
-
 </ng-container>

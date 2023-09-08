@@ -71,7 +71,7 @@ export class SpaceList {
   /**
    * The list of space-grid
    */
-  @autoserializeAsArray(() => Space) items?: Space[];
+  @autoserializeAsArray(() => Space) items: Space[];
 
   /**
    * The total of space-grid
@@ -83,7 +83,7 @@ export class SpaceList {
    * @param items The list of space-grid
    * @param total The total of space-grid
    */
-  constructor(items?: Space[], total?: number) {
+  constructor(items: Space[] = [], total?: number) {
     this.items = items;
     this.total = total;
   }

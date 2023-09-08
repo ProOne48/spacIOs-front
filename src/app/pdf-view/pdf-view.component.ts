@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpaceService } from '../../services/space.service';
 import { ActivatedRoute } from '@angular/router';
-import {Space} from "../../models/space";
+import { Space } from '../../models/space';
 
 @Component({
   selector: 'app-pdf-view',
@@ -24,7 +24,5 @@ export class PdfViewComponent implements OnInit {
         this.space = space;
       });
     });
-
-
   }
 }

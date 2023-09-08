@@ -1,4 +1,4 @@
-import {AuthService} from "../services/auth/auth.service";
+import { AuthService } from '../services/auth/auth.service';
 
 export interface NavbarItemInterface {
   label?: string;

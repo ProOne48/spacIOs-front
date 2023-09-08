@@ -37,7 +37,7 @@ export class TableService {
 
   getQRCode(id?: number): Observable<Blob> {
     return this.http.get<Blob>(`${this.path}/${id}/qr-code`, {
-      responseType: "blob" as "json"
+      responseType: 'blob' as 'json'
     });
   }
 }

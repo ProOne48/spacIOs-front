@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './spaces.component.html',
   styleUrls: ['./spaces.component.scss']
 })
-export class SpacesComponent {
-
-}
+export class SpacesComponent {}

@@ -63,8 +63,8 @@ export class AuthService {
       );
 
     loginOkSubject.asObservable().subscribe((loginOk) => {
-      this.checkLoginAndRedirect(loginOk, loginData.remember)
-    })
+      this.checkLoginAndRedirect(loginOk, loginData.remember);
+    });
 
     return loginOkSubject.asObservable();
   }

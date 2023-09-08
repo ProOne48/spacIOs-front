@@ -1,9 +1,9 @@
-import {ChangeDetectorRef, Component, EventEmitter, Inject, Output} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SpaceService } from '../../services/space.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder} from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-pdf-form-modal',
@@ -19,9 +19,7 @@ export class PdfFormModalComponent {
     private dialogRef: MatDialogRef<PdfFormModalComponent>,
     private changeDetector: ChangeDetectorRef,
     private builder: FormBuilder
-  ) {
-
-  }
+  ) {}
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -30,15 +28,15 @@ export class PdfFormModalComponent {
   }
 
   // TODO: Implement Drop Event
-  onDrop(event: DragEvent){
+  onDrop(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
 
     this.isDragging = false;
 
     const files = event.dataTransfer?.files[0];
-    if(files){
-      if(files.type === 'application/pdf') {
+    if (files) {
+      if (files.type === 'application/pdf') {
         this.file = files;
       } else {
         this.snackBar.open('Only PDF files are allowed', '', { duration: 2000 });
