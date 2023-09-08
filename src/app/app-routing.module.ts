@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { SpaceComponent } from './space/space.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
+import {OverviewComponent} from "./overview/overview.component";
 
 const routes: Routes = [
   {
@@ -34,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthContainerComponent,
+    component: MainComponent,
     canActivate: [ActiveSessionGuard],
     children: [
       {

@@ -1,10 +1,19 @@
-@import 'utils/mixins';
+@import '../utils/mixins';
 
 /**
   Displays
  */
+
 .center {
   @include center;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .row {
@@ -35,8 +44,16 @@
   @include vertical-end;
 }
 
-.fill-vertical-horizontal {
-  @include fill-vertical-horizontal;
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-height-width {
+  @include full-height-width;
 }
 
 /**
@@ -82,6 +99,10 @@
 /**
   Margins
  */
+
+.no-margin {
+  @include no-margin;
+}
 
 .margin-sm {
   @include margin-sm;

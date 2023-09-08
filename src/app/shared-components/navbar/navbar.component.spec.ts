@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { globalImports, materialImports } from '../app.module';
-import { AuthService } from '../../services/auth/auth.service';
+import { globalImports, materialImports } from '../../app.module';
+import { AuthService } from '../../../services/auth/auth.service';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
-import { MockAuthService } from '../../../test_assets/mocks/auth-service.mock';
+import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {

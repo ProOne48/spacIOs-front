@@ -1,10 +1,24 @@
 <ng-container>
-  <div class="form-wrapper gap">
+  <div class="column gap">
     <h2 class="horizontal-center">Upload PDF</h2>
-    <input class="horizontal-center" type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+    <div class="center">
+
+      <div class="drag-container column vertical-center" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+
+        <div class="drop-area">
+
+          <p *ngIf="!file">Drag and drop your PDF here</p>
+
+        </div>
+        <div class="drag-container__icon">
+          <mat-icon>cloud_upload</mat-icon>
+          <input class="horizontal-center" type="file" [value]="file" (change)="onFileSelected($event)" accept="application/pdf" />
+        </div>
+      </div>
+    </div>
     <div class="row horizontal-center gap">
       <button mat-raised-button class="btn btn--primary" [mat-dialog-close]="file">Upload PDF</button>
-      <button mat-raised-button class="btn">Cancel</button>
+      <button mat-raised-button class="btn" (click)="closeModal()">Cancel</button>
     </div>
   </div>
 </ng-container>

@@ -10,12 +10,16 @@
       <mat-icon>delete</mat-icon> Delete Space
     </button>
     <button mat-raised-button class="btn btn--primary margin-sm" [routerLink]="['/space/'+ space.id+ '/pdf']">See PDF</button>
-    <button mat-raised-button class="btn btn--primary margin-sm" (click)="uploadPDF()">Upload PDF</button>
+    <button mat-raised-button class="btn btn--primary margin-sm" (click)="uploadPDF()">
+      <mat-icon>upload</mat-icon>
+      Upload PDF
+    </button>
   </div>
   <div>
     <mat-card class="padding-sm">
       <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
       <mat-card-content>
+        <span class=""><b class="title">{{ space.capacity}} / {{ space.maxCapacity }}</b></span>
         <p>{{ space?.description }}</p>
         <mat-divider *ngIf="space?.description" />
         <header class="vertical-center row">

@@ -10,7 +10,7 @@ import { AuthGuard } from '../services/auth/auth.guard';
 import { AuthInterceptor } from '../services/auth/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './shared-components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth-container/login/login.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -25,11 +25,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './shared-components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
-import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
+import { SpaceInfoModalComponent } from './space/space-info-modal/space-info-modal.component';
 import { SpaceComponent } from './space/space.component';
-import { SpacesGridComponent } from './spaces-grid/spaces-grid.component';
+import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
 import { BoardsTableComponent } from './boards-table/boards-table.component';
 import { BoardInfoModalComponent } from './board-info-modal/board-info-modal.component';
@@ -40,7 +40,10 @@ import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { QrModalComponent } from './qr-modal/qr-modal.component';
-import {NgOptimizedImage} from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
+import { SpacesComponent } from './spaces/spaces.component';
+import { OverviewComponent } from './overview/overview.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 export const materialImports = [
   MatToolbarModule,
@@ -87,9 +90,11 @@ export const globalImports = [
     BoardInfoModalComponent,
     PdfFormModalComponent,
     PdfViewComponent,
-    QrModalComponent
+    QrModalComponent,
+    SpacesComponent,
+    OverviewComponent
   ],
-  imports: [...globalImports, ...materialImports, NgOptimizedImage],
+  imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

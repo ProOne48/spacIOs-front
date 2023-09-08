@@ -1,0 +1,20 @@
+<mat-toolbar class="nav">
+  <div class="elements">
+    <div class="elements_item center gap-sm">
+      <ng-container *ngFor="let item of navbarItems">
+        <a class="navbar-item" routerLink="{{ item.path }}" *ngIf="item.show === true">
+          <mat-icon>
+            {{ item.icon }}
+          </mat-icon>
+          <span>{{item.label}}</span>
+        </a>
+      </ng-container>
+    </div>
+    <div class="logout-container" (click)="logout()" *ngIf="authServiceClass.getSpaceOwnerData()">
+      <button mat-button class="btn" matTooltip="Logout">
+        <mat-icon class="logout-icon">exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

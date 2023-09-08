@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Table } from '../../models/table';
 
@@ -10,7 +10,11 @@ import { Table } from '../../models/table';
 })
 export class BoardInfoModalComponent {
   form: FormGroup;
-  constructor(private builder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: Table) {
+  constructor(
+    private builder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: Table,
+    private dialogRef: MatDialogRef<BoardInfoModalComponent>
+  ) {
     this.form = this.builder.group({
       tableNumber: this.builder.control(this.data?.tableNumber ? this.data.tableNumber : '', [Validators.required]),
       nChairs: this.builder.control(this.data?.nChairs ? this.data.nChairs : '', [Validators.required]),
@@ -23,6 +27,6 @@ export class BoardInfoModalComponent {
   }
 
   closeModal() {
-    //   TODO: Close the modal
+    this.dialogRef.close();
   }
 }

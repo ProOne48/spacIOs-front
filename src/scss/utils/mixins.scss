@@ -5,6 +5,8 @@
 /**
   Basic Displays
  */
+
+
 @mixin column() {
   display: flex;
   flex-direction: column;
@@ -15,9 +17,9 @@
   flex-direction: row;
 }
 
-@mixin fill-vertical-horizontal() {
-  width: 100%;
+@mixin full-height-width() {
   height: 100%;
+  width: 100%;
 }
 
 @mixin center() {
@@ -91,6 +93,10 @@
 /**
   Margin
  */
+
+@mixin no-margin() {
+  margin: 0 !important;
+}
 
 @mixin margin-sm() {
   margin: 1rem;

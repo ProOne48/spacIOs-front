@@ -1,18 +1,23 @@
+import {AuthService} from "../services/auth/auth.service";
+
 export interface NavbarItemInterface {
-  label: string;
+  label?: string;
   path: string;
   icon: string;
+  show?: boolean;
 }
 
 export const navbarItems: NavbarItemInterface[] = [
   {
     label: 'Home',
     icon: 'home',
-    path: '/home'
+    path: '/home',
+    show: !!AuthService.getSpaceOwnerData()
   },
   {
-    label: 'Spaces',
-    icon: 'space',
-    path: '/space'
+    label: 'Search',
+    icon: 'search',
+    path: '/search',
+    show: true
   }
 ];

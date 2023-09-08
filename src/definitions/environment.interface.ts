@@ -5,6 +5,7 @@ export interface EnvironmentInterface {
   frontendDomain?: string;
   apiDomain?: string;
   googleClientId: string;
+  googleSecretKey?: string,
   apiProtocol?: string;
   mockToken?: string;
 }

@@ -1,12 +1,12 @@
 import { AuthService } from '../../services/auth/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { SpaceInfoModalComponent } from '../space-info-modal/space-info-modal.component';
+import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { SpaceService } from '../../services/space.service';
-import { SpacesGridComponent } from '../spaces-grid/spaces-grid.component';
+import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
 import { Space } from '../../models/space';
 import { SpaceOwner } from '../../models/space-owner';
 

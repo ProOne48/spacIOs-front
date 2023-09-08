@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpaceService } from '../../services/space.service';
 import { Space } from '../../models/space';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SpaceInfoModalComponent } from '../space-info-modal/space-info-modal.component';
+import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
 import { Table } from '../../models/table';
 import { TableService } from '../../services/table.service';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
@@ -82,7 +82,6 @@ export class SpaceComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((board) => {
-      console.log(board);
       if (board) {
         this.spaceService.addTableToSpace(this.space, board).subscribe((space: Space) => {
           this.space = space;
@@ -104,10 +103,12 @@ export class SpaceComponent implements OnInit {
   }
 
   deleteBoard(board: Table) {
-    this.tableService.deleteTable(board.id).subscribe(() => {
+    this.spaceService.deleteTableFromSpace(this.space.id, board.id).subscribe(() => {
       this.space.tables = this.space.tables?.filter((table: Table) => table.id !== board.id);
       this.snackbar.open('Board deleted successfully', '', { duration: 2000 });
     });
+    if(this.space.maxCapacity != null && board.nChairs != undefined)
+      this.space.maxCapacity = this.space.maxCapacity - board.nChairs;
   }
 
   getQRCode(board: Table) {

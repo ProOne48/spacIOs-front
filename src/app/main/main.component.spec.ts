@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { globalImports, materialImports } from '../app.module';
-import { FooterComponent } from '../footer/footer.component';
+import { FooterComponent } from '../shared-components/footer/footer.component';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { MainComponent } from './main.component';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarComponent } from '../shared-components/navbar/navbar.component';
 
 describe('MainComponent', () => {
   let component: MainComponent;
