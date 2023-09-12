@@ -1,8 +1,8 @@
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Space, SpaceList } from '../models/space';
 import { ApiService } from './api.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Table } from '../models/table';
 
@@ -51,14 +51,13 @@ export class SpaceService {
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 
-  deleteTableFromSpace(space_id?: number, table_id?: number): Observable<Space> {
+  deleteTableFromSpace(spaceId?: number, tableId?: number): Observable<Space> {
     return this.http
-      .delete<IJsonObject>(`${this.path}/${space_id}/table/${table_id}`)
+      .delete<IJsonObject>(`${this.path}/${spaceId}/table/${tableId}`)
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 
   updateSpace(space: Space): Observable<Space> {
-    console.log(space);
     return this.http
       .put<IJsonObject>(
         `${this.path}/${space.id}`,
@@ -72,16 +71,18 @@ export class SpaceService {
   }
 
   getPdf(spaceId?: number): Observable<ArrayBuffer> {
-    const requestOptions: Object = {
+    const requestOptions: object = {
       responseType: 'arraybuffer',
       headers: new HttpHeaders().append('Content-Type', 'application/pdf')
     };
+
     return this.http.get<ArrayBuffer>(`${this.path}/${spaceId}/pdf`, requestOptions);
   }
 
   uploadPDF(file: File, spaceId?: number): Observable<void> {
     const formData = new FormData();
     formData.append('pdf', file);
+
     return this.http.put<void>(`${this.path}/${spaceId}/pdf`, formData);
   }
 }

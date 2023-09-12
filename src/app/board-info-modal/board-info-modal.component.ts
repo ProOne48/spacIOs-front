@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Table } from '../../models/table';
 
 @Component({
@@ -26,7 +26,7 @@ export class BoardInfoModalComponent {
     }
   }
 
-  closeModal() {
+  closeModal(): void {
     this.dialogRef.close();
   }
 }

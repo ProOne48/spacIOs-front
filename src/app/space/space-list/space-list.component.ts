@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SpaceService } from '../../../services/space.service';
-import { Space } from '../../../models/space';
 import { Router } from '@angular/router';
+import { Space } from '../../../models/space';
+import { SpaceService } from '../../../services/space.service';
 
 @Component({
   selector: 'app-space-list',

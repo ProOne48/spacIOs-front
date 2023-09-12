@@ -1,14 +1,14 @@
-import { AuthService } from '../../services/auth/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
+import { AuthService } from '../../services/auth/auth.service';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Space } from '../../models/space';
+import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
+import { SpaceOwner } from '../../models/space-owner';
 import { SpaceService } from '../../services/space.service';
 import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
-import { Space } from '../../models/space';
-import { SpaceOwner } from '../../models/space-owner';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     private snackbar: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.fillUserData().subscribe(() => {
       this.user = AuthService.getSpaceOwnerData();
       this.spaces = this.user?.spaces;

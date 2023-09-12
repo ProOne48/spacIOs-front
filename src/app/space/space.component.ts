@@ -1,16 +1,16 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SpaceService } from '../../services/space.service';
-import { Space } from '../../models/space';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
-import { Table } from '../../models/table';
-import { TableService } from '../../services/table.service';
-import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
 import { QRCodeModalInterface } from '../../definitions/table.interface';
 import { QrModalComponent } from '../qr-modal/qr-modal.component';
+import { Space } from '../../models/space';
+import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
+import { SpaceService } from '../../services/space.service';
+import { Table } from '../../models/table';
+import { TableService } from '../../services/table.service';
 @Component({
   selector: 'app-space',
   templateUrl: './space.component.html',
@@ -36,23 +36,23 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  editSpace() {
+  editSpace(): void {
     const dialogRef = this.dialog.open(SpaceInfoModalComponent, {
       data: this.space,
       width: '35%'
     });
 
-    dialogRef.afterClosed().subscribe((space_data) => {
-      if (space_data) {
-        this.spaceService.updateSpace(space_data).subscribe((space_updated: Space) => {
+    dialogRef.afterClosed().subscribe((spaceData) => {
+      if (spaceData) {
+        this.spaceService.updateSpace(spaceData).subscribe((spaceUpdated: Space) => {
           this.snackbar.open('Space updated successfully', '', { duration: 2000 });
-          this.space = space_updated;
+          this.space = spaceUpdated;
         });
       }
     });
   }
 
-  deleteSpace() {
+  deleteSpace(): void {
     this.spaceService.deleteSpace(this.space).subscribe(() => {
       this.snackbar.open('Space deleted successfully', '', { duration: 2000 });
 
@@ -60,7 +60,7 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  uploadPDF() {
+  uploadPDF(): void {
     const dialogRef = this.dialog.open(PdfFormModalComponent, {
       data: this.space.id,
       width: '35%'
@@ -68,7 +68,7 @@ export class SpaceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((pdf: File) => {
       if (pdf) {
-        this.spaceService.uploadPDF(pdf, this.space.id).subscribe((response) => {
+        this.spaceService.uploadPDF(pdf, this.space.id).subscribe(() => {
           this.snackbar.open('PDF uploaded successfully', '', { duration: 2000 });
         });
       }
@@ -76,7 +76,7 @@ export class SpaceComponent implements OnInit {
   }
   // Functions for the board table
 
-  addBoard() {
+  addBoard(): void {
     const dialogRef = this.dialog.open(BoardInfoModalComponent, {
       width: '35%'
     });
@@ -91,8 +91,8 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  editBoard(board: Table) {
-    this.tableService.editTable(board).subscribe((boardEdited) => {
+  editBoard(board: Table): void {
+    this.tableService.editTable(board).subscribe(() => {
       this.space.tables?.forEach((table: Table) => {
         if (table.id === board.id) {
           table = board;
@@ -102,24 +102,24 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  deleteBoard(board: Table) {
+  deleteBoard(board: Table): void {
     this.spaceService.deleteTableFromSpace(this.space.id, board.id).subscribe(() => {
       this.space.tables = this.space.tables?.filter((table: Table) => table.id !== board.id);
       this.snackbar.open('Board deleted successfully', '', { duration: 2000 });
     });
-    if (this.space.maxCapacity != null && board.nChairs != undefined)
+    if (this.space.maxCapacity != null && board.nChairs != undefined) {
       this.space.maxCapacity = this.space.maxCapacity - board.nChairs;
+    }
   }
 
-  getQRCode(board: Table) {
+  getQRCode(board: Table): void {
     this.tableService.getQRCode(board.id).subscribe((response) => {
-      console.log(response);
       const modalData: QRCodeModalInterface = {
         qrCode: response,
         tableNumber: board.tableNumber
       };
 
-      const dialogRef = this.dialog.open(QrModalComponent, {
+      this.dialog.open(QrModalComponent, {
         data: modalData,
         width: '35%'
       });

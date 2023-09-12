@@ -11,7 +11,7 @@ export class SpaceItemComponent {
 
   @Output() clickSpace: EventEmitter<number> = new EventEmitter<number>();
 
-  selectSpace(id?: number) {
+  selectSpace(id?: number): void {
     this.clickSpace.emit(id);
   }
 }

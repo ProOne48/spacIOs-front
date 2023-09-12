@@ -8,10 +8,10 @@ import { QRCodeModalInterface } from '../../definitions/table.interface';
   styleUrls: ['./qr-modal.component.scss']
 })
 export class QrModalComponent implements OnInit {
-  QRurl: string = '';
+  qrUrl = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: QRCodeModalInterface) {}
 
   ngOnInit(): void {
-    this.QRurl = URL.createObjectURL(this.data.qrCode);
+    this.qrUrl = URL.createObjectURL(this.data.qrCode);
   }
 }

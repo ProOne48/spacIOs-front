@@ -1,9 +1,7 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SpaceService } from '../../services/space.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pdf-form-modal',
@@ -21,14 +19,13 @@ export class PdfFormModalComponent {
     private builder: FormBuilder
   ) {}
 
-  onDragOver(event: DragEvent) {
+  onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
     this.isDragging = true;
   }
 
-  // TODO: Implement Drop Event
-  onDrop(event: DragEvent) {
+  onDrop(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
 
@@ -45,12 +42,15 @@ export class PdfFormModalComponent {
     this.changeDetector.detectChanges();
   }
 
-  onFileSelected(event: any) {
+  /* eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types */
+  onFileSelected(event: any): void {
     this.isDragging = false;
-    this.file = event.target.files[0];
+    if (event.target.files[0].type === 'application/pdf') {
+      this.file = event.target.files[0];
+    }
   }
 
-  closeModal() {
+  closeModal(): void {
     this.file = undefined;
     // Close the modal
     this.dialogRef.close();

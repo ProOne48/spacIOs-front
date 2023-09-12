@@ -1,15 +1,11 @@
-import { RouterModule, Routes, ExtraOptions } from '@angular/router';
-
-import { ActiveSessionGuard } from '../services/auth/active-session.guard';
-import { AuthContainerComponent } from './auth-container/auth-container.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../services/auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth-container/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
-import { SpaceComponent } from './space/space.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
-import { OverviewComponent } from './overview/overview.component';
+import { SpaceComponent } from './space/space.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
 
 const routes: Routes = [
@@ -19,6 +15,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
       {
         path: 'home',
         component: HomeComponent,
@@ -39,18 +40,21 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+      },
+      {
         path: 'login',
         component: LoginComponent
       },
       {
-        path: '/space/public',
+        path: 'public/space',
         component: SpaceListComponent
       }
     ]
   }
 ];
-
-const config: ExtraOptions = {};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

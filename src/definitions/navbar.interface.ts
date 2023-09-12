@@ -17,7 +17,7 @@ export const navbarItems: NavbarItemInterface[] = [
   {
     label: 'Search',
     icon: 'search',
-    path: '/search',
+    path: '/space/public',
     show: true
   }
 ];

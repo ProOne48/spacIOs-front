@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Table } from '../../models/table';
-import { MatDialog } from '@angular/material/dialog';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Table } from '../../models/table';
 import { TableModalInterface } from '../../definitions/table.interface';
 
 @Component({
@@ -22,7 +22,7 @@ export class BoardsTableComponent {
 
   constructor(private dialog: MatDialog) {}
 
-  edit(board: Table) {
+  edit(board: Table): void {
     const dialogRef = this.dialog.open(BoardInfoModalComponent, { data: board, width: '25%' });
 
     dialogRef.afterClosed().subscribe((boardData: TableModalInterface) => {
@@ -33,11 +33,11 @@ export class BoardsTableComponent {
     });
   }
 
-  delete(board: Table) {
+  delete(board: Table): void {
     this.deleteBoard.emit(board);
   }
 
-  getQRCode(board: Table) {
+  getQRCode(board: Table): void {
     this.getQR.emit(board);
   }
 }

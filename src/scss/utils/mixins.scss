@@ -89,6 +89,10 @@
   padding: 3rem;
 }
 
+@mixin padding-horizontal() {
+  padding: 0 2rem;
+}
+
 /**
   Margin
  */
