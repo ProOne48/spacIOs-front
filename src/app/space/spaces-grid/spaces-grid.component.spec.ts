@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { globalImports, materialImports } from '../../app.module';
 import { SpacesGridComponent } from './spaces-grid.component';
 
 describe('SpacesComponent', () => {
@@ -8,7 +9,8 @@ describe('SpacesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SpacesGridComponent]
+      declarations: [SpacesGridComponent],
+      imports: [...materialImports, ...globalImports]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SpacesGridComponent);

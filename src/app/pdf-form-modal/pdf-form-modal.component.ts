@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -15,8 +14,7 @@ export class PdfFormModalComponent {
   constructor(
     private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<PdfFormModalComponent>,
-    private changeDetector: ChangeDetectorRef,
-    private builder: FormBuilder
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   onDragOver(event: DragEvent): void {
@@ -55,6 +53,4 @@ export class PdfFormModalComponent {
     // Close the modal
     this.dialogRef.close();
   }
-  protected readonly ondragover = ondragover;
-  protected readonly close = close;
 }

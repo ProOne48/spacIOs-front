@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Space } from '../../../models/space';
+import { Space } from '../../../../models/space';
 
 @Component({
   selector: 'app-space-item',

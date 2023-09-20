@@ -1,6 +1,9 @@
 <mat-toolbar class="nav">
   <div class="elements">
     <div class="elements_item center gap-sm">
+      <div class="image-container">
+        <img src="assets/images/logo.png" alt="logo" class="logo" />
+      </div>
       <ng-container *ngFor="let item of navbarItems">
         <a class="navbar-item" routerLink="{{ item.path }}" *ngIf="item.show === true">
           <mat-icon>

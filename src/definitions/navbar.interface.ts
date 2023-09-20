@@ -9,15 +9,15 @@ export interface NavbarItemInterface {
 
 export const navbarItems: NavbarItemInterface[] = [
   {
+    label: 'Search',
+    icon: 'search',
+    path: '/public/space',
+    show: true
+  },
+  {
     label: 'Home',
     icon: 'home',
     path: '/home',
     show: !!AuthService.getSpaceOwnerData()
-  },
-  {
-    label: 'Search',
-    icon: 'search',
-    path: '/space/public',
-    show: true
   }
 ];
