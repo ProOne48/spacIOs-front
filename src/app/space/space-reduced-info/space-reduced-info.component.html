@@ -1,0 +1,15 @@
+<div class="main-container">
+  <mat-card>
+    <mat-card-title> Capacity </mat-card-title>
+    <mat-card-content>
+      <div class="chart-container">
+        <section>{{ space.capacity }} / {{ space.maxCapacity }}</section>
+        <section>
+          <canvas id="capacity-chart"></canvas>
+        </section>
+
+        <button>Reserve</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
