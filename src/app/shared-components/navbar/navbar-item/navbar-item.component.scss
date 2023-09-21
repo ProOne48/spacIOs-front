@@ -1,0 +1,14 @@
+@import "../../../../scss/utils/mixins";
+
+.navbar-item {
+  @include row();
+  @include vertical-center();
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+  text-decoration: None;
+  color: black;
+  &:hover {
+    cursor: pointer;
+    border-bottom: black solid 1px;
+  }
+}
