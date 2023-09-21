@@ -32,6 +32,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavbarComponent } from './shared-components/navbar/navbar.component';
+import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navbar-item.component';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { OverviewComponent } from './overview/overview.component';
@@ -46,7 +47,6 @@ import { SpaceListComponent } from './space/space-list/space-list.component';
 import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
 import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
-import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navbar-item.component';
 
 export const materialImports = [
   MatToolbarModule,

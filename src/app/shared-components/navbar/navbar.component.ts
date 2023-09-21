@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavbarItemInterface, navbarItems } from '../../../definitions/navbar.interface';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
-import {NavigationEnd, Router} from '@angular/router';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
@@ -10,15 +10,11 @@ import { SocialAuthService } from '@abacritt/angularx-social-login';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Input() navbarItems?: NavbarItemInterface[]
+  @Input() navbarItems?: NavbarItemInterface[];
 
-  isLogged = AuthService.getSpaceOwnerData()
+  isLogged = AuthService.getSpaceOwnerData();
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private socialAuthService: SocialAuthService
-  ) {}
+  constructor(private router: Router, private authService: AuthService, private socialAuthService: SocialAuthService) {}
 
   logout(): void {
     this.authService.logout();
@@ -30,11 +26,9 @@ export class NavbarComponent implements OnInit {
     this.navbarItems = navbarItems.filter((item) => item.show);
 
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.navbarItems = navbarItems.filter((item) => item.show);
       }
     });
   }
-
-
 }

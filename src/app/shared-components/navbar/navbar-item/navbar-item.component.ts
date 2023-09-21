@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {NavbarItemInterface} from "../../../../definitions/navbar.interface";
+import { Component, Input } from '@angular/core';
+import { NavbarItemInterface } from '../../../../definitions/navbar.interface';
 
 @Component({
   selector: 'app-navbar-item',
@@ -7,6 +7,5 @@ import {NavbarItemInterface} from "../../../../definitions/navbar.interface";
   styleUrls: ['./navbar-item.component.scss']
 })
 export class NavbarItemComponent {
-
-  @Input() item!: NavbarItemInterface
+  @Input() item!: NavbarItemInterface;
 }
