@@ -25,3 +25,5 @@ jobs:
         run: |
           npm ci
           npm run test -- --code-coverage --progress false --watch=false --browsers ChromeHeadless
+
+# TODO - Add info of code coverage to CodeCov
