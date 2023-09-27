@@ -8,13 +8,7 @@
         </div>
         <div class="drag-container__icon">
           <mat-icon>cloud_upload</mat-icon>
-          <input
-            class="horizontal-center"
-            type="file"
-            [value]="file"
-            (change)="onFileSelected($event)"
-            accept="application/pdf"
-          />
+          <input class="horizontal-center" type="file" (change)="onFileSelected($event)" accept="application/pdf" />
         </div>
       </div>
     </div>

@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Tests logs
+test_assets/karma.log
+
 # Compiled output
 /dist
 /tmp

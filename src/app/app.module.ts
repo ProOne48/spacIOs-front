@@ -44,7 +44,6 @@ import { SpaceComponent } from './space/space.component';
 import { SpaceInfoModalComponent } from './space/space-info-modal/space-info-modal.component';
 import { SpaceItemComponent } from './space/space-list/space-item/space-item.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
-import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
 import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
 import { environment } from '../environments/environment';
 
@@ -97,7 +96,6 @@ export const globalImports = [
     OverviewComponent,
     SpaceItemComponent,
     SpaceListComponent,
-    SpaceReducedInfoComponent,
     NavbarItemComponent
   ],
   imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
