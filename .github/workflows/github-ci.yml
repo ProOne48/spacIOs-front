@@ -32,7 +32,7 @@ jobs:
           google-chrome-stable --version
       - name: Run Tests
         run: |
-          npm ci
+          npm install
           npm run test -- --code-coverage --progress false --watch=false --browsers ChromeHeadless
       - name: Debugging - Print Logs
         if: failure()
