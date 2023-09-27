@@ -23,6 +23,9 @@ describe('PdfFormModalComponent', () => {
 
     fixture = TestBed.createComponent(PdfFormModalComponent);
     component = fixture.componentInstance;
+
+    component.file = new File([''], 'test.pdf', { type: 'application/pdf' });
+
     fixture.detectChanges();
   });
 

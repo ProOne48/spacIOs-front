@@ -6,6 +6,8 @@ import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
 import { NavbarComponent } from './navbar.component';
+import {NavbarItemComponent} from "./navbar-item/navbar-item.component";
+import {ChangeDetectorRef} from "@angular/core";
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -14,7 +16,7 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavbarComponent],
+      declarations: [NavbarComponent, NavbarItemComponent],
       imports: [HttpClientModule, ...materialImports, ...globalImports],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
