@@ -42,7 +42,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'login'
+        redirectTo: '/login'
       },
       {
         path: 'login',
@@ -51,6 +51,11 @@ const routes: Routes = [
       {
         path: 'public/space',
         component: SpaceListComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/login',
+        pathMatch: 'full'
       }
     ]
   }

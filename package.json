@@ -10,7 +10,9 @@
     "lint-eslint": "./node_modules/eslint/bin/eslint.js \"src/**/*.ts\" \"./src/**/*.html\"",
     "lint-prettier": "prettier --check .",
     "lint": "npm run lint-eslint && npm run lint-prettier",
-    "format": "prettier --write . && eslint --fix "
+    "format": "prettier --write . && eslint --fix ",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +32,7 @@
     "@angular/router": "^15.2.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "cypress": "^13.3.0",
     "dcerialize": "^3.6.8",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
