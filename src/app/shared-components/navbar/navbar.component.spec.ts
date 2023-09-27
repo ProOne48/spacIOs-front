@@ -6,8 +6,7 @@ import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
 import { NavbarComponent } from './navbar.component';
-import {NavbarItemComponent} from "./navbar-item/navbar-item.component";
-import {ChangeDetectorRef} from "@angular/core";
+import { NavbarItemComponent } from './navbar-item/navbar-item.component';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;

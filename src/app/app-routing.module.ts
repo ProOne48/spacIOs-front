@@ -51,7 +51,7 @@ const routes: Routes = [
       {
         path: 'public/space',
         component: SpaceListComponent
-      },
+      }
     ]
   }
 ];

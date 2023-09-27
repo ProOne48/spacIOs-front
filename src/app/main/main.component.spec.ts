@@ -5,7 +5,7 @@ import { FooterComponent } from '../shared-components/footer/footer.component';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { MainComponent } from './main.component';
 import { NavbarComponent } from '../shared-components/navbar/navbar.component';
-import {NavbarItemComponent} from "../shared-components/navbar/navbar-item/navbar-item.component";
+import { NavbarItemComponent } from '../shared-components/navbar/navbar-item/navbar-item.component';
 
 describe('MainComponent', () => {
   let component: MainComponent;
