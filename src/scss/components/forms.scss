@@ -1,6 +1,22 @@
 @use '@angular/material' as mat;
 @import 'src/scss/utils/mixins';
 
+/**
+  Angular Material overrides and default styling
+ */
+
 .form-wrapper {
   @include column;
+
+  width: 100%;
+}
+
+.form-container {
+  @include row;
+  @include gap;
+  padding: 0 1rem;
+}
+
+.mat-mdc-form-field {
+  margin: 0.5rem 0;
 }

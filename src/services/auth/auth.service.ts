@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
 import { ApiService } from '../api.service';
@@ -50,7 +50,6 @@ export class AuthService {
       .pipe(map((response: any) => Deserialize(response, () => LoginResponse)))
       .subscribe(
         (data: any) => {
-          console.log(data);
           if (data.loginOk) {
             loginOkSubject.next(true);
             this.fillUserData(loginData.remember);
@@ -62,6 +61,10 @@ export class AuthService {
           });
         }
       );
+
+    loginOkSubject.asObservable().subscribe((loginOk) => {
+      this.checkLoginAndRedirect(loginOk, loginData.remember);
+    });
 
     return loginOkSubject.asObservable();
   }
@@ -76,29 +79,38 @@ export class AuthService {
     };
 
     this.login(credentials).subscribe((loginOk: boolean) => {
-      this.checkLoginAndRedirect(loginOk);
+      this.checkLoginAndRedirect(loginOk, credentials.remember);
     });
   }
 
-  checkLoginAndRedirect(loginOK: boolean): void {
+  checkLoginAndRedirect(loginOK: boolean, remember?: boolean): void {
     if (loginOK) {
-      this.router.navigate(['/home']);
+      this.fillUserData(remember).subscribe(() => {
+        this.router.navigateByUrl('/home');
+      });
     }
   }
 
   logout(): void {
-    this.socialAuthService.signOut();
-    removeStorageObject('userData');
+    this.http.delete(`${this.path}/logout`).subscribe(() => {
+      this.socialAuthService.signOut();
+      removeStorageObject('userData');
+      this.router.navigateByUrl('/login');
+    });
   }
 
-  fillUserData(remember?: boolean): void {
+  fillUserData(remember?: boolean): Observable<SpaceOwner> {
+    const spaceOwnerData = new Subject<SpaceOwner>();
     this.spaceOwnerService.getActualSpaceOwner().subscribe((spaceOwner: SpaceOwner) => {
       setStorageObject(
         'userData',
         Serialize(spaceOwner, () => SpaceOwner),
         remember ? 'local' : 'session'
       );
+      spaceOwnerData.next(spaceOwner);
     });
+
+    return spaceOwnerData.asObservable();
   }
 
   static getSpaceOwnerData(): SpaceOwner | undefined {

@@ -33,6 +33,7 @@
     "dcerialize": "^3.6.8",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
+    "ngx-extended-pdf-viewer": "^18.0.0-beta.0",
     "prettier": "^2.8.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

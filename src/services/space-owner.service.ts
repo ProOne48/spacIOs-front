@@ -1,7 +1,8 @@
+import { Deserialize, IJsonObject } from 'dcerialize';
+import { Observable, map } from 'rxjs';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { SpaceOwner } from '../models/space-owner';
 
 @Injectable({
@@ -19,6 +20,10 @@ export class SpaceOwnerService {
   }
 
   getActualSpaceOwner(): Observable<SpaceOwner> {
-    return this.http.get<SpaceOwner>(`${this.path}/actual-space-owner`);
+    return this.http.get<IJsonObject>(`${this.path}/actual-space-owner`).pipe(
+      map((spaceOwnerData) => {
+        return Deserialize(spaceOwnerData, () => SpaceOwner);
+      })
+    );
   }
 }

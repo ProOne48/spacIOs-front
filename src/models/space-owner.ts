@@ -18,16 +18,16 @@ export class SpaceOwner {
   @autoserializeAs(() => String) email?: string;
 
   /**
-   * The spaces of the space owner
+   * The space-grid of the space owner
    */
-  @autoserializeAsArray(() => Space, () => []) spaces?: Space[];
+  @autoserializeAsArray(() => Space) spaces?: Space[];
 
   /**
    * Hack to prevent the mistaken assignment of objects from one class to a different class
    */
   private readonly _spaceOwner = true;
 
-  constructor(id?: number, name?: string, email?: string, spaces?: Space[]) {
+  constructor(id?: number, name?: string, email?: string, spaces: Space[] = []) {
     this.id = id;
     this.name = name;
     this.email = email;

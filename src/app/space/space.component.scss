@@ -1,0 +1,17 @@
+@import '../../scss/utils/mixins';
+
+h1 {
+  @include margin-sm;
+  flex: 1;
+}
+
+.title {
+  height: 100%;
+  font-size: 4rem;
+  line-height: 4rem;
+  display: inline-block;
+}
+.table-title {
+  @include margin-sm;
+  flex: 1;
+}

@@ -1,0 +1,18 @@
+<mat-toolbar class="nav">
+  <div class="elements">
+    <div class="elements_item center gap-sm">
+      <div class="image-container">
+        <img src="assets/images/logo.png" alt="logo" class="SpacIOs-logo" />
+      </div>
+      <ng-container *ngFor="let item of navbarItems">
+        <app-navbar-item [item]="item"></app-navbar-item>
+      </ng-container>
+    </div>
+    <div class="logout-container" (click)="logout()" *ngIf="isLogged">
+      <button mat-button class="btn">
+        <mat-icon class="logout-icon">exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

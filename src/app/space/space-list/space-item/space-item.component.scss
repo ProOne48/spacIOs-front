@@ -1,0 +1,13 @@
+@import '../../../../scss/utils/mixins';
+
+.item-container {
+  @include row();
+  @include vertical-center();
+  @include gap();
+  @include padding-sm();
+  border: 0.5px solid dimgrey;
+
+  &:hover {
+    background: lightgrey;
+  }
+}

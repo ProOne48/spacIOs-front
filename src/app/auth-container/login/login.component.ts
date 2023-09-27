@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginData: GoogleCredentialsInterface): void {
-    this.authService.login(loginData).subscribe((loginOk: boolean) => {
-      this.authService.checkLoginAndRedirect(loginOk);
-    });
+    this.authService.login(loginData).subscribe();
   }
 
   loginMock(): void {

@@ -1,0 +1,17 @@
+.drag-container {
+  width: 30rem;
+  height: 12rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+}
+
+.drop-area {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.drop-area.drag-over {
+  background-color: #c0e8e4;
+}

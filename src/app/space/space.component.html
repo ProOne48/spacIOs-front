@@ -1,0 +1,47 @@
+]
+<div>
+  <header class="row vertical-center">
+    <h1 class="margin-sm">{{ space.name }}</h1>
+  </header>
+  <div class="horizontal-end">
+    <button mat-raised-button class="btn btn--primary margin-sm" (click)="editSpace()">
+      <mat-icon>edit</mat-icon> Edit Space
+    </button>
+    <button mat-raised-button class="btn btn--primary margin-sm" (click)="deleteSpace()">
+      <mat-icon>delete</mat-icon> Delete Space
+    </button>
+    <button mat-raised-button class="btn btn--primary margin-sm" [routerLink]="['/space/' + space.id + '/pdf']">
+      See PDF
+    </button>
+    <button mat-raised-button class="btn btn--primary margin-sm" (click)="uploadPDF()">
+      <mat-icon>upload</mat-icon>
+      Upload PDF
+    </button>
+  </div>
+  <div>
+    <mat-card class="padding-sm">
+      <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
+      <mat-card-content>
+        <span class=""
+          ><b class="title">{{ space.capacity }} / {{ space.maxCapacity }}</b></span
+        >
+        <p>{{ space.description }}</p>
+        <mat-divider *ngIf="space.description" />
+        <header class="vertical-center row">
+          <h2 class="table-title"><strong>Boards</strong></h2>
+          <div class="horizontal-end">
+            <button mat-raised-button class="btn btn--primary margin-sm" (click)="addBoard()">
+              <mat-icon>add</mat-icon> Create Board
+            </button>
+          </div>
+        </header>
+        <app-boards-table
+          [boards]="space.tables!"
+          (editBoard)="editBoard($event)"
+          (deleteBoard)="deleteBoard($event)"
+          (getQR)="getQRCode($event)"
+        ></app-boards-table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+@import '../../../scss/utils/mixins';
+
+.card {
+  @include column;
+  @include primary-background(300);
+}

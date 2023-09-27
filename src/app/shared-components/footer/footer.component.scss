@@ -1,4 +1,5 @@
-@import 'src/scss/utils/mixins';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/palette';
 
 :host {
   @include row;
