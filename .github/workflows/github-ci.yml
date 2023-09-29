@@ -44,5 +44,4 @@ jobs:
           npm i
           npm run cypress:run
 
-
 # TODO - Add info of code coverage to CodeCov

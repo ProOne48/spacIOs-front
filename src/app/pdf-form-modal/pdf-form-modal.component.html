@@ -1,6 +1,6 @@
 <ng-container>
-  <div class="column gap">
-    <h2 class="horizontal-center">Upload PDF</h2>
+  <div data-cy="pdf-form-modal" class="column gap">
+    <h2 data-cy="pdf-form-modal-title" class="horizontal-center">Upload PDF</h2>
     <div class="center">
       <div class="drag-container column vertical-center" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
         <div class="drop-area">
@@ -13,8 +13,10 @@
       </div>
     </div>
     <div class="row horizontal-center gap">
-      <button mat-raised-button class="btn btn--primary" [mat-dialog-close]="file">Upload PDF</button>
-      <button mat-raised-button class="btn" (click)="closeModal()">Cancel</button>
+      <button mat-raised-button data-cy="pdf-form-modal-close" class="btn btn--primary" [mat-dialog-close]="file">
+        Upload PDF
+      </button>
+      <button mat-raised-button data-cy="pdf-form-modal-upload" class="btn" (click)="closeModal()">Cancel</button>
     </div>
   </div>
 </ng-container>

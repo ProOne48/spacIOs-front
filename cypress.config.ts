@@ -19,4 +19,3 @@ export default defineConfig({
   requestTimeout: 10000,
   retries: 2
 });
-

@@ -1,7 +1,7 @@
 <ng-container>
-  <div class="center">
+  <div class="center" data-cy="space-info-modal">
     <h2 mat-dialog-title>
-      <span>{{ data ? 'Edit' : 'Create' }} a Space</span>
+      <span data-cy="space-info-modal-title">{{ data ? 'Edit' : 'Create' }} a Space</span>
     </h2>
     <form [formGroup]="form" class="form-container">
       <div class="form-wrapper">
@@ -17,8 +17,14 @@
         </mat-form-field>
 
         <div mat-dialog-actions class="center">
-          <button mat-raised-button class="btn" (click)="closeModal()">Cancel</button>
-          <button mat-raised-button class="btn btn--primary" [mat-dialog-close]="form.value" [disabled]="form.invalid">
+          <button mat-raised-button class="btn" data-cy="space-info-modal-close" (click)="closeModal()">Cancel</button>
+          <button
+            mat-raised-button
+            class="btn btn--primary"
+            data-cy="space-info-modal-accept"
+            [mat-dialog-close]="form.value"
+            [disabled]="form.invalid"
+          >
             {{ data ? 'Edit' : 'Create' }}
           </button>
         </div>
