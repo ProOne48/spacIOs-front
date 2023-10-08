@@ -55,7 +55,9 @@ describe('Space test', () => {
 
   context('Routes redirections', () => {
     it('should redirect to the pdf view page and show the PDF', () => {
-      cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}/pdf`, { fixture: `${spaceName}.pdf` }).as('getPdf');
+      cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}/pdf`, { fixture: `${spaceName}.pdf` }).as(
+        'getPdf'
+      );
       cy.get('[data-cy=space-see-pdf]').click();
       cy.url().should('include', `/space/${spaceId}/pdf`);
       cy.get('[data-cy=pdf-viewer]').should('be.visible');
