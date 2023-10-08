@@ -1,0 +1,11 @@
+@import '../../../scss/utils/mixins';
+
+.main-container {
+  @include padding-lg;
+}
+
+.space-header {
+  @include row();
+  @include vertical-center();
+  justify-content: space-between;
+}

@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [HttpClientModule, ...materialImports, ...globalImports],
+      imports: [...materialImports, ...globalImports],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
         {

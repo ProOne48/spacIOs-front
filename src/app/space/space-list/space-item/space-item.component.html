@@ -1,5 +1,5 @@
-<div class="item-container" routerLink="/public/space/{{ space?.id }}">
-  <section class="column">
+<div class="item-container" [attr.data-cy]="'public-space-' + space?.id" routerLink="/public/space/{{ space?.id }}">
+  <section class="column" data-cy="public-space-item">
     <h3>{{ space?.name }}</h3>
     <span>{{ space?.capacity }}/{{ space?.maxCapacity }}</span>
   </section>

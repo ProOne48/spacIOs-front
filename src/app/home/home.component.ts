@@ -31,10 +31,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authService.fillUserData().subscribe(() => {
-      this.user = AuthService.getSpaceOwnerData();
-      this.spaces = this.user?.spaces;
-    });
+    this.user = AuthService.getSpaceOwnerData();
+    this.spaces = this.user?.spaces;
   }
 
   addSpace(): void {

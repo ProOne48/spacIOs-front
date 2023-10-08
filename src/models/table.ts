@@ -32,11 +32,6 @@ export class Table {
   @autoserializeAs(() => String, 'qr_code') qrCode?: string;
 
   /**
-   * The table number
-   */
-  @autoserializeAs(() => Number) number?: number;
-
-  /**
    * If the table is occupied
    */
   @autoserializeAs(() => Boolean) occupied?: boolean;
@@ -57,7 +52,6 @@ export class Table {
     spaceId?: number,
     reservable?: boolean,
     qrCode?: string,
-    number?: number,
     occupied?: boolean
   ) {
     this.id = id;
@@ -65,7 +59,6 @@ export class Table {
     this.spaceId = spaceId;
     this.reservable = reservable;
     this.qrCode = qrCode;
-    this.number = number;
     this.occupied = occupied;
   }
 }

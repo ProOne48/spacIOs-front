@@ -20,7 +20,7 @@ export class SpaceOwnerService {
   }
 
   getActualSpaceOwner(): Observable<SpaceOwner> {
-    return this.http.get<IJsonObject>(`${this.path}/actual-space-owner`).pipe(
+    return this.http.get<IJsonObject>(`${this.path}/actual`).pipe(
       map((spaceOwnerData) => {
         return Deserialize(spaceOwnerData, () => SpaceOwner);
       })

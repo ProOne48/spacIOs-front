@@ -5,6 +5,7 @@ export interface NavbarItemInterface {
   path: string;
   icon: string;
   show?: boolean;
+  dataCy?: string;
 }
 
 export const navbarItems: NavbarItemInterface[] = [
@@ -12,12 +13,14 @@ export const navbarItems: NavbarItemInterface[] = [
     label: 'Search',
     icon: 'search',
     path: '/public/space',
-    show: true
+    show: true,
+    dataCy: 'navbar-search'
   },
   {
     label: 'Home',
     icon: 'home',
     path: '/home',
-    show: !!AuthService.getSpaceOwnerData()
+    show: !!AuthService.getSpaceOwnerData(),
+    dataCy: 'navbar-home'
   }
 ];

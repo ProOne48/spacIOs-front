@@ -22,19 +22,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Print Environment Info
-        run: |
-          node -v
-          npm -v
-          google-chrome-stable --version
       - name: Run Tests
         run: |
           npm install
           npm run test -- --code-coverage --progress false --watch=false --browsers ChromeHeadless
-      - name: Debugging - Print Logs
-        if: failure()
+
+  e2e_tests:
+    name: Run e2e Tests
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Run tests
         run: |
-          cat karma.log # Replace with the actual path to your test logs
+          npm i
+          npm start &
+          npm run cypress:run
+
+# TODO - Add info of code coverage to CodeCov
