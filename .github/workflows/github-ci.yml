@@ -42,6 +42,7 @@ jobs:
       - name: Run tests
         run: |
           npm i
+          npm start &
           npm run cypress:run
 
 # TODO - Add info of code coverage to CodeCov
