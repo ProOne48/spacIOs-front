@@ -1,12 +1,22 @@
 describe('Space test', () => {
+  let spaceId: number;
+  let spaceName: string;
   beforeEach(() => {
-    cy.login();
-    cy.get('[data-cy=space-3]').click();
+    cy.fixture('space.json').then((space) => {
+      spaceId = space.id;
+      spaceName = space.name;
+
+      cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}`, { fixture: 'space.json' }).as('getSpace');
+      cy.login();
+
+      cy.get(`[data-cy=space-${spaceId}]`).click();
+      cy.wait('@getSpace');
+    });
   });
 
   context('Component display', () => {
     it('should display the space page', () => {
-      cy.url().should('include', '/space/3');
+      cy.url().should('include', `/space/${spaceId}`);
       cy.get('[data-cy=space-edit]').should('be.visible');
       cy.get('[data-cy=space-delete]').should('be.visible');
       cy.get('[data-cy=space-upload-pdf]').should('be.visible');
@@ -45,8 +55,9 @@ describe('Space test', () => {
 
   context('Routes redirections', () => {
     it('should redirect to the pdf view page and show the PDF', () => {
+      cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}/pdf`, { fixture: `${spaceName}.pdf` }).as('getPdf');
       cy.get('[data-cy=space-see-pdf]').click();
-      cy.url().should('include', '/space/3/pdf');
+      cy.url().should('include', `/space/${spaceId}/pdf`);
       cy.get('[data-cy=pdf-viewer]').should('be.visible');
     });
   });

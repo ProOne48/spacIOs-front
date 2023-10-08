@@ -21,10 +21,54 @@
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 
-Cypress.Commands.add('login', () => {
-  cy.intercept('POST', '/api/auth/google-login');
-  cy.visit('/login');
-  cy.get('[data-cy=login-mock]').click();
+import { SpaceOwner } from '../../src/models/space-owner';
+import { setStorageObject } from '../../src/utils/storage-manager';
+import { Serialize } from 'dcerialize';
+
+Cypress.Commands.add('login', (fallbackRoute = '/home') => {
+  localStorage.setItem('accessToken', JSON.stringify('ASY23RT&asdSdB'));
+  const spaceOwner: SpaceOwner = {
+    id: 1,
+    name: 'mock',
+    email: 'mock@gmail.com',
+    spaces: [
+      {
+        id: 1,
+        name: 'mock',
+        description: 'mock',
+        maxCapacity: 20,
+        capacity: 0,
+        spaceOwnerId: 1,
+        tables: [
+          {
+            id: 1,
+            tableNumber: 1,
+            nChairs: 4,
+            occupied: false,
+            reservable: true,
+            spaceId: 1,
+            qrCode: 'mock'
+          }
+        ]
+      }
+    ]
+  };
+
+  setStorageObject(
+    'userData',
+    Serialize(spaceOwner, () => SpaceOwner),
+    'local'
+  );
+
+  cy.intercept('POST', Cypress.env('API_URL') + '/auth/google-login', {
+    fixture: 'login.json'
+  });
+
+  cy.intercept('GET', Cypress.env('API_URL') + '/space-owner/actual', {
+    fixture: 'actual-user.json'
+  });
+
+  cy.visit(fallbackRoute);
 });
 
 //

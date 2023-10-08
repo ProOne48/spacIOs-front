@@ -12,6 +12,7 @@ export default defineConfig({
     }
   },
   env: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     API_URL: 'http://localhost:5000/api'
   },
   video: false,

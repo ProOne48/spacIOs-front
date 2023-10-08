@@ -6,7 +6,7 @@ describe('Home page tests', () => {
     cy.url().should('include', '/home');
 
     cy.get('[data-cy=space-grid]').should('be.visible');
-    cy.get('[data-cy=space-tile]').should('have.length', 4);
+    cy.get('[data-cy=space-tile]').should('have.length', 1);
   });
 
   it('should display the space info modal', () => {

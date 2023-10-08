@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "mock",
+  "description": "mock",
+  "max_capacity": 20,
+  "capacity": 0,
+  "tables": [
+    {
+      "id": 1,
+      "table_number": 1,
+      "n_chairs": 4,
+      "occupied": false,
+      "reservable": true,
+      "qr_code": "mock",
+      "space_id": 1
+    }
+  ]
+}
