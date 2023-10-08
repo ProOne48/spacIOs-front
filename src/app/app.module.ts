@@ -33,6 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavbarComponent } from './shared-components/navbar/navbar.component';
 import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navbar-item.component';
+import { NgChartsModule } from 'ng2-charts';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { OverviewComponent } from './overview/overview.component';
@@ -73,7 +74,8 @@ export const globalImports = [
   SocialLoginModule,
   ReactiveFormsModule,
   RouterModule,
-  NgxExtendedPdfViewerModule
+  NgxExtendedPdfViewerModule,
+  NgChartsModule
 ];
 
 @NgModule({
