@@ -1,5 +1,5 @@
+import { ChartData, ChartType } from 'chart.js';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {ChartData, ChartType} from 'chart.js';
 
 @Component({
   selector: 'app-statistics-chart',
@@ -25,7 +25,7 @@ export class StatisticsChartComponent implements OnChanges {
       datasets: [
         {
           label: this.dataLabel,
-          data: this.data,
+          data: this.data
         }
       ]
     };
@@ -42,10 +42,9 @@ export class StatisticsChartComponent implements OnChanges {
       this.dataChart.datasets[0].label = this.dataLabel;
     }
 
-    if(changes['labels']) {
+    if (changes['labels']) {
       this.labels = changes['labels'].currentValue;
       this.dataChart.labels = this.labels;
     }
-    console.log(this.dataChart);
   }
 }

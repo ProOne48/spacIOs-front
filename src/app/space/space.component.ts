@@ -50,9 +50,9 @@ export class SpaceComponent implements OnInit {
       this.statisticsService.getStatisticsById(spaceId).subscribe((statistics) => {
         this.statistics = statistics;
 
-        this.averageSpaceUseData = this.statistics.getAverageUseData()
-        this.totalSpaceUseData = this.statistics.getTotalUseData()
-        this.labels = this.statistics.getLabels()
+        this.averageSpaceUseData = this.statistics.getAverageUseData();
+        this.totalSpaceUseData = this.statistics.getTotalUseData();
+        this.labels = this.statistics.getLabels();
       });
     });
   }
