@@ -1,0 +1,9 @@
+@import '../../scss/utils/mixins';
+
+.background-statistics {
+  background-color: white;
+  @include padding;
+  @include container-border-radius;
+  @include shadow;
+  width: 400px;
+}

@@ -127,3 +127,19 @@
 @mixin primary-color($color: 600) {
   color: mat.get-color-from-palette($primary-palette, $color);
 }
+
+/**
+  Container border radius
+ */
+
+@mixin container-border-radius-sm() {
+  border-radius: 0.5rem;
+}
+
+@mixin container-border-radius() {
+  border-radius: 0.75rem;
+}
+
+@mixin container-border-radius-lg() {
+  border-radius: 1.25rem;
+}

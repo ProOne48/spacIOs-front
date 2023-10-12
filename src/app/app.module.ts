@@ -46,6 +46,7 @@ import { SpaceInfoModalComponent } from './space/space-info-modal/space-info-mod
 import { SpaceItemComponent } from './space/space-list/space-item/space-item.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
 import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
+import { StatisticsChartComponent } from './statistics-chart/statistics-chart.component';
 import { environment } from '../environments/environment';
 
 export const materialImports = [
@@ -98,13 +99,15 @@ export const globalImports = [
     OverviewComponent,
     SpaceItemComponent,
     SpaceListComponent,
-    NavbarItemComponent
+    NavbarItemComponent,
+    StatisticsChartComponent
   ],
   imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: NgChartsModule, useValue: { generateColors: true } },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

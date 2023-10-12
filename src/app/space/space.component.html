@@ -1,29 +1,45 @@
-]
-<div>
+<div class="column margin-sm gap-lg">
   <header class="row vertical-center">
-    <h1 data-cy="space-name" class="margin-sm">{{ space.name }}</h1>
+    <h1 data-cy="space-name" class="mo-margin">{{ space.name }}</h1>
   </header>
-  <div class="horizontal-end">
-    <button mat-raised-button data-cy="space-edit" class="btn btn--primary margin-sm" (click)="editSpace()">
-      <mat-icon>edit</mat-icon> Edit Space
-    </button>
-    <button mat-raised-button data-cy="space-delete" class="btn btn--primary margin-sm" (click)="deleteSpace()">
-      <mat-icon>delete</mat-icon> Delete Space
-    </button>
-    <button
-      mat-raised-button
-      data-cy="space-see-pdf"
-      class="btn btn--primary margin-sm"
-      [routerLink]="['/space/' + space.id + '/pdf']"
-    >
-      See PDF
-    </button>
-    <button mat-raised-button data-cy="space-upload-pdf" class="btn btn--primary margin-sm" (click)="uploadPDF()">
-      <mat-icon>upload</mat-icon>
-      Upload PDF
-    </button>
-  </div>
-  <div>
+  <section class="column gap-sm">
+    <h2 class="table-title">Statistics</h2>
+    <section class="row gap-lg horizontal-start">
+      <app-statistics-chart
+        *ngIf="statistics"
+        [data]="averageSpaceUseData"
+        [labels]="labels"
+        [dataLabel]="'Average Occupancy'"
+      ></app-statistics-chart>
+      <app-statistics-chart
+        *ngIf="statistics"
+        [data]="totalSpaceUseData"
+        [labels]="labels"
+        [dataLabel]="'Total Occupancy'"
+      ></app-statistics-chart>
+    </section>
+  </section>
+  <section class="gap">
+    <section class="horizontal-end">
+      <button mat-raised-button data-cy="space-edit" class="btn btn--primary margin-sm" (click)="editSpace()">
+        <mat-icon>edit</mat-icon> Edit Space
+      </button>
+      <button mat-raised-button data-cy="space-delete" class="btn btn--primary margin-sm" (click)="deleteSpace()">
+        <mat-icon>delete</mat-icon> Delete Space
+      </button>
+      <button
+        mat-raised-button
+        data-cy="space-see-pdf"
+        class="btn btn--primary margin-sm"
+        [routerLink]="['/space/' + space.id + '/pdf']"
+      >
+        See PDF
+      </button>
+      <button mat-raised-button data-cy="space-upload-pdf" class="btn btn--primary margin-sm" (click)="uploadPDF()">
+        <mat-icon>upload</mat-icon>
+        Upload PDF
+      </button>
+    </section>
     <mat-card class="padding-sm">
       <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
       <mat-card-content>
@@ -48,5 +64,5 @@
         ></app-boards-table>
       </mat-card-content>
     </mat-card>
-  </div>
+  </section>
 </div>

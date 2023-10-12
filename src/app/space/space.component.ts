@@ -9,8 +9,11 @@ import { QrModalComponent } from '../qr-modal/qr-modal.component';
 import { Space } from '../../models/space';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
 import { SpaceService } from '../../services/space.service';
+import { StatisticsService } from '../../services/statistics.service';
+import { StatisticsUsage } from '../../models/statistics';
 import { Table } from '../../models/table';
 import { TableService } from '../../services/table.service';
+
 @Component({
   selector: 'app-space',
   templateUrl: './space.component.html',
@@ -19,9 +22,18 @@ import { TableService } from '../../services/table.service';
 export class SpaceComponent implements OnInit {
   space: Space = new Space();
 
+  statistics!: StatisticsUsage;
+
+  averageSpaceUseData: number[] = [];
+
+  totalSpaceUseData: number[] = [];
+
+  labels: string[] = [];
+
   constructor(
     private spaceService: SpaceService,
     private tableService: TableService,
+    private statisticsService: StatisticsService,
     private routerParams: ActivatedRoute,
     private dialog: MatDialog,
     private router: Router,
@@ -30,8 +42,17 @@ export class SpaceComponent implements OnInit {
 
   ngOnInit(): void {
     this.routerParams.params.subscribe((params) => {
-      this.spaceService.getSpaceById(params['id']).subscribe((space) => {
+      const spaceId = params['id'];
+      this.spaceService.getSpaceById(spaceId).subscribe((space) => {
         this.space = space;
+      });
+
+      this.statisticsService.getStatisticsById(spaceId).subscribe((statistics) => {
+        this.statistics = statistics;
+
+        this.averageSpaceUseData = this.statistics.getAverageUseData()
+        this.totalSpaceUseData = this.statistics.getTotalUseData()
+        this.labels = this.statistics.getLabels()
       });
     });
   }
