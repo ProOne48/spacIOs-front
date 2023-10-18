@@ -8,4 +8,5 @@ export interface TableModalInterface {
 export interface QRCodeModalInterface {
   qrCode: Blob;
   tableNumber?: number;
+  spaceId?: number;
 }

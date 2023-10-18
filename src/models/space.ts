@@ -88,3 +88,60 @@ export class SpaceList {
     this.total = total;
   }
 }
+
+export class SpaceReduced {
+  /**
+   * The ID of the space
+   */
+  @autoserializeAs(() => Number) id?: number;
+
+  /**
+   * The name of the space
+   */
+  @autoserializeAs(() => String) name?: string;
+
+  /**
+   * The description of the space
+   */
+  @autoserializeAs(() => String) description?: string;
+
+  /**
+   * The max capacity of the space
+   */
+  @autoserializeAs(() => Number, 'max_capacity') maxCapacity?: number;
+
+  /**
+   * Capacity of the space
+   */
+  @autoserializeAs(() => Number) capacity?: number;
+
+  /**
+   * Tables of the space
+   */
+  @autoserializeAsArray(() => Table) tables?: Table[];
+
+  /**
+   * Constructor
+   * @param id The ID of the space
+   * @param name The name of the space
+   * @param description The description of the space
+   * @param maxCapacity The max capacity of the space
+   * @param capacity The current capacity of the space
+   * @param tables The tables of the space
+   */
+  constructor(
+    id?: number,
+    name?: string,
+    description?: string,
+    maxCapacity?: number,
+    capacity?: number,
+    tables?: Table[]
+  ) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.maxCapacity = maxCapacity;
+    this.capacity = capacity;
+    this.tables = tables;
+  }
+}

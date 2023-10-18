@@ -53,6 +53,11 @@ const routes: Routes = [
         component: SpaceListComponent
       },
       {
+        path: 'public/space/:id/pdf',
+        component: PdfViewComponent,
+        data: { public: true }
+      },
+      {
         path: '**',
         redirectTo: '/login',
         pathMatch: 'full'

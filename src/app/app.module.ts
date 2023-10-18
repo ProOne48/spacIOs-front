@@ -36,7 +36,6 @@ import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navb
 import { NgChartsModule } from 'ng2-charts';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-import { OverviewComponent } from './overview/overview.component';
 import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { QrModalComponent } from './qr-modal/qr-modal.component';
@@ -96,7 +95,6 @@ export const globalImports = [
     PdfFormModalComponent,
     PdfViewComponent,
     QrModalComponent,
-    OverviewComponent,
     SpaceItemComponent,
     SpaceListComponent,
     NavbarItemComponent,

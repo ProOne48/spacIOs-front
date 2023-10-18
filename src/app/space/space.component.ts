@@ -137,7 +137,8 @@ export class SpaceComponent implements OnInit {
     this.tableService.getQRCode(board.id).subscribe((response) => {
       const modalData: QRCodeModalInterface = {
         qrCode: response,
-        tableNumber: board.tableNumber
+        tableNumber: board.tableNumber,
+        spaceId: this.space.id
       };
 
       this.dialog.open(QrModalComponent, {

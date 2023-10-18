@@ -22,13 +22,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('spacesTable') spacesTable?: SpacesGridComponent;
 
-  constructor(
-    private authService: AuthService,
-    private spaceService: SpaceService,
-    private router: Router,
-    private dialog: MatDialog,
-    private snackbar: MatSnackBar
-  ) {}
+  constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.user = AuthService.getSpaceOwnerData();

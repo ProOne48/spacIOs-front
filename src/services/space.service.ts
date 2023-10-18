@@ -1,7 +1,7 @@
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Space, SpaceList } from '../models/space';
+import { Space, SpaceList, SpaceReduced } from '../models/space';
 import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
 import { Table } from '../models/table';
@@ -25,6 +25,12 @@ export class SpaceService {
     return this.http
       .get<IJsonObject>(`${this.path}/actual-spaces`)
       .pipe(map((response: IJsonObject) => Deserialize(response, () => SpaceList)));
+  }
+
+  getReducedSpace(id: number): Observable<SpaceReduced> {
+    return this.http
+      .get<IJsonObject>(`${this.path}/${id}/reduced`)
+      .pipe(map((response: IJsonObject) => Deserialize(response, () => SpaceReduced)));
   }
 
   getSpaceById(id: number): Observable<Space> {
