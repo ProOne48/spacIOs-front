@@ -114,6 +114,32 @@
 }
 
 /**
+  Text sizes
+ */
+@mixin text-sm() {
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+}
+
+@mixin text() {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+@mixin text-lg() {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+@mixin bold() {
+  font-weight: 700;
+}
+
+@mixin semi-bold() {
+  font-weight: 600;
+}
+
+/**
   Backgrounds colors
  */
 @mixin primary-background($color) {

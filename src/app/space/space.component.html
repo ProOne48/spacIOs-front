@@ -4,7 +4,7 @@
   </header>
   <section class="column gap-sm">
     <h2 class="table-title">Statistics</h2>
-    <section class="row gap-lg horizontal-start">
+    <section class="row gap-lg horizontal-start" *ngIf="statistics">
       <app-statistics-chart
         *ngIf="statistics"
         [data]="averageSpaceUseData"
@@ -17,6 +17,14 @@
         [labels]="labels"
         [dataLabel]="'Total Occupancy'"
       ></app-statistics-chart>
+      <section class="statistics">
+        <span class="no-margin text-lg"
+          >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
+        >
+        <span class="no-margin text-lg"
+          >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
+        >
+      </section>
     </section>
   </section>
   <section class="gap">

@@ -1,5 +1,5 @@
 import { Deserialize, IJsonObject } from 'dcerialize';
-import { map, Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

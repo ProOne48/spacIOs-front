@@ -3,7 +3,6 @@ import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx
 import { globalImports, materialImports } from '../../app.module';
 
 import { AuthService } from '../../../services/auth/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login.component';
 import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
 

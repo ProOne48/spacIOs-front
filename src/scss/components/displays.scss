@@ -119,3 +119,23 @@
 .margin-lg {
   @include margin-lg;
 }
+
+.text-sm {
+  @include text-sm;
+}
+
+.text {
+  @include text;
+}
+
+.text-lg {
+  @include text-lg;
+}
+
+.bold {
+  @include bold;
+}
+
+.semi-bold {
+  @include semi-bold;
+}

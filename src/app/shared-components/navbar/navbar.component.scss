@@ -47,8 +47,13 @@
 
 .image-container {
   @include center;
-  max-width: fit-content;
   max-height: 83px;
+  object-fit: contain;
+}
+
+.spacIOs-logo {
+  width: 200px;
+  height: 65px;
   object-fit: cover;
 }
 
