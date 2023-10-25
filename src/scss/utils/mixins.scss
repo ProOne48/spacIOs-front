@@ -51,6 +51,11 @@
   align-items: flex-end;
 }
 
+@mixin horizontal-space-between() {
+  display: flex;
+  justify-content: space-between;
+}
+
 /**
   Shadows
  */
@@ -168,4 +173,23 @@
 
 @mixin container-border-radius-lg() {
   border-radius: 1.25rem;
+}
+
+/**
+Container paddings
+ */
+@mixin container-padding-sm() {
+  padding: 1rem;
+}
+
+@mixin container-padding() {
+  padding: 2rem;
+}
+
+@mixin container-padding-lg() {
+  padding: 4rem;
+}
+
+@mixin default-container-padding($vertical-padding: 2rem) {
+  padding: $vertical-padding 12rem;
 }

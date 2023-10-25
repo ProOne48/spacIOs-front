@@ -56,6 +56,10 @@
   @include full-height-width;
 }
 
+.horizontal-space-between {
+  @include horizontal-space-between;
+}
+
 /**
   Shadows
  */

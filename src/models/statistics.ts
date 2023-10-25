@@ -1,4 +1,4 @@
-import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+import {autoserializeAs, autoserializeAsArray, IJsonObject} from 'dcerialize';
 import { DayOfWeek } from '../definitions/statistics.interface';
 
 export class Statistics {
@@ -37,6 +37,10 @@ export class Statistics {
    */
   @autoserializeAs(() => Number, 'table_id') tableId?: number;
 
+  static onSerialized(json: IJsonObject, instance: Statistics): void {
+    json['start_date'] = instance.startDate?.toISOString();
+  }
+
   /**
    * Constructor
    */
@@ -69,7 +73,7 @@ export class StatisticsUsage {
    * Average Space Use per day
    */
   @autoserializeAsArray(() => StatisticsDay, () => Array, 'average_space_use_per_day')
-  averageSpaceUsePerDay?: StatisticsDay[];
+    averageSpaceUsePerDay?: StatisticsDay[];
 
   /**
    * Total Space Use

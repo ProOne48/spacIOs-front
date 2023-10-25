@@ -22,6 +22,7 @@ import { TableService } from '../../services/table.service';
 export class SpaceComponent implements OnInit {
   space: Space = new Space();
 
+  // TODO extract all the statistics logic to a interface and component itself
   statistics!: StatisticsUsage;
 
   averageSpaceUseData: number[] = [];
@@ -138,6 +139,7 @@ export class SpaceComponent implements OnInit {
       const modalData: QRCodeModalInterface = {
         qrCode: response,
         tableNumber: board.tableNumber,
+        tableId: board.id,
         spaceId: this.space.id
       };
 

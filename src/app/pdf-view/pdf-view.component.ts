@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpaceReduced } from '../../models/space';
 import { SpaceService } from '../../services/space.service';
-import { StatisticsService } from '../../services/statistics.service';
 import { Statistics } from '../../models/statistics';
-import { DayOfWeek } from '../../definitions/statistics.interface';
+import { StatisticsService } from '../../services/statistics.service';
+import { getDayOfWeek } from '../../utils/functions';
 
 @Component({
   selector: 'app-pdf-view',
@@ -14,6 +14,7 @@ import { DayOfWeek } from '../../definitions/statistics.interface';
 export class PdfViewComponent implements OnInit {
   pdfSrc!: ArrayBuffer;
   space!: SpaceReduced;
+  tableId!: number;
 
   constructor(
     private spaceService: SpaceService,
@@ -23,14 +24,16 @@ export class PdfViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.routerParams.params.subscribe((params) => {
-      this.spaceService.getPdf(params['id']).subscribe((data: ArrayBuffer) => {
+      this.tableId = params['tableId'];
+      this.spaceService.getPdf(params['spaceId']).subscribe((data: ArrayBuffer) => {
         this.pdfSrc = data;
       });
 
-      this.spaceService.getReducedSpace(params['id']).subscribe((space) => {
+      this.spaceService.getReducedSpace(params['spaceId']).subscribe((space) => {
         this.space = space;
         this.routerParams.data.subscribe((data) => {
           if (data['public']) {
+            this.insertStatistics();
           }
         });
       });
@@ -40,30 +43,12 @@ export class PdfViewComponent implements OnInit {
   insertStatistics(): void {
     const statistics: Statistics = new Statistics();
     statistics.spaceId = this.space.id;
-    statistics.dayOfWeek = this.getDayOfWeek();
+    statistics.dayOfWeek = getDayOfWeek();
     statistics.duration = 30;
     statistics.startDate = new Date();
-    //  TODO: Add table id to route and get it from there
-  }
+    statistics.tableId = this.tableId;
+    statistics.people = this.space.getPeople(this.tableId);
 
-  getDayOfWeek(): DayOfWeek {
-    switch (new Date().getDay()) {
-      case 0:
-        return DayOfWeek.Sunday;
-      case 1:
-        return DayOfWeek.Monday;
-      case 2:
-        return DayOfWeek.Tuesday;
-      case 3:
-        return DayOfWeek.Wednesday;
-      case 4:
-        return DayOfWeek.Thursday;
-      case 5:
-        return DayOfWeek.Friday;
-      case 6:
-        return DayOfWeek.Saturday;
-      default:
-        return DayOfWeek.Monday;
-    }
+    this.statisticsService.insertStatistics(statistics).subscribe();
   }
 }

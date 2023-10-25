@@ -44,6 +44,7 @@ import { SpaceComponent } from './space/space.component';
 import { SpaceInfoModalComponent } from './space/space-info-modal/space-info-modal.component';
 import { SpaceItemComponent } from './space/space-list/space-item/space-item.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
+import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
 import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
 import { StatisticsChartComponent } from './statistics-chart/statistics-chart.component';
 import { environment } from '../environments/environment';
@@ -98,7 +99,8 @@ export const globalImports = [
     SpaceItemComponent,
     SpaceListComponent,
     NavbarItemComponent,
-    StatisticsChartComponent
+    StatisticsChartComponent,
+    SpaceReducedInfoComponent
   ],
   imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
   providers: [

@@ -31,4 +31,6 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+
+  //   TODO: Add function to add home when is logged instead to wait until reload
 }

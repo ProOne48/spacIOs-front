@@ -144,4 +144,14 @@ export class SpaceReduced {
     this.capacity = capacity;
     this.tables = tables;
   }
+
+  /**
+   * Get the number of people in the table
+   * @param tableId
+   */
+  getPeople(tableId: number): number {
+    const table = this.tables?.find((table) => table.id == tableId);
+
+    return table?.nChairs ? table.nChairs : 0;
+  }
 }

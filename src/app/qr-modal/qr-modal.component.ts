@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class QrModalComponent implements OnInit {
   qrUrl = '';
-  redirectRoute = `/public/space/${this.data.spaceId}/pdf`;
+  redirectRoute = `/public/space/${this.data.spaceId}/pdf/${this.data.tableId}`;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: QRCodeModalInterface,
     private dialogRef: MatDialogRef<QRCodeModalInterface>,

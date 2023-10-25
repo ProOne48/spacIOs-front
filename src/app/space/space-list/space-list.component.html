@@ -1,5 +1,1 @@
-<div class="column" *ngIf="spaces">
-  <div *ngFor="let space of spaces">
-    <app-space-item [space]="space"></app-space-item>
-  </div>
-</div>
+<app-space-item *ngFor="let space of spaces" [space]="space"></app-space-item>

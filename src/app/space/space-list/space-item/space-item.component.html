@@ -1,7 +1,15 @@
-<div class="item-container" [attr.data-cy]="'public-space-' + space?.id" routerLink="/public/space/{{ space?.id }}">
+<div
+  class="item-container horizontal-space-between"
+  [attr.data-cy]="'public-space-' + space?.id"
+  routerLink="/public/space/{{ space?.id }}"
+>
   <section class="column" data-cy="public-space-item">
     <h3>{{ space?.name }}</h3>
-    <span>{{ space?.capacity }}/{{ space?.maxCapacity }}</span>
+    <div class="row gap-sm">
+      <span>Capacity: {{ space?.capacity }}</span>
+      <span>Max Capacity: {{ space?.maxCapacity }}</span>
+      <span>Average Occupancy: {{ averageUsage }}%</span>
+    </div>
   </section>
   <mat-icon>chevron_right</mat-icon>
 </div>

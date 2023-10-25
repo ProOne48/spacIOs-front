@@ -4,12 +4,31 @@
     <button mat-raised-button class="btn btn--primary">Reserve</button>
   </div>
   <div class="chart-container">
-    <section>
-      <h3>Capacity</h3>
-      <section>{{ space.capacity }} / {{ space.maxCapacity }}</section>
+    <section class="column gap-sm">
+      <h3>Capacity:</h3>
+      <section class="statistics-data">{{ space.capacity }} / {{ space.maxCapacity }}</section>
     </section>
-    <section>
-      <canvas id="capacity-chart"></canvas>
+    <section class="row gap-lg horizontal-start" *ngIf="statistics">
+      <app-statistics-chart
+        *ngIf="statistics"
+        [data]="averageSpaceUseData"
+        [labels]="labels"
+        [dataLabel]="'Average Occupancy'"
+      ></app-statistics-chart>
+      <app-statistics-chart
+        *ngIf="statistics"
+        [data]="totalSpaceUseData"
+        [labels]="labels"
+        [dataLabel]="'Total Occupancy'"
+      ></app-statistics-chart>
+      <section class="statistics">
+        <span class="no-margin text-lg"
+          >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
+        >
+        <span class="no-margin text-lg"
+          >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
+        >
+      </section>
     </section>
   </div>
 </div>

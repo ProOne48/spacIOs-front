@@ -3,7 +3,6 @@ import { AuthService } from '../../services/auth/auth.service';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Space } from '../../models/space';
 import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
 import { SpaceOwner } from '../../models/space-owner';
