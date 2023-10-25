@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import {globalImports, materialImports} from "../app.module";
 import { StatisticsChartComponent } from './statistics-chart.component';
 
 describe('StatisticsChartComponent', () => {
@@ -8,7 +9,8 @@ describe('StatisticsChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StatisticsChartComponent]
+      declarations: [StatisticsChartComponent],
+      imports: [...globalImports, ...materialImports]
     }).compileComponents();
 
     fixture = TestBed.createComponent(StatisticsChartComponent);
