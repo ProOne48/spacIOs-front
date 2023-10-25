@@ -1,4 +1,4 @@
-import {autoserializeAs, autoserializeAsArray, IJsonObject} from 'dcerialize';
+import { IJsonObject, autoserializeAs, autoserializeAsArray } from 'dcerialize';
 import { DayOfWeek } from '../definitions/statistics.interface';
 
 export class Statistics {
@@ -73,7 +73,8 @@ export class StatisticsUsage {
    * Average Space Use per day
    */
   @autoserializeAsArray(() => StatisticsDay, () => Array, 'average_space_use_per_day')
-    averageSpaceUsePerDay?: StatisticsDay[];
+  // eslint-disable-next-line indent
+  averageSpaceUsePerDay?: StatisticsDay[];
 
   /**
    * Total Space Use
