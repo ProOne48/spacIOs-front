@@ -5,6 +5,9 @@
 $dark-text: #212121;
 $light-text: #eeeeee;
 
+$neutral-dark: #333333;
+$neutral-light: #f0f0f0;
+
 /**
   * Basic palette
   *
@@ -17,12 +20,15 @@ $light-text: #eeeeee;
 */
 
 $primary-palette: (
-  300: #faafaa,
+  300: #ff9f78,
   400: #ff9a75,
   500: #c2531b,
   // default
-  600: #a13a16,
-  700: #8c503e,
+  600: #ff7a4b,
+  700: #cc6138,
+  800: #8c503e,
+  A100: #4bafff,
+  A200: #ff4b6e,
   contrast: (
     300: $dark-text,
     400: $dark-text,
@@ -30,7 +36,7 @@ $primary-palette: (
     // Default contrast color
     600: $light-text,
     700: $light-text,
-    // Darker contrast color
+    800: $light-text // Darker contrast color
   )
 );
 

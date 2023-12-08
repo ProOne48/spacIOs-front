@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +13,7 @@ import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
   user?: SpaceOwner;
 
   spaces?: Space[];
@@ -23,9 +22,10 @@ export class HomeComponent implements OnInit {
 
   constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbar: MatSnackBar) {}
 
-  ngOnInit(): void {
-    this.user = AuthService.getSpaceOwnerData();
-    this.spaces = this.user?.spaces;
+  ngAfterViewInit(): void {
+    this.spaceService.getActualSpaces().subscribe((spaces) => {
+      this.spaces = spaces.items;
+    });
   }
 
   addSpace(): void {

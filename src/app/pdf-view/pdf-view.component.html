@@ -1,4 +1,4 @@
-<div>
+<ng-container *ngIf="dataLoaded">
   <div data-cy="pdf-viewer" *ngIf="pdfSrc">
     <ngx-extended-pdf-viewer
       [src]="pdfSrc"
@@ -13,4 +13,9 @@
   <div *ngIf="!pdfSrc">
     <p>PDF not found</p>
   </div>
-</div>
+</ng-container>
+<ng-container *ngIf="!dataLoaded">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>

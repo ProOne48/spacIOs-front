@@ -26,6 +26,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -36,6 +37,7 @@ import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navb
 import { NgChartsModule } from 'ng2-charts';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { QrModalComponent } from './qr-modal/qr-modal.component';
@@ -102,7 +104,14 @@ export const globalImports = [
     StatisticsChartComponent,
     SpaceReducedInfoComponent
   ],
-  imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
+  imports: [
+    ...globalImports,
+    ...materialImports,
+    NgOptimizedImage,
+    MatTooltipModule,
+    NgxSkeletonLoaderModule,
+    MatProgressSpinnerModule
+  ],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

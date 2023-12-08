@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { fadeInAnimation, slideInUpwardsAnimation } from '../../../utils/animations';
 import { AuthService } from '../../../services/auth/auth.service';
 import { GoogleCredentialsInterface } from '../../../definitions/credentials.interface';
 import { Router } from '@angular/router';
@@ -9,7 +10,8 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [fadeInAnimation, slideInUpwardsAnimation]
 })
 export class LoginComponent implements OnInit {
   user?: SocialUser;

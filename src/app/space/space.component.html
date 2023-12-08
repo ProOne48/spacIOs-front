@@ -1,76 +1,77 @@
-<div class="column margin-sm gap-lg">
-  <header class="row vertical-center">
-    <h1 data-cy="space-name" class="mo-margin">{{ space.name }}</h1>
-  </header>
-  <section class="column gap-sm">
-    <h2 class="table-title">Statistics</h2>
-    <section class="row gap-lg horizontal-start" *ngIf="statistics">
-      <app-statistics-chart
-        *ngIf="statistics"
-        [data]="averageSpaceUseData"
-        [labels]="labels"
-        [dataLabel]="'Average Occupancy'"
-      ></app-statistics-chart>
-      <app-statistics-chart
-        *ngIf="statistics"
-        [data]="totalSpaceUseData"
-        [labels]="labels"
-        [dataLabel]="'Total Occupancy'"
-      ></app-statistics-chart>
-      <section class="statistics">
-        <span class="no-margin text-lg"
-          >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
-        >
-        <span class="no-margin text-lg"
-          >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
-        >
-      </section>
-    </section>
+<header class="row vertical-center">
+  <h1 data-cy="space-name" class="mo-margin">{{ space.name }}</h1>
+</header>
+<section class="column gap-sm">
+  <h2 class="table-title">Statistics</h2>
+  <section class="row gap-sm">
+    <mat-chip class="chip" *ngFor="let label of filters">{{ label }}</mat-chip>
   </section>
-  <section class="gap">
-    <section class="horizontal-end">
-      <button mat-raised-button data-cy="space-edit" class="btn btn--primary margin-sm" (click)="editSpace()">
-        <mat-icon>edit</mat-icon> Edit Space
-      </button>
-      <button mat-raised-button data-cy="space-delete" class="btn btn--primary margin-sm" (click)="deleteSpace()">
-        <mat-icon>delete</mat-icon> Delete Space
-      </button>
-      <button
-        mat-raised-button
-        data-cy="space-see-pdf"
-        class="btn btn--primary margin-sm"
-        [routerLink]="['/space/' + space.id + '/pdf']"
+  <section class="row gap-lg horizontal-start" *ngIf="statistics">
+    <app-statistics-chart
+      *ngIf="statistics"
+      [data]="averageSpaceUseData"
+      [labels]="labels"
+      [dataLabel]="'Average Occupancy'"
+    ></app-statistics-chart>
+    <app-statistics-chart
+      *ngIf="statistics"
+      [data]="totalSpaceUseData"
+      [labels]="labels"
+      [dataLabel]="'Total Occupancy'"
+    ></app-statistics-chart>
+    <section class="statistics">
+      <span class="no-margin text-lg"
+        >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
       >
-        See PDF
-      </button>
-      <button mat-raised-button data-cy="space-upload-pdf" class="btn btn--primary margin-sm" (click)="uploadPDF()">
-        <mat-icon>upload</mat-icon>
-        Upload PDF
-      </button>
+      <span class="no-margin text-lg"
+        >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
+      >
     </section>
-    <mat-card class="padding-sm">
-      <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
-      <mat-card-content>
-        <span class=""
-          ><b class="title">{{ space.capacity }} / {{ space.maxCapacity }}</b></span
-        >
-        <p>{{ space.description }}</p>
-        <mat-divider *ngIf="space.description" />
-        <header class="vertical-center row">
-          <h2 class="table-title"><strong>Boards</strong></h2>
-          <div class="horizontal-end">
-            <button mat-raised-button data-cy="space-add-board" class="btn btn--primary margin-sm" (click)="addBoard()">
-              <mat-icon>add</mat-icon> Create Board
-            </button>
-          </div>
-        </header>
-        <app-boards-table
-          [boards]="space.tables!"
-          (editBoard)="editBoard($event)"
-          (deleteBoard)="deleteBoard($event)"
-          (getQR)="getQRCode($event)"
-        ></app-boards-table>
-      </mat-card-content>
-    </mat-card>
   </section>
-</div>
+</section>
+<section class="gap">
+  <section class="horizontal-end">
+    <button mat-raised-button data-cy="space-edit" class="btn btn--primary margin-sm" (click)="editSpace()">
+      <mat-icon>edit</mat-icon> Edit Space
+    </button>
+    <button mat-raised-button data-cy="space-delete" class="btn btn--primary margin-sm" (click)="deleteSpace()">
+      <mat-icon>delete</mat-icon> Delete Space
+    </button>
+    <button
+      mat-raised-button
+      data-cy="space-see-pdf"
+      class="btn btn--primary margin-sm"
+      [routerLink]="['/space/' + space.id + '/pdf']"
+    >
+      See PDF
+    </button>
+    <button mat-raised-button data-cy="space-upload-pdf" class="btn btn--primary margin-sm" (click)="uploadPDF()">
+      <mat-icon>upload</mat-icon>
+      Upload PDF
+    </button>
+  </section>
+  <mat-card class="padding-sm">
+    <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
+    <mat-card-content>
+      <span class=""
+        ><b class="title">{{ space.capacity }} / {{ space.maxCapacity }}</b></span
+      >
+      <p>{{ space.description }}</p>
+      <mat-divider *ngIf="space.description" />
+      <header class="vertical-center row">
+        <h2 class="table-title"><strong>Boards</strong></h2>
+        <div class="horizontal-end">
+          <button mat-raised-button data-cy="space-add-board" class="btn btn--primary margin-sm" (click)="addBoard()">
+            <mat-icon>add</mat-icon> Create Board
+          </button>
+        </div>
+      </header>
+      <app-boards-table
+        [boards]="space.tables!"
+        (editBoard)="editBoard($event)"
+        (deleteBoard)="deleteBoard($event)"
+        (getQR)="getQRCode($event)"
+      ></app-boards-table>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -15,6 +15,7 @@ export class PdfViewComponent implements OnInit {
   pdfSrc!: ArrayBuffer;
   space!: SpaceReduced;
   tableId!: number;
+  dataLoaded = false;
 
   constructor(
     private spaceService: SpaceService,
@@ -23,20 +24,24 @@ export class PdfViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.dataLoaded = false;
     this.routerParams.params.subscribe((params) => {
       this.tableId = params['tableId'];
       this.spaceService.getPdf(params['spaceId']).subscribe((data: ArrayBuffer) => {
         this.pdfSrc = data;
-      });
 
-      this.spaceService.getReducedSpace(params['spaceId']).subscribe((space) => {
-        this.space = space;
-        this.routerParams.data.subscribe((data) => {
-          if (data['public']) {
-            this.insertStatistics();
-          }
+        this.spaceService.getReducedSpace(params['spaceId']).subscribe((space) => {
+          this.space = space;
+          this.routerParams.data.subscribe((data) => {
+            if (data['public']) {
+              this.insertStatistics();
+              this.downloadPdf();
+              window.history.back();
+            }
+          });
         });
       });
+      this.dataLoaded = true;
     });
   }
 
@@ -50,5 +55,15 @@ export class PdfViewComponent implements OnInit {
     statistics.people = this.space.getPeople(this.tableId);
 
     this.statisticsService.insertStatistics(statistics).subscribe();
+  }
+
+  downloadPdf(): void {
+    const pdfUrl = URL.createObjectURL(new Blob([this.pdfSrc], { type: 'application/pdf' }));
+    const a = document.createElement('a');
+    a.href = pdfUrl;
+    a.download = this.space.name + '.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 }

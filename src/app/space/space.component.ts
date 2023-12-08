@@ -22,7 +22,6 @@ import { TableService } from '../../services/table.service';
 export class SpaceComponent implements OnInit {
   space: Space = new Space();
 
-  // TODO extract all the statistics logic to a interface and component itself
   statistics!: StatisticsUsage;
 
   averageSpaceUseData: number[] = [];
@@ -30,6 +29,8 @@ export class SpaceComponent implements OnInit {
   totalSpaceUseData: number[] = [];
 
   labels: string[] = [];
+
+  filters: string[] = ['Today', 'This week', 'This month', 'This year'];
 
   constructor(
     private spaceService: SpaceService,

@@ -1,3 +1,30 @@
-* {
-  margin: 0.4rem;
+@import 'src/scss/utils/mixins';
+
+.login {
+  &-logo {
+    width: 100%;
+    object-fit: contain;
+
+    &__container {
+      min-height: 15rem;
+      min-width: 20rem;
+    }
+  }
+
+  &-main {
+    @include row;
+    @include vertical-center;
+    @include gap-sm;
+    height: 70vh;
+  }
+
+  &-card {
+    @include column;
+    @include gap;
+    @include primary-background(300);
+    @include container-border-radius;
+    @include padding-sm;
+    box-shadow: lightgray 0.5rem 0.3rem 0.2rem;
+    width: 25rem;
+  }
 }
