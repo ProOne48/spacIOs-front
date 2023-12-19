@@ -1,11 +1,11 @@
-<mat-grid-list data-cy="space-grid" class="grid" cols="4" rowHeight="4:3" [gutterSize]="'1rem'">
+<mat-grid-list data-cy="space-grid" class="grid" cols="3" rowHeight="4:3" [gutterSize]="'1rem'">
   <ng-container *ngIf="dataLoaded && hasSpaces">
     <mat-grid-tile data-cy="space-tile" *ngFor="let space of spaces">
       <mat-card class="card center">
         <mat-card-header>
           <mat-card-title class="vertical-center">{{ space.name }}</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content class="card-content">
           {{ space.description }}
         </mat-card-content>
         <mat-card-actions class="horizontal-end">

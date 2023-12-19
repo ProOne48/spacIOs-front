@@ -1,5 +1,5 @@
+import { DayOfWeek, StatisticsFormat } from '../definitions/statistics.interface';
 import { IJsonObject, autoserializeAs, autoserializeAsArray } from 'dcerialize';
-import { DayOfWeek } from '../definitions/statistics.interface';
 
 export class Statistics {
   /**
@@ -93,10 +93,35 @@ export class StatisticsUsage {
     this.totalSpaceUse = totalSpaceUse;
   }
 
-  getLabels(): DayOfWeek[] {
+  getDayLabels(): DayOfWeek[] {
     const labels = this.averageSpaceUsePerDay?.map((day) => day.day) ?? [];
 
     return labels as DayOfWeek[];
+  }
+
+  getHourLabels(): string[] {
+    const labels = this.averageSpaceUsePerDay?.map((day) => day.hour?.toString()) ?? [];
+
+    labels.sort((a, b) => {
+      if (a && b) {
+        return parseInt(a) - parseInt(b);
+      }
+
+      return 0;
+    });
+
+    return labels as string[];
+  }
+
+  getLabels(format?: StatisticsFormat): string[] {
+    switch (format) {
+      case StatisticsFormat.DAY:
+        return this.getDayLabels();
+      case StatisticsFormat.HOUR:
+        return this.getHourLabels();
+      default:
+        return [];
+    }
   }
 
   getAverageUseData(): number[] {
@@ -124,13 +149,19 @@ export class StatisticsDay {
   @autoserializeAs(() => Number, 'average_space_use') averageSpaceUse?: number;
 
   /**
+   * Hour of the day
+   */
+  @autoserializeAs(() => Number) hour?: number;
+
+  /**
    * Total Space Use
    */
   @autoserializeAs(() => Number, 'total_space_use') totalSpaceUse?: number;
 
-  constructor(day?: DayOfWeek, averageSpaceUse?: number, totalSpaceUse?: number) {
+  constructor(day?: DayOfWeek, averageSpaceUse?: number, hour?: number, totalSpaceUse?: number) {
     this.day = day;
     this.averageSpaceUse = averageSpaceUse;
+    this.hour = hour;
     this.totalSpaceUse = totalSpaceUse;
   }
 }

@@ -1,4 +1,4 @@
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
 export const slideInBounceAnimation = trigger('slideInBounce', [
   transition(':enter', [
@@ -63,6 +63,22 @@ export const fadeOutAnimation = trigger('fadeOut', [
         style({ opacity: 0.5, offset: 0.4 }),
         style({ opacity: 0, offset: 1 })
       ])
+    )
+  ])
+]);
+
+export const rotate180Animation = trigger('rotate180', [
+  state('expanded', style({ transform: 'rotate(180deg)' })),
+  transition('collapsed => expanded', [
+    animate(
+      '0.2s',
+      keyframes([style({ transform: 'rotate(0deg)', offset: 0 }), style({ transform: 'rotate(180deg)', offset: 1 })])
+    )
+  ]),
+  transition('expanded => collapsed', [
+    animate(
+      '0.2s',
+      keyframes([style({ transform: 'rotate(180deg)', offset: 0 }), style({ transform: 'rotate(0deg)', offset: 1 })])
     )
   ])
 ]);

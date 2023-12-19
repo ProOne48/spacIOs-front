@@ -4,6 +4,8 @@ import { SpaceReduced } from '../../models/space';
 import { SpaceService } from '../../services/space.service';
 import { Statistics } from '../../models/statistics';
 import { StatisticsService } from '../../services/statistics.service';
+import { Table } from '../../models/table';
+import { TableService } from '../../services/table.service';
 import { getDayOfWeek } from '../../utils/functions';
 
 @Component({
@@ -14,11 +16,12 @@ import { getDayOfWeek } from '../../utils/functions';
 export class PdfViewComponent implements OnInit {
   pdfSrc!: ArrayBuffer;
   space!: SpaceReduced;
-  tableId!: number;
+  table?: Table;
   dataLoaded = false;
 
   constructor(
     private spaceService: SpaceService,
+    private tableService: TableService,
     private routerParams: ActivatedRoute,
     private statisticsService: StatisticsService
   ) {}
@@ -26,15 +29,17 @@ export class PdfViewComponent implements OnInit {
   ngOnInit(): void {
     this.dataLoaded = false;
     this.routerParams.params.subscribe((params) => {
-      this.tableId = params['tableId'];
       this.spaceService.getPdf(params['spaceId']).subscribe((data: ArrayBuffer) => {
         this.pdfSrc = data;
 
         this.spaceService.getReducedSpace(params['spaceId']).subscribe((space) => {
           this.space = space;
+          this.table = this.space.getTable(params['tableId']);
+
           this.routerParams.data.subscribe((data) => {
             if (data['public']) {
               this.insertStatistics();
+              this.occupyTable(this.table?.id || 0);
               this.downloadPdf();
               window.history.back();
             }
@@ -51,10 +56,22 @@ export class PdfViewComponent implements OnInit {
     statistics.dayOfWeek = getDayOfWeek();
     statistics.duration = 30;
     statistics.startDate = new Date();
-    statistics.tableId = this.tableId;
-    statistics.people = this.space.getPeople(this.tableId);
+    statistics.startDate.setHours(statistics.startDate.getHours() + 1);
+    statistics.tableId = this.table?.id;
+    statistics.people = this.table?.nChairs;
 
     this.statisticsService.insertStatistics(statistics).subscribe();
+  }
+
+  occupyTable(tableId: number): void {
+    this.spaceService.occupyTable(this.space.id, tableId).subscribe(
+      (space) => {
+        this.space = space;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   downloadPdf(): void {

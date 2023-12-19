@@ -9,7 +9,7 @@ import { SpaceService } from '../../../services/space.service';
   styleUrls: ['./space-list.component.scss']
 })
 export class SpaceListComponent implements OnInit {
-  spaces: Space[] = [];
+  spaces?: Space[];
 
   constructor(private spaceService: SpaceService, private router: Router) {}
 
@@ -17,5 +17,9 @@ export class SpaceListComponent implements OnInit {
     this.spaceService.getSpaces().subscribe((spaces) => {
       this.spaces = spaces.items;
     });
+  }
+
+  get dataLoaded(): boolean {
+    return !!this.spaces;
   }
 }

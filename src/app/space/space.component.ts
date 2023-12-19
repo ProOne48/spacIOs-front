@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { StatisticsDate, StatisticsFormat, filters, formats } from '../../definitions/statistics.interface';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -30,8 +31,8 @@ export class SpaceComponent implements OnInit {
 
   labels: string[] = [];
 
-  filters: string[] = ['Today', 'This week', 'This month', 'This year'];
-
+  statisticsDate: StatisticsDate = StatisticsDate.Week;
+  statisticsFormat: StatisticsFormat = StatisticsFormat.DAY;
   constructor(
     private spaceService: SpaceService,
     private tableService: TableService,
@@ -49,12 +50,14 @@ export class SpaceComponent implements OnInit {
         this.space = space;
       });
 
-      this.statisticsService.getStatisticsById(spaceId).subscribe((statistics) => {
+      const date = this.getDate(this.statisticsDate);
+
+      this.statisticsService.getStatisticsById(spaceId, date, this.statisticsFormat).subscribe((statistics) => {
         this.statistics = statistics;
 
         this.averageSpaceUseData = this.statistics.getAverageUseData();
         this.totalSpaceUseData = this.statistics.getTotalUseData();
-        this.labels = this.statistics.getLabels();
+        this.labels = this.statistics.getLabels(this.statisticsFormat);
       });
     });
   }
@@ -115,7 +118,7 @@ export class SpaceComponent implements OnInit {
   }
 
   editBoard(board: Table): void {
-    this.tableService.editTable(board).subscribe(() => {
+    this.tableService.updateTable(board).subscribe(() => {
       this.space.tables?.forEach((table: Table) => {
         if (table.id === board.id) {
           table = board;
@@ -150,4 +153,47 @@ export class SpaceComponent implements OnInit {
       });
     });
   }
+
+  updateStatistics(time?: StatisticsDate, format?: StatisticsFormat): void {
+    if (time) {
+      this.statisticsDate = time;
+    }
+
+    if (format) {
+      this.statisticsFormat = format;
+    }
+
+    const date = this.getDate(this.statisticsDate);
+
+    this.statisticsService.getStatisticsById(this.space.id, date, this.statisticsFormat).subscribe((statistics) => {
+      this.statistics = statistics;
+      this.averageSpaceUseData = this.statistics.getAverageUseData();
+      this.totalSpaceUseData = this.statistics.getTotalUseData();
+      this.labels = this.statistics.getLabels(this.statisticsFormat);
+    });
+  }
+
+  getDate(time: StatisticsDate): Date {
+    const date = new Date();
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+
+    switch (time) {
+      case StatisticsDate.Week:
+        date.setDate(date.getDate() - 7);
+        break;
+      case StatisticsDate.Month:
+        date.setDate(date.getDate() - 30);
+        break;
+      case StatisticsDate.Year:
+        date.setDate(date.getDate() - 365);
+        break;
+    }
+
+    return date;
+  }
+
+  protected readonly filters = filters;
+  protected readonly formats = formats;
 }

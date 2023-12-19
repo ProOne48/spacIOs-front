@@ -4,6 +4,7 @@
   &-logo {
     width: 100%;
     object-fit: contain;
+    max-width: 50rem;
 
     &__container {
       min-height: 15rem;
@@ -14,6 +15,7 @@
   &-main {
     @include row;
     @include vertical-center;
+    @include horizontal-center;
     @include gap-sm;
     height: 70vh;
   }

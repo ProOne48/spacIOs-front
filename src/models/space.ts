@@ -154,4 +154,8 @@ export class SpaceReduced {
 
     return table?.nChairs ? table.nChairs : 0;
   }
+
+  getTable(tableId: number): Table | undefined {
+    return this.tables?.find((table) => table.id == tableId);
+  }
 }

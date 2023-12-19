@@ -91,4 +91,12 @@ export class SpaceService {
 
     return this.http.put<void>(`${this.path}/${spaceId}/pdf`, formData);
   }
+
+  occupyTable(spaceId?: number, tableId?: number): Observable<SpaceReduced> {
+    return this.http.put<IJsonObject>(`${this.path}/${spaceId}/table/${tableId}/occupy`, null).pipe(
+      map((response) => {
+        return Deserialize(response, () => SpaceReduced);
+      })
+    );
+  }
 }

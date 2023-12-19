@@ -8,10 +8,24 @@
         <app-navbar-item [item]="item"></app-navbar-item>
       </ng-container>
     </div>
-    <div class="logout-container" (click)="logout()" *ngIf="isLogged">
-      <button mat-button class="btn">
-        <mat-icon class="logout-icon">exit_to_app</mat-icon>
+    <mat-menu #menu="matMenu" yPosition="below" class="menu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon class="icon">account_circle</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item routerLink="/settings">
+        <mat-icon class="icon">settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
+      </button>
+    </mat-menu>
+    <div class="menu-container" *ngIf="isLogged">
+      <button mat-button [matMenuTriggerFor]="menu" (menuOpened)="toggleMenu()" (menuClosed)="toggleMenu()" class="btn">
+        <img src="../../../assets/images/male-default-icon.png" alt="profile-photo" class="profile-img" />
+        <mat-icon [@rotate180]="menuOpen ? 'expanded' : 'collapsed'">expand_more</mat-icon>
       </button>
     </div>
   </div>

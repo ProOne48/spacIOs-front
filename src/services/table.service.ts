@@ -30,10 +30,10 @@ export class TableService {
     return this.http.delete<IJsonObject>(`${this.path}/${id}`);
   }
 
-  editTable(table: Table): Observable<Table> {
+  updateTable(table: Table): Observable<Table> {
     return this.http
       .put<IJsonObject>(
-        `${this.path}/${table.id}`,
+        `${this.path}/${table?.id}`,
         Serialize(table, () => Table)
       )
       .pipe(map((table: IJsonObject) => Deserialize(table, () => Table)));
