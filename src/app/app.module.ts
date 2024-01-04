@@ -65,7 +65,10 @@ export const materialImports = [
   MatInputModule,
   MatGridListModule,
   MatDividerModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule,
+  MatTooltipModule,
+  MatMenuModule
 ];
 
 export const globalImports = [
@@ -79,7 +82,9 @@ export const globalImports = [
   ReactiveFormsModule,
   RouterModule,
   NgxExtendedPdfViewerModule,
-  NgChartsModule
+  NgChartsModule,
+  NgOptimizedImage,
+  NgxSkeletonLoaderModule
 ];
 
 @NgModule({
@@ -105,15 +110,7 @@ export const globalImports = [
     StatisticsChartComponent,
     SpaceReducedInfoComponent
   ],
-  imports: [
-    ...globalImports,
-    ...materialImports,
-    NgOptimizedImage,
-    MatTooltipModule,
-    NgxSkeletonLoaderModule,
-    MatProgressSpinnerModule,
-    MatMenuModule
-  ],
+  imports: [...globalImports, ...materialImports],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

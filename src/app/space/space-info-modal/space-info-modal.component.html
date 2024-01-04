@@ -1,22 +1,37 @@
 <ng-container>
-  <div class="center" data-cy="space-info-modal">
-    <h2 mat-dialog-title>
+  <div class="center column gap-sm" data-cy="space-info-modal">
+    <h2 mat-dialog-title class="no-margin">
       <span data-cy="space-info-modal-title">{{ data ? 'Edit' : 'Create' }} a Space</span>
     </h2>
     <form [formGroup]="form" class="form-container">
       <div class="form-wrapper">
-        <mat-form-field>
-          <mat-label></mat-label>
-          <input matInput placeholder="Space Name" formControlName="name" />
-          <mat-error *ngIf="form.get('name')?.hasError('required')"> This name for the space is required </mat-error>
-        </mat-form-field>
+        <mat-grid-list cols="2" rowHeight="16:6">
+          <mat-grid-tile>
+            <mat-form-field class="form-input">
+              <mat-label>Space name</mat-label>
+              <input matInput placeholder="Space Name" formControlName="name" />
+              <mat-error *ngIf="form.get('name')?.hasError('required')">
+                This name for the space is required
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
 
-        <mat-form-field>
-          <mat-label>Space Description</mat-label>
-          <textarea matInput placeholder="Space Description" formControlName="description"></textarea>
-        </mat-form-field>
+          <mat-grid-tile>
+            <mat-form-field class="form-input">
+              <mat-label>Duration of the occupation in the space</mat-label>
+              <input matInput placeholder="Duration in minutes" formControlName="duration" type="number" />
+            </mat-form-field>
+          </mat-grid-tile>
 
-        <div mat-dialog-actions class="center">
+          <mat-grid-tile colspan="2">
+            <mat-form-field class="full-height-width">
+              <mat-label>Space Description</mat-label>
+              <textarea matInput placeholder="Space Description" formControlName="description"></textarea>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <div class="center row gap-sm">
           <button mat-raised-button class="btn" data-cy="space-info-modal-close" (click)="closeModal()">Cancel</button>
           <button
             mat-raised-button

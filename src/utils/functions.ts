@@ -20,3 +20,19 @@ export function getDayOfWeek(): DayOfWeek {
       return DayOfWeek.Monday;
   }
 }
+
+export function sortDays(days?: DayOfWeek[]): void {
+  const orderOfDays = [
+    DayOfWeek.Monday,
+    DayOfWeek.Tuesday,
+    DayOfWeek.Wednesday,
+    DayOfWeek.Thursday,
+    DayOfWeek.Friday,
+    DayOfWeek.Saturday,
+    DayOfWeek.Sunday
+  ];
+
+  days?.sort((a, b) => {
+    return orderOfDays.indexOf(a) - orderOfDays.indexOf(b);
+  });
+}

@@ -7,7 +7,7 @@
     <div class="row gap-sm">
       <mat-chip
         class="chip"
-        *ngFor="let filter of filters; let i = index"
+        *ngFor="let filter of filters"
         (click)="updateStatistics(filter.value, statisticsFormat)"
         >{{ filter.label }}</mat-chip
       >

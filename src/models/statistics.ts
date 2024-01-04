@@ -1,5 +1,6 @@
 import { DayOfWeek, StatisticsFormat } from '../definitions/statistics.interface';
 import { IJsonObject, autoserializeAs, autoserializeAsArray } from 'dcerialize';
+import { sortDays } from '../utils/functions';
 
 export class Statistics {
   /**
@@ -95,6 +96,8 @@ export class StatisticsUsage {
 
   getDayLabels(): DayOfWeek[] {
     const labels = this.averageSpaceUsePerDay?.map((day) => day.day) ?? [];
+
+    sortDays(labels as DayOfWeek[]);
 
     return labels as DayOfWeek[];
   }

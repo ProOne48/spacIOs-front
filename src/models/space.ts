@@ -33,6 +33,11 @@ export class Space {
   @autoserializeAs(() => Number, 'space_owner_id') spaceOwnerId?: number;
 
   /**
+   * The duration of the occupation in the space
+   */
+  @autoserializeAs(() => Number) duration?: number;
+
+  /**
    * The tables of the space
    */
   @autoserializeAsArray(() => Table) tables?: Table[];
@@ -111,7 +116,7 @@ export class SpaceReduced {
   @autoserializeAs(() => Number, 'max_capacity') maxCapacity?: number;
 
   /**
-   * Capacity of the space
+   * Capacity already occupied of the space
    */
   @autoserializeAs(() => Number) capacity?: number;
 
