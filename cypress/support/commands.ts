@@ -72,7 +72,6 @@ Cypress.Commands.add('login', (fallbackRoute = '/home') => {
     fixture: 'actual-spaces.json'
   });
 
-
   cy.visit(fallbackRoute);
 });
 

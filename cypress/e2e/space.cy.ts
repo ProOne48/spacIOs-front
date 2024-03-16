@@ -62,7 +62,7 @@ describe('Space test', () => {
 
       cy.get('[data-cy=space-see-pdf]').click();
       cy.url().should('include', `/space/${spaceId}/pdf`);
-      cy.wait( '@getPdf')
+      cy.wait('@getPdf');
       cy.get('[data-cy=pdf-viewer]').should('be.visible');
     });
   });

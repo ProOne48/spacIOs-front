@@ -33,14 +33,12 @@ export class PdfViewComponent implements OnInit {
       this.spaceService.getPdf(spaceId).subscribe((data: ArrayBuffer) => {
         this.pdfSrc = data;
 
-
         this.spaceService.getReducedSpace(spaceId).subscribe((space) => {
           this.space = space;
 
           this.routerParams.data.subscribe((data) => {
             if (data['public']) {
-
-              if(params['tableId']){
+              if (params['tableId']) {
                 this.table = this.space.getTable(params['tableId']);
               }
               this.insertStatistics();
@@ -51,7 +49,6 @@ export class PdfViewComponent implements OnInit {
           });
         });
         this.dataLoaded = true;
-
       });
     });
   }

@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "id":  1,
+      "id": 1,
       "name": "mock",
       "description": "mock",
       "max_capacity": 20,
