@@ -13,8 +13,6 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always',
     children: [
       {
         path: '',
@@ -31,7 +29,7 @@ const routes: Routes = [
         component: SpaceComponent
       },
       {
-        path: 'space/:id/pdf',
+        path: 'space/:spaceId/pdf',
         component: PdfViewComponent
       }
     ]
@@ -39,6 +37,8 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
     children: [
       {
         path: '',

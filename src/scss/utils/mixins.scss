@@ -2,6 +2,36 @@
 
 @import 'src/scss/palette';
 
+
+/**
+  Media Queries
+ */
+
+@mixin mobile() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop-sm() {
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin desktop-lg() {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+
 /**
   Basic Displays
  */
@@ -191,5 +221,19 @@ Container paddings
 }
 
 @mixin default-container-padding($vertical-padding: 2rem) {
-  padding: $vertical-padding 12rem;
+  @include mobile {
+    padding: $vertical-padding 2rem;
+  }
+
+  @include tablet {
+    padding: $vertical-padding 6rem;
+  }
+
+  @include desktop-sm {
+    padding: $vertical-padding 10rem;
+  }
+
+  @include desktop-lg {
+    padding: $vertical-padding 12rem;
+  }
 }

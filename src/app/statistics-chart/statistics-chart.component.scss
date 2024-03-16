@@ -5,5 +5,14 @@
   @include padding;
   @include container-border-radius;
   @include shadow;
-  width: 25vw;
+
+  @include desktop-sm {
+    max-width: 25vw;
+  }
+
+  @include desktop-lg {
+    max-width: 35vw;
+  }
+
+  min-height: 10rem;
 }

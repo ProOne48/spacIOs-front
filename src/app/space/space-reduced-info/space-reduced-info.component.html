@@ -11,7 +11,7 @@
       <h3>Capacity:</h3>
       <section class="statistics-data">{{ space.capacity }} / {{ space.maxCapacity }}</section>
     </section>
-    <section class="row gap-lg horizontal-start" *ngIf="statistics">
+    <section class="section__statistics" *ngIf="statistics">
       <app-statistics-chart
         *ngIf="statistics"
         [data]="averageSpaceUseData"

@@ -29,15 +29,20 @@ export class PdfViewComponent implements OnInit {
   ngOnInit(): void {
     this.dataLoaded = false;
     this.routerParams.params.subscribe((params) => {
-      this.spaceService.getPdf(params['spaceId']).subscribe((data: ArrayBuffer) => {
+      const spaceId = params['spaceId'];
+      this.spaceService.getPdf(spaceId).subscribe((data: ArrayBuffer) => {
         this.pdfSrc = data;
 
-        this.spaceService.getReducedSpace(params['spaceId']).subscribe((space) => {
+
+        this.spaceService.getReducedSpace(spaceId).subscribe((space) => {
           this.space = space;
-          this.table = this.space.getTable(params['tableId']);
 
           this.routerParams.data.subscribe((data) => {
             if (data['public']) {
+
+              if(params['tableId']){
+                this.table = this.space.getTable(params['tableId']);
+              }
               this.insertStatistics();
               this.occupyTable(this.table?.id || 0);
               this.downloadPdf();
@@ -45,8 +50,9 @@ export class PdfViewComponent implements OnInit {
             }
           });
         });
+        this.dataLoaded = true;
+
       });
-      this.dataLoaded = true;
     });
   }
 

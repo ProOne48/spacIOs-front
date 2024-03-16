@@ -25,3 +25,25 @@
     @include primary-color(600);
   }
 }
+
+.section__statistics {
+  @include tablet {
+    @include column;
+    @include gap;
+  }
+  @include desktop-sm {
+    @include row;
+    @include gap;
+  }
+
+  @include desktop-lg {
+    @include row;
+    @include gap-lg;
+  }
+
+  @include mobile {
+    @include column;
+    @include gap-sm;
+  }
+
+}

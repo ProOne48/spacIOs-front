@@ -21,7 +21,7 @@
       >
     </div>
   </section>
-  <section class="row gap-lg horizontal-start" *ngIf="statistics">
+  <section class="section__statistics" *ngIf="statistics">
     <app-statistics-chart
       *ngIf="statistics"
       [data]="averageSpaceUseData"
