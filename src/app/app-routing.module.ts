@@ -13,6 +13,8 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
     children: [
       {
         path: '',
@@ -37,8 +39,6 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [AuthGuard],
-    runGuardsAndResolvers: 'always',
     children: [
       {
         path: '',
