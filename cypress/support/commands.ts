@@ -22,8 +22,8 @@
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 
 import { SpaceOwner } from '../../src/models/space-owner';
-import { setStorageObject } from '../../src/utils/storage-manager';
 import { Serialize } from 'dcerialize';
+import { setStorageObject } from '../../src/utils/storage-manager';
 
 Cypress.Commands.add('login', (fallbackRoute = '/home') => {
   localStorage.setItem('accessToken', JSON.stringify('ASY23RT&asdSdB'));
@@ -66,6 +66,10 @@ Cypress.Commands.add('login', (fallbackRoute = '/home') => {
 
   cy.intercept('GET', Cypress.env('API_URL') + '/space-owner/actual', {
     fixture: 'actual-user.json'
+  });
+
+  cy.intercept('GET', Cypress.env('API_URL') + '/space/actual-spaces', {
+    fixture: 'actual-spaces.json'
   });
 
   cy.visit(fallbackRoute);

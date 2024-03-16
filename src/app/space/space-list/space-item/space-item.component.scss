@@ -3,9 +3,11 @@
 .item-container {
   @include row();
   @include vertical-center();
+  @include container-border-radius;
   @include gap();
   @include padding-sm();
-  border: 0.5px solid dimgrey;
+  @include shadow;
+  background: whitesmoke;
 
   &:hover {
     background: lightgrey;

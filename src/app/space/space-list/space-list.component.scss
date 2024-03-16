@@ -1,0 +1,7 @@
+@import '../../../scss/utils/mixins';
+
+:host {
+  @include column;
+  @include gap-lg;
+  @include default-container-padding;
+}

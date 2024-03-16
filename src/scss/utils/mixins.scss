@@ -3,6 +3,34 @@
 @import 'src/scss/palette';
 
 /**
+  Media Queries
+ */
+
+@mixin mobile() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop-sm() {
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin desktop-lg() {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+/**
   Basic Displays
  */
 
@@ -49,6 +77,11 @@
 @mixin vertical-end() {
   display: flex;
   align-items: flex-end;
+}
+
+@mixin horizontal-space-between() {
+  display: flex;
+  justify-content: space-between;
 }
 
 /**
@@ -114,6 +147,32 @@
 }
 
 /**
+  Text sizes
+ */
+@mixin text-sm() {
+  font-size: 0.75rem;
+  line-height: 0.9rem;
+}
+
+@mixin text() {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+@mixin text-lg() {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+@mixin bold() {
+  font-weight: 700;
+}
+
+@mixin semi-bold() {
+  font-weight: 600;
+}
+
+/**
   Backgrounds colors
  */
 @mixin primary-background($color) {
@@ -126,4 +185,53 @@
 
 @mixin primary-color($color: 600) {
   color: mat.get-color-from-palette($primary-palette, $color);
+}
+
+/**
+  Container border radius
+ */
+
+@mixin container-border-radius-sm() {
+  border-radius: 0.5rem;
+}
+
+@mixin container-border-radius() {
+  border-radius: 0.75rem;
+}
+
+@mixin container-border-radius-lg() {
+  border-radius: 1.25rem;
+}
+
+/**
+Container paddings
+ */
+@mixin container-padding-sm() {
+  padding: 1rem;
+}
+
+@mixin container-padding() {
+  padding: 2rem;
+}
+
+@mixin container-padding-lg() {
+  padding: 4rem;
+}
+
+@mixin default-container-padding($vertical-padding: 2rem) {
+  @include mobile {
+    padding: $vertical-padding 2rem;
+  }
+
+  @include tablet {
+    padding: $vertical-padding 6rem;
+  }
+
+  @include desktop-sm {
+    padding: $vertical-padding 10rem;
+  }
+
+  @include desktop-lg {
+    padding: $vertical-padding 12rem;
+  }
 }

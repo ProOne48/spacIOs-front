@@ -5,6 +5,7 @@
   width: 100%;
   padding: 0 3rem;
   background: $navbar-gradient;
+  position: sticky;
 }
 
 .elements {
@@ -47,9 +48,26 @@
 
 .image-container {
   @include center;
-  max-width: fit-content;
   max-height: 83px;
+  object-fit: contain;
+}
+
+.menu-container {
+  @include center;
+}
+
+.profile-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   object-fit: cover;
+}
+
+.spacIOs-logo {
+  width: 200px;
+  height: 55px;
+  object-fit: scale-down;
+  cursor: pointer;
 }
 
 .image-item {

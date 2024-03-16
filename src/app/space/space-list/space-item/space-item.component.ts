@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Space } from '../../../../models/space';
 
 @Component({
@@ -6,12 +6,16 @@ import { Space } from '../../../../models/space';
   templateUrl: './space-item.component.html',
   styleUrls: ['./space-item.component.scss']
 })
-export class SpaceItemComponent {
+export class SpaceItemComponent implements OnChanges {
   @Input() space?: Space;
 
-  @Output() clickSpace: EventEmitter<number> = new EventEmitter<number>();
+  averageUsage?: number = 0;
 
-  selectSpace(id?: number): void {
-    this.clickSpace.emit(id);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['space']) {
+      if (this.space?.capacity && this.space?.maxCapacity) {
+        this.averageUsage = (this.space?.capacity / this.space?.maxCapacity) * 100;
+      }
+    }
   }
 }

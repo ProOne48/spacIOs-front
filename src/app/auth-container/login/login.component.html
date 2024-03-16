@@ -1,15 +1,23 @@
-<div class="full-height-width center no-margin">
-  <h2 class="horizontal-center">SpacIOs Login</h2>
-  <div class="horizontal-center">
-    <asl-google-signin-button type="standard" shape="pill" size="large"></asl-google-signin-button>
-    <button
-      *ngIf="!environment.production"
-      data-cy="login-mock"
-      mat-raised-button
-      class="btn btn--primary"
-      (click)="loginMock()"
-    >
-      Login Mock
-    </button>
-  </div>
+<div class="login-main">
+  <section class="center login-logo__container">
+    <img src="assets/images/SpacIOs-logo.png" alt="SpacIOs logo" class="login-logo" loading="lazy" />
+  </section>
+  <section class="center" @slideInUpwards>
+    <mat-card class="login-card">
+      <h2 class="horizontal-center no-margin">SpacIOs Login</h2>
+      <mat-divider></mat-divider>
+      <div class="column gap-sm vertical-center">
+        <asl-google-signin-button type="standard" shape="pill" size="large"></asl-google-signin-button>
+        <button
+          *ngIf="!environment.production"
+          data-cy="login-mock"
+          mat-raised-button
+          class="btn btn--primary"
+          (click)="loginMock()"
+        >
+          Login Mock
+        </button>
+      </div>
+    </mat-card>
+  </section>
 </div>

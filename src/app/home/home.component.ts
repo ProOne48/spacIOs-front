@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Space } from '../../models/space';
 import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
 import { SpaceOwner } from '../../models/space-owner';
@@ -15,24 +13,19 @@ import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
   user?: SpaceOwner;
 
   spaces?: Space[];
 
   @ViewChild('spacesTable') spacesTable?: SpacesGridComponent;
 
-  constructor(
-    private authService: AuthService,
-    private spaceService: SpaceService,
-    private router: Router,
-    private dialog: MatDialog,
-    private snackbar: MatSnackBar
-  ) {}
+  constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbar: MatSnackBar) {}
 
-  ngOnInit(): void {
-    this.user = AuthService.getSpaceOwnerData();
-    this.spaces = this.user?.spaces;
+  ngAfterViewInit(): void {
+    this.spaceService.getActualSpaces().subscribe((spaces) => {
+      this.spaces = spaces.items;
+    });
   }
 
   addSpace(): void {

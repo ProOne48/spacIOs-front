@@ -1,0 +1,18 @@
+@import '../../scss/utils/mixins';
+
+.background-statistics {
+  background-color: white;
+  @include padding;
+  @include container-border-radius;
+  @include shadow;
+
+  @include desktop-sm {
+    max-width: 25vw;
+  }
+
+  @include desktop-lg {
+    max-width: 35vw;
+  }
+
+  min-height: 10rem;
+}

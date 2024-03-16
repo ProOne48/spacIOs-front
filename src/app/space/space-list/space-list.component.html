@@ -1,5 +1,10 @@
-<div class="column" *ngIf="spaces">
-  <div *ngFor="let space of spaces">
-    <app-space-item [space]="space"></app-space-item>
-  </div>
-</div>
+<ng-container *ngIf="dataLoaded">
+  <app-space-item *ngFor="let space of spaces" [space]="space"></app-space-item>
+</ng-container>
+<ng-container class="column gap-lg">
+  <ngx-skeleton-loader
+    *ngIf="!dataLoaded"
+    [count]="8"
+    [theme]="{ height: '5rem', width: '100%' }"
+  ></ngx-skeleton-loader>
+</ng-container>

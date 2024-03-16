@@ -9,7 +9,7 @@ describe('Space test', () => {
       cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}`, { fixture: 'space.json' }).as('getSpace');
       cy.login();
 
-      cy.get(`[data-cy=space-${spaceId}]`).click();
+      cy.get(`[data-cy=space-${spaceId}-go_button]`).click();
       cy.wait('@getSpace');
     });
   });
@@ -58,9 +58,15 @@ describe('Space test', () => {
       cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}/pdf`, { fixture: `${spaceName}.pdf` }).as(
         'getPdf'
       );
+      cy.intercept('GET', `${Cypress.env('API_URL')}/space/${spaceId}/reduced`, { fixture: 'space.json' }).as(
+        'getSpace'
+      );
+
       cy.get('[data-cy=space-see-pdf]').click();
       cy.url().should('include', `/space/${spaceId}/pdf`);
-      cy.get('[data-cy=pdf-viewer]').should('be.visible');
+      cy.wait('@getPdf');
+      cy.wait('@getSpace');
+      cy.get('[data-cy=pdf-viewer]').should('exist').should('be.visible');
     });
   });
 });

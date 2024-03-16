@@ -56,6 +56,10 @@
   @include full-height-width;
 }
 
+.horizontal-space-between {
+  @include horizontal-space-between;
+}
+
 /**
   Shadows
  */
@@ -100,6 +104,10 @@
   @include padding-horizontal;
 }
 
+.default-container-padding {
+  @include default-container-padding;
+}
+
 /**
   Margins
  */
@@ -118,4 +126,50 @@
 
 .margin-lg {
   @include margin-lg;
+}
+
+.text-sm {
+  @include text-sm;
+}
+
+.text {
+  @include text;
+}
+
+.text-lg {
+  @include text-lg;
+}
+
+.bold {
+  @include bold;
+}
+
+.semi-bold {
+  @include semi-bold;
+}
+
+// Colors
+
+.primary-color-300 {
+  @include primary-color(300);
+}
+
+.primary-color-600 {
+  @include primary-color(600);
+}
+
+.primary-color-800 {
+  @include primary-color(800);
+}
+
+.primary-background-300 {
+  @include primary-background(300);
+}
+
+.primary-background-600 {
+  @include primary-background(600);
+}
+
+.primary-background-800 {
+  @include primary-background(800);
 }

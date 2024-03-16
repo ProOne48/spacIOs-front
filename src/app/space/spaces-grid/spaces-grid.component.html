@@ -1,26 +1,39 @@
-<mat-grid-list data-cy="space-grid" class="grid" cols="5" rowHeight="3:2">
-  <mat-grid-tile data-cy="space-tile" class="margin" *ngFor="let space of spaces">
-    <mat-card class="column card padding margin-sm center">
-      <mat-card-header>
-        <mat-card-title class="vertical-center">{{ space.name }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <section>
+<mat-grid-list data-cy="space-grid" class="grid" cols="3" rowHeight="4:3" [gutterSize]="'1rem'">
+  <ng-container *ngIf="dataLoaded && hasSpaces">
+    <mat-grid-tile data-cy="space-tile" *ngFor="let space of spaces">
+      <mat-card class="card center">
+        <mat-card-header>
+          <mat-card-title class="vertical-center">{{ space.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
           {{ space.description }}
-        </section>
-      </mat-card-content>
-      <mat-card-actions>
-        {{ space.capacity }} / {{ space.maxCapacity }}
-        <br />
-        <button
-          mat-raised-button
-          class="btn btn--primary"
-          [attr.data-cy]="'space-' + space.id"
-          (click)="goToSpace(space.id)"
-        >
-          Go to space
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
+        </mat-card-content>
+        <mat-card-actions class="horizontal-end">
+          {{ space.capacity }} / {{ space.maxCapacity }}
+          <button
+            mat-raised-button
+            class="btn btn--primary"
+            [attr.data-cy]="'space-' + space.id + '-go_button'"
+            (click)="goToSpace(space.id)"
+          >
+            Go to space
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </ng-container>
+
+  <ng-container *ngIf="dataLoaded && !hasSpaces">
+    <span class="center">You have no spaces. Please create one.</span>
+  </ng-container>
+
+  <ng-container *ngIf="!dataLoaded">
+    <mat-grid-tile *ngFor="let skeleton of gridSkeleton">
+      <ngx-skeleton-loader
+        class="center"
+        [count]="1"
+        [theme]="{ height: '12rem', width: '18rem' }"
+      ></ngx-skeleton-loader>
+    </mat-grid-tile>
+  </ng-container>
 </mat-grid-list>

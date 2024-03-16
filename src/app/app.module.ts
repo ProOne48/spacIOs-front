@@ -26,6 +26,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -36,7 +38,7 @@ import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navb
 import { NgChartsModule } from 'ng2-charts';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-import { OverviewComponent } from './overview/overview.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PdfFormModalComponent } from './pdf-form-modal/pdf-form-modal.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { QrModalComponent } from './qr-modal/qr-modal.component';
@@ -45,7 +47,9 @@ import { SpaceComponent } from './space/space.component';
 import { SpaceInfoModalComponent } from './space/space-info-modal/space-info-modal.component';
 import { SpaceItemComponent } from './space/space-list/space-item/space-item.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
+import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
 import { SpacesGridComponent } from './space/spaces-grid/spaces-grid.component';
+import { StatisticsChartComponent } from './statistics-chart/statistics-chart.component';
 import { environment } from '../environments/environment';
 
 export const materialImports = [
@@ -61,7 +65,10 @@ export const materialImports = [
   MatInputModule,
   MatGridListModule,
   MatDividerModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule,
+  MatTooltipModule,
+  MatMenuModule
 ];
 
 export const globalImports = [
@@ -75,7 +82,9 @@ export const globalImports = [
   ReactiveFormsModule,
   RouterModule,
   NgxExtendedPdfViewerModule,
-  NgChartsModule
+  NgChartsModule,
+  NgOptimizedImage,
+  NgxSkeletonLoaderModule
 ];
 
 @NgModule({
@@ -95,16 +104,18 @@ export const globalImports = [
     PdfFormModalComponent,
     PdfViewComponent,
     QrModalComponent,
-    OverviewComponent,
     SpaceItemComponent,
     SpaceListComponent,
-    NavbarItemComponent
+    NavbarItemComponent,
+    StatisticsChartComponent,
+    SpaceReducedInfoComponent
   ],
-  imports: [...globalImports, ...materialImports, NgOptimizedImage, MatTooltipModule],
+  imports: [...globalImports, ...materialImports],
   providers: [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: NgChartsModule, useValue: { generateColors: true } },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

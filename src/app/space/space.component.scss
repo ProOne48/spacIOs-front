@@ -15,3 +15,40 @@ h1 {
   @include margin-sm;
   flex: 1;
 }
+
+.statistics {
+  span,
+  h2 {
+    font-size: 2rem;
+    @include semi-bold;
+  }
+  @include column;
+  @include gap;
+  display: flex;
+  justify-content: space-evenly;
+
+  &-data {
+    @include primary-color(600);
+  }
+}
+
+.section__statistics {
+  @include tablet {
+    @include column;
+    @include gap;
+  }
+  @include desktop-sm {
+    @include row;
+    @include gap;
+  }
+
+  @include desktop-lg {
+    @include row;
+    @include gap-lg;
+  }
+
+  @include mobile {
+    @include column;
+    @include gap-sm;
+  }
+}

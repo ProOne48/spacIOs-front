@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { SpaceComponent } from './space/space.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
+import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
         component: SpaceComponent
       },
       {
-        path: 'space/:id/pdf',
+        path: 'space/:spaceId/pdf',
         component: PdfViewComponent
       }
     ]
@@ -51,6 +52,15 @@ const routes: Routes = [
       {
         path: 'public/space',
         component: SpaceListComponent
+      },
+      {
+        path: 'public/space/:spaceId',
+        component: SpaceReducedInfoComponent
+      },
+      {
+        path: 'public/space/:spaceId/pdf/:tableId',
+        component: PdfViewComponent,
+        data: { public: true }
       },
       {
         path: '**',

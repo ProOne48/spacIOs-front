@@ -12,7 +12,7 @@ describe('NavbarItemComponent', () => {
     label: 'test',
     icon: 'test',
     path: 'test',
-    show: true
+    show: () => true
   };
 
   beforeEach(async () => {

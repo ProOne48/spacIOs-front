@@ -1,0 +1,7 @@
+@import 'src/scss/utils/mixins';
+
+.spinner {
+  @include center;
+  @include full-height-width;
+  z-index: 100;
+}
