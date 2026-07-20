@@ -1,0 +1,9 @@
+<mat-icon *ngIf="data.type && confirmData?.icon" [ngClass]="data.type + '-icon'">{{ confirmData?.icon }}</mat-icon>
+<h2 *ngIf="data.title" class="center">{{ data.title }}</h2>
+<p *ngIf="data.message">{{ data.message }}</p>
+<div class="row gap-sm center">
+  <button mat-raised-button (click)="confirmAndClose()" class="btn btn--primary">
+    {{ confirmData?.confirmText }}
+  </button>
+  <button mat-raised-button (click)="closeDialog()" class="btn btn--secondary">Cancel</button>
+</div>

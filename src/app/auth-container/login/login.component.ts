@@ -14,17 +14,12 @@ import { environment } from '../../../environments/environment';
   animations: [fadeInAnimation, slideInUpwardsAnimation]
 })
 export class LoginComponent implements OnInit {
-  user?: SocialUser;
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private socialAuthService: SocialAuthService,
-    private spaceOwnerService: SpaceOwnerService
-  ) {}
+  constructor(private authService: AuthService, private socialAuthService: SocialAuthService) {}
 
   ngOnInit(): void {
     this.socialAuthService.authState.subscribe((user: SocialUser) => {
       if (user != null) {
+        console.log(user);
         const loginData: GoogleCredentialsInterface = {
           email: user.email,
           token: user.idToken,

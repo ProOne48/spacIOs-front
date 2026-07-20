@@ -23,10 +23,15 @@
             </mat-form-field>
           </mat-grid-tile>
 
-          <mat-grid-tile colspan="2">
+          <mat-grid-tile colspan="2" rowspan="2">
             <mat-form-field class="full-height-width">
               <mat-label>Space Description</mat-label>
-              <textarea matInput placeholder="Space Description" formControlName="description"></textarea>
+              <textarea
+                matInput
+                placeholder="Space Description"
+                formControlName="description"
+                class="full-height"
+              ></textarea>
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>

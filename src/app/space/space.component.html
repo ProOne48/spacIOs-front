@@ -3,45 +3,41 @@
 </header>
 <section class="column gap-sm">
   <h2 class="table-title">Statistics</h2>
-  <section class="column gap">
-    <div class="row gap-sm">
-      <mat-chip
-        class="chip"
-        *ngFor="let filter of filters"
-        (click)="updateStatistics(filter.value, statisticsFormat)"
-        >{{ filter.label }}</mat-chip
-      >
-    </div>
-    <div class="row gap-sm">
-      <mat-chip
-        class="chip"
-        *ngFor="let format of formats; let i = index"
-        (click)="updateStatistics(statisticsDate, format.value)"
-        >{{ format.label }}</mat-chip
-      >
-    </div>
+  <section class="row gap">
+    <mat-form-field class="form-input">
+      <mat-label> <mat-icon>calendar_today</mat-icon> Date </mat-label>
+      <mat-select [(ngModel)]="statisticsDate" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
+        <mat-option *ngFor="let filter of filters" [value]="filter.value">{{ filter.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-input">
+      <mat-label> Format </mat-label>
+      <mat-select [(ngModel)]="statisticsFormat" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
+        <mat-option *ngFor="let format of formats" [value]="format.value">{{ format.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section class="statistics">
+    <span class="no-margin text-lg"
+      >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
+    >
+    <span class="no-margin text-lg"
+      >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
+    >
   </section>
   <section class="section__statistics" *ngIf="statistics">
-    <app-statistics-chart
-      *ngIf="statistics"
-      [data]="averageSpaceUseData"
-      [labels]="labels"
-      [dataLabel]="'Average Occupancy'"
-    ></app-statistics-chart>
     <app-statistics-chart
       *ngIf="statistics"
       [data]="totalSpaceUseData"
       [labels]="labels"
       [dataLabel]="'Total Occupancy'"
     ></app-statistics-chart>
-    <section class="statistics">
-      <span class="no-margin text-lg"
-        >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
-      >
-      <span class="no-margin text-lg"
-        >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
-      >
-    </section>
+    <app-statistics-chart
+      *ngIf="statistics"
+      [data]="averageSpaceUseData"
+      [labels]="labels"
+      [dataLabel]="'Average Occupancy'"
+    ></app-statistics-chart>
   </section>
 </section>
 <section class="gap">

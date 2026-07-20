@@ -1,0 +1,7 @@
+@import 'src/scss/utils/mixins';
+
+:host {
+  @include column;
+  @include gap-sm;
+  @include center;
+}

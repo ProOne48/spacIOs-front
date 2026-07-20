@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { lastValueFrom, of } from 'rxjs';
 import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Space } from '../../models/space';
 import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
-import { SpaceOwner } from '../../models/space-owner';
 import { SpaceService } from '../../services/space.service';
 import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,6 @@ import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit {
-  user?: SpaceOwner;
-
   spaces?: Space[];
 
   @ViewChild('spacesTable') spacesTable?: SpacesGridComponent;
@@ -28,19 +27,28 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  addSpace(): void {
+  async addSpace(): Promise<void> {
     const dialogRef = this.dialog.open(SpaceInfoModalComponent, {
       width: '35%'
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      const space: CreateSpaceInterface = result;
+    const result: CreateSpaceInterface = await lastValueFrom(dialogRef.afterClosed());
 
-      if (space) {
-        this.spaceService.createSpace(space).subscribe(() => {
-          this.snackbar.open('Space created successfully', '', { duration: 2000 });
-        });
+    if (result) {
+      const space = await lastValueFrom(
+        this.spaceService.createSpace(result).pipe(
+          catchError((error) => {
+            this.snackbar.open('An error adding the table has occured please try again', '', { duration: 2000 });
+
+            return of(null);
+          })
+        )
+      );
+      if (!space) {
+        return;
       }
-    });
+      this.spaces?.push(space);
+      this.snackbar.open('Space created successfully', '', { duration: 2000 });
+    }
   }
 }

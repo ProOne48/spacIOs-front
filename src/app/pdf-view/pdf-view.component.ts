@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { EMPTY, lastValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { SpaceReduced } from '../../models/space';
 import { SpaceService } from '../../services/space.service';
 import { Statistics } from '../../models/statistics';
 import { StatisticsService } from '../../services/statistics.service';
 import { Table } from '../../models/table';
-import { TableService } from '../../services/table.service';
+import { catchError } from 'rxjs/operators';
 import { getDayOfWeek } from '../../utils/functions';
 
 @Component({
@@ -21,35 +22,46 @@ export class PdfViewComponent implements OnInit {
 
   constructor(
     private spaceService: SpaceService,
-    private tableService: TableService,
     private routerParams: ActivatedRoute,
     private statisticsService: StatisticsService
   ) {}
 
   ngOnInit(): void {
     this.dataLoaded = false;
-    this.routerParams.params.subscribe((params) => {
+    this.routerParams.params.subscribe(async (params) => {
       const spaceId = params['spaceId'];
-      this.spaceService.getPdf(spaceId).subscribe((data: ArrayBuffer) => {
-        this.pdfSrc = data;
+      try {
+        this.spaceService
+          .getPdf(spaceId)
+          .pipe(
+            catchError(() => {
+              this.dataLoaded = true;
 
-        this.spaceService.getReducedSpace(spaceId).subscribe((space) => {
-          this.space = space;
-
-          this.routerParams.data.subscribe((data) => {
-            if (data['public']) {
-              if (params['tableId']) {
-                this.table = this.space.getTable(params['tableId']);
-              }
-              this.insertStatistics();
-              this.occupyTable(this.table?.id || 0);
-              this.downloadPdf();
-              window.history.back();
-            }
+              return EMPTY;
+            })
+          )
+          .subscribe((pdfData: ArrayBuffer) => {
+            this.pdfSrc = pdfData;
+            this.dataLoaded = true;
           });
+
+        this.space = await lastValueFrom(this.spaceService.getReducedSpace(spaceId));
+        console.log(this.space);
+
+        this.routerParams.data.subscribe((data) => {
+          if (data['public']) {
+            if (params['tableId']) {
+              this.table = this.space.getTable(params['tableId']);
+            }
+            this.insertStatistics();
+            this.occupyTable(this.table?.id || 0);
+            this.downloadPdf();
+            window.history.back();
+          }
         });
+      } finally {
         this.dataLoaded = true;
-      });
+      }
     });
   }
 

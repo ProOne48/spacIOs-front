@@ -56,6 +56,19 @@
   @include full-height-width;
 }
 
+.horizontal-fit-content {
+  width: fit-content !important;
+}
+
+.vertical-fit-content {
+  height: fit-content !important;
+}
+
+.fit-content {
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
 .horizontal-space-between {
   @include horizontal-space-between;
 }

@@ -12,7 +12,9 @@ import { BoardInfoModalComponent } from './board-info-modal/board-info-modal.com
 import { BoardsTableComponent } from './boards-table/boards-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { FooterComponent } from './shared-components/footer/footer.component';
+import { GeneralDialogComponent } from './general-dialog/general-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth-container/login/login.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -108,7 +110,9 @@ export const globalImports = [
     SpaceListComponent,
     NavbarItemComponent,
     StatisticsChartComponent,
-    SpaceReducedInfoComponent
+    SpaceReducedInfoComponent,
+    GeneralDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [...globalImports, ...materialImports],
   providers: [

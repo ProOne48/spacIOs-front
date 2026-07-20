@@ -16,13 +16,18 @@ h1 {
   flex: 1;
 }
 
+.form-input {
+  width: 10rem;
+}
+
 .statistics {
   span,
   h2 {
     font-size: 2rem;
+    line-height: 2.2rem;
     @include semi-bold;
   }
-  @include column;
+  @include row;
   @include gap;
   display: flex;
   justify-content: space-evenly;
@@ -37,6 +42,12 @@ h1 {
     @include column;
     @include gap;
   }
+
+  @include mobile {
+    @include column;
+    @include gap-sm;
+  }
+
   @include desktop-sm {
     @include row;
     @include gap;
@@ -45,10 +56,5 @@ h1 {
   @include desktop-lg {
     @include row;
     @include gap-lg;
-  }
-
-  @include mobile {
-    @include column;
-    @include gap-sm;
   }
 }

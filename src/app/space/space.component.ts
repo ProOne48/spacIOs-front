@@ -1,11 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmModalInterface, DialogType } from '../../definitions/dialog.interface';
+import { QRCodeModalInterface, TableModalInterface } from '../../definitions/table.interface';
 import { StatisticsDate, StatisticsFormat, filters, formats } from '../../definitions/statistics.interface';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
-import { QRCodeModalInterface } from '../../definitions/table.interface';
 import { QrModalComponent } from '../qr-modal/qr-modal.component';
 import { Space } from '../../models/space';
 import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
@@ -14,6 +16,7 @@ import { StatisticsService } from '../../services/statistics.service';
 import { StatisticsUsage } from '../../models/statistics';
 import { Table } from '../../models/table';
 import { TableService } from '../../services/table.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-space',
@@ -44,28 +47,27 @@ export class SpaceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.routerParams.params.subscribe((params) => {
+    this.routerParams.params.subscribe(async (params) => {
       const spaceId = params['id'];
-      this.spaceService.getSpaceById(spaceId).subscribe((space) => {
-        this.space = space;
-      });
+      this.space = await lastValueFrom(this.spaceService.getSpaceById(spaceId));
 
       const date = this.getDate(this.statisticsDate);
 
-      this.statisticsService.getStatisticsById(spaceId, date, this.statisticsFormat).subscribe((statistics) => {
-        this.statistics = statistics;
+      this.statistics = await lastValueFrom(
+        this.statisticsService.getStatisticsById(spaceId, date, this.statisticsFormat)
+      );
 
-        this.averageSpaceUseData = this.statistics.getAverageUseData();
-        this.totalSpaceUseData = this.statistics.getTotalUseData();
-        this.labels = this.statistics.getLabels(this.statisticsFormat);
-      });
+      this.averageSpaceUseData = this.statistics.getAverageUseData();
+      this.totalSpaceUseData = this.statistics.getTotalUseData();
+      this.labels = this.statistics.getLabels(this.statisticsFormat);
     });
   }
 
   editSpace(): void {
     const dialogRef = this.dialog.open(SpaceInfoModalComponent, {
       data: this.space,
-      width: '35%'
+      width: '45%',
+      height: 'fit-content'
     });
 
     dialogRef.afterClosed().subscribe((spaceData) => {
@@ -78,18 +80,32 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  deleteSpace(): void {
-    this.spaceService.deleteSpace(this.space).subscribe(() => {
-      this.snackbar.open('Space deleted successfully', '', { duration: 2000 });
+  async deleteSpace(): Promise<void> {
+    const dialogData: ConfirmModalInterface = {
+      title: 'Delete space',
+      message: 'Are you sure you want to delete this space?',
+      type: DialogType.ALERT
+    };
 
-      this.router.navigate(['/home']);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData,
+      width: '35%'
     });
+
+    const result = await lastValueFrom(dialogRef.afterClosed());
+    if (!result) {
+      return;
+    }
+    await lastValueFrom(this.spaceService.deleteSpace(this.space));
+    this.snackbar.open('Space deleted successfully', '', { duration: 2000 });
+
+    this.router.navigate(['/home']);
   }
 
   uploadPDF(): void {
     const dialogRef = this.dialog.open(PdfFormModalComponent, {
       data: this.space.id,
-      width: '35%'
+      width: '50%'
     });
 
     dialogRef.afterClosed().subscribe((pdf: File) => {
@@ -117,14 +133,13 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  editBoard(board: Table): void {
-    this.tableService.updateTable(board).subscribe(() => {
-      this.space.tables?.forEach((table: Table) => {
-        if (table.id === board.id) {
-          table = board;
-          this.snackbar.open('Board updated successfully', '', { duration: 2000 });
-        }
-      });
+  async editBoard(tableData: TableModalInterface): Promise<void> {
+    const tableUpdated = await lastValueFrom(this.tableService.updateTable(tableData));
+    this.space.tables?.forEach((table: Table) => {
+      if (table.id === tableUpdated.id) {
+        table = tableUpdated;
+        this.snackbar.open('Board updated successfully', '', { duration: 2000 });
+      }
     });
   }
 
@@ -154,15 +169,7 @@ export class SpaceComponent implements OnInit {
     });
   }
 
-  updateStatistics(time?: StatisticsDate, format?: StatisticsFormat): void {
-    if (time) {
-      this.statisticsDate = time;
-    }
-
-    if (format) {
-      this.statisticsFormat = format;
-    }
-
+  updateStatistics(format?: StatisticsFormat): void {
     const date = this.getDate(this.statisticsDate);
 
     this.statisticsService.getStatisticsById(this.space.id, date, this.statisticsFormat).subscribe((statistics) => {

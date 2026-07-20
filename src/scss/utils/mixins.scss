@@ -228,10 +228,10 @@ Container paddings
   }
 
   @include desktop-sm {
-    padding: $vertical-padding 10rem;
+    padding: $vertical-padding 8rem;
   }
 
   @include desktop-lg {
-    padding: $vertical-padding 12rem;
+    padding: $vertical-padding 10rem;
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Space, SpaceList, SpaceReduced } from '../models/space';
 import { ApiService } from './api.service';
+import { CreateSpaceInterface } from '../definitions/space.interface';
 import { Injectable } from '@angular/core';
 import { Table } from '../models/table';
 
@@ -39,12 +40,9 @@ export class SpaceService {
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 
-  createSpace(space: Space): Observable<Space> {
+  createSpace(space: CreateSpaceInterface): Observable<Space> {
     return this.http
-      .post<IJsonObject>(
-        this.path,
-        Serialize(space, () => Space)
-      )
+      .post<IJsonObject>(this.path, space)
       .pipe(map((response: IJsonObject) => Deserialize(response, () => Space)));
   }
 

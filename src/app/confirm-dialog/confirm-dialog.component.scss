@@ -1,0 +1,21 @@
+@import 'src/scss/utils/mixins';
+
+:host {
+  @include column;
+  @include gap-sm;
+  @include center;
+}
+
+mat-icon {
+  font-size: 3rem;
+  height: fit-content;
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center;
+  opacity: 0.4;
+}
+
+.alert-icon {
+  color: #ff2020;
+  opacity: 0.8;
+}
