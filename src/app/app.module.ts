@@ -1,3 +1,4 @@
+import { BaseChartDirective, provideCharts, withDefaultRegisterables} from 'ng2-charts';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleLoginProvider, GoogleSigninButtonModule, SocialLoginModule } from '@abacritt/angularx-social-login';
@@ -37,7 +38,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavbarComponent } from './shared-components/navbar/navbar.component';
 import { NavbarItemComponent } from './shared-components/navbar/navbar-item/navbar-item.component';
-import { NgChartsModule } from 'ng2-charts';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -74,6 +74,7 @@ export const materialImports = [
 ];
 
 export const globalImports = [
+  BaseChartDirective,
   BrowserModule,
   BrowserAnimationsModule,
   AppRoutingModule,
@@ -84,7 +85,6 @@ export const globalImports = [
   ReactiveFormsModule,
   RouterModule,
   NgxExtendedPdfViewerModule,
-  NgChartsModule,
   NgOptimizedImage,
   NgxSkeletonLoaderModule
 ];
@@ -119,7 +119,7 @@ export const globalImports = [
     AuthGuard,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: NgChartsModule, useValue: { generateColors: true } },
+    provideCharts(withDefaultRegisterables()),
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
