@@ -40,7 +40,7 @@ $primary-palette: (
   )
 );
 
-$app-primary: mat.define-palette($primary-palette, 500, 300, 700);
+$app-primary: mat.m2-define-palette($primary-palette, 500, 300, 700);
 
 $navbar-gradient: linear-gradient(105deg, #ff9a75 5%, #ff7a4b 95%);
 $button-primary-gradient: linear-gradient(105deg, #ff8559 5%, #ff916c 95%);

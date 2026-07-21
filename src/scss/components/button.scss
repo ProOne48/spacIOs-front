@@ -21,10 +21,10 @@
   &.mat-primary,
   &.btn--primary {
     background: $button-primary-gradient !important;
-    color: mat.get-contrast-color-from-palette($primary-palette, 600) !important;
+    color: mat.m2-get-contrast-color-from-palette($primary-palette, 600) !important;
 
     &:hover:enabled {
-      background-color: mat.get-color-from-palette($primary-palette, 700) !important;
+      background-color: mat.m2-get-color-from-palette($primary-palette, 700) !important;
     }
   }
 

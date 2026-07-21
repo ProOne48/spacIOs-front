@@ -176,7 +176,7 @@
   Backgrounds colors
  */
 @mixin primary-background($color) {
-  background: mat.get-color-from-palette($primary-palette, $color);
+  background: mat.m2-get-color-from-palette($primary-palette, $color);
 }
 
 /**
@@ -184,7 +184,7 @@
  */
 
 @mixin primary-color($color: 600) {
-  color: mat.get-color-from-palette($primary-palette, $color);
+  color: mat.m2-get-color-from-palette($primary-palette, $color);
 }
 
 /**
