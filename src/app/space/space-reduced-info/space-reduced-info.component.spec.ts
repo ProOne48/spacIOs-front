@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+import { StatisticsChartComponent } from 'src/app/statistics-chart/statistics-chart.component';
 
-import { globalImports, materialImports } from '../../app.module';
-import { SpaceReducedInfoComponent } from './space-reduced-info.component';
-import { SpaceService } from '../../../services/space.service';
 import { SpaceServiceMock } from '../../../../test_assets/mocks/space-service.mock';
+import { SpaceService } from '../../../services/space.service';
+
+import { SpaceReducedInfoComponent } from './space-reduced-info.component';
 
 describe('SpaceReducedInfoComponent', () => {
   let component: SpaceReducedInfoComponent;
@@ -12,8 +14,8 @@ describe('SpaceReducedInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SpaceReducedInfoComponent],
-      imports: [...globalImports, ...materialImports],
+      declarations: [SpaceReducedInfoComponent, StatisticsChartComponent],
+      imports: [MaterialModule],
       providers: [{ provide: SpaceService, useValue: spaceServiceMock }]
     }).compileComponents();
 

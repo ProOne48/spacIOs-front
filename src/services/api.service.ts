@@ -1,5 +1,6 @@
-import { EnvironmentInterface } from '../definitions/environment.interface';
 import { Injectable } from '@angular/core';
+
+import { EnvironmentInterface } from '../definitions/environment.interface';
 import { environment } from '../environments/environment';
 
 @Injectable({

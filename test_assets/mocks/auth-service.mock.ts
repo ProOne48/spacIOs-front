@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../src/services/auth/auth.service';
 import { Observable, of } from 'rxjs';
+
+import { SpaceOwner } from '../../src/models/space-owner';
+import { AuthService } from '../../src/services/auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class MockAuthService extends AuthService {
@@ -23,23 +25,23 @@ export class MockAuthService extends AuthService {
     return of();
   }
 
-  override fillUserData(remember?: boolean) {
-    return of();
+  override fillUserData(remember?: boolean): Observable<SpaceOwner> {
+    return of(new SpaceOwner());
   }
 
   override loggedIn(): boolean {
     return true;
   }
 
-  override logout() {
+  override logout(): void {
     return;
   }
 
-  override checkLoginAndRedirect(loginOK: boolean) {
+  override checkLoginAndRedirect(loginOK: boolean): void {
     return;
   }
 
-  override loginMock() {
-    return;
+  override loginMock(): Observable<boolean> {
+    return of(true);
   }
 }

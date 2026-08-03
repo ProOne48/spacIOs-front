@@ -1,16 +1,16 @@
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-
-import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { materialImports } from '../../app/app.module';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, ...materialImports],
+      imports: [HttpClientModule, MaterialModule],
       providers: [
         { provide: AuthGuard, useValue: {} },
         {

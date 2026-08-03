@@ -1,12 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { globalImports, materialImports } from '../../app.module';
-import { AuthService } from '../../../services/auth/auth.service';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
-import { NavbarComponent } from './navbar.component';
+import { AuthService } from '../../../services/auth/auth.service';
+
 import { NavbarItemComponent } from './navbar-item/navbar-item.component';
+import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -16,7 +17,7 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent, NavbarItemComponent],
-      imports: [HttpClientModule, ...materialImports, ...globalImports],
+      imports: [HttpClientModule, MaterialModule],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
         {

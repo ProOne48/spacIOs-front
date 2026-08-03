@@ -1,5 +1,6 @@
-import { DayOfWeek, StatisticsFormat } from '../definitions/statistics.interface';
 import { IJsonObject, autoserializeAs, autoserializeAsArray } from 'dcerialize';
+
+import { DayOfWeek, StatisticsFormat } from '../definitions/statistics.interface';
 import { sortDays } from '../utils/functions';
 
 export class Statistics {

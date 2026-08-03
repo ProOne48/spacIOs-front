@@ -34,4 +34,5 @@ $my-theme: mat.m2-define-light-theme(
 
 @include mat.all-component-typographies($typography-config);
 @include mat.all-component-themes($my-theme);
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();

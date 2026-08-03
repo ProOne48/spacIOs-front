@@ -1,4 +1,5 @@
 import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+
 import { Space } from './space';
 
 export class SpaceOwner {

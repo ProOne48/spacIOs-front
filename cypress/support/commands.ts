@@ -21,8 +21,9 @@
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 
-import { SpaceOwner } from '../../src/models/space-owner';
 import { Serialize } from 'dcerialize';
+
+import { SpaceOwner } from '../../src/models/space-owner';
 import { setStorageObject } from '../../src/utils/storage-manager';
 
 Cypress.Commands.add('login', (fallbackRoute = '/home') => {

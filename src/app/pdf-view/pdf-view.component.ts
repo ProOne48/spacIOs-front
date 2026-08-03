@@ -1,16 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { EMPTY, lastValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { SpaceReduced } from '../../models/space';
-import { SpaceService } from '../../services/space.service';
-import { Statistics } from '../../models/statistics';
-import { StatisticsService } from '../../services/statistics.service';
-import { Table } from '../../models/table';
+import { MaterialModule } from '@modules/angular/material.module';
+import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
+import { EMPTY, lastValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { SpaceReduced } from '../../models/space';
+import { Statistics } from '../../models/statistics';
+import { Table } from '../../models/table';
+import { SpaceService } from '../../services/space.service';
+import { StatisticsService } from '../../services/statistics.service';
 import { getDayOfWeek } from '../../utils/functions';
 
 @Component({
   selector: 'app-pdf-view',
+  imports: [PdfViewerModule, MaterialModule, CommonModule],
   templateUrl: './pdf-view.component.html',
   styleUrls: ['./pdf-view.component.scss']
 })

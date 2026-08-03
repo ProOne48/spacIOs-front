@@ -1,6 +1,6 @@
-import { AuthInterceptor } from './auth.interceptor';
-
 import { TestBed } from '@angular/core/testing';
+
+import { AuthInterceptor } from './auth.interceptor';
 
 describe('AuthInterceptor', () => {
   beforeEach(() =>

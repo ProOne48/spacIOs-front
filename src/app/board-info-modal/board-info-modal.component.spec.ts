@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { globalImports, materialImports } from '../app.module';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { BoardInfoModalComponent } from './board-info-modal.component';
 
 describe('BoardInfoModalComponent', () => {
@@ -11,7 +11,7 @@ describe('BoardInfoModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardInfoModalComponent],
-      imports: [...globalImports, ...materialImports],
+      imports: [MaterialModule],
       providers: [
         {
           provide: MatDialogRef,

@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { fadeInAnimation, slideInUpwardsAnimation } from '../../../utils/animations';
-import { AuthService } from '../../../services/auth/auth.service';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { MaterialModule } from '@modules/angular/material.module';
+import { GoogleLoginModule } from '@modules/integrations/google-login.module';
+
 import { GoogleCredentialsInterface } from '../../../definitions/credentials.interface';
-import { Router } from '@angular/router';
-import { SpaceOwnerService } from '../../../services/space-owner.service';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../../services/auth/auth.service';
+import { fadeInAnimation, slideInUpwardsAnimation } from '../../../utils/animations';
 
 @Component({
   selector: 'app-login',
+  imports: [GoogleLoginModule, MaterialModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [fadeInAnimation, slideInUpwardsAnimation]

@@ -1,11 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { globalImports, materialImports } from '../app.module';
-import { FooterComponent } from '../shared-components/footer/footer.component';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { MainComponent } from './main.component';
-import { NavbarComponent } from '../shared-components/navbar/navbar.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { FooterComponent } from '../shared-components/footer/footer.component';
 import { NavbarItemComponent } from '../shared-components/navbar/navbar-item/navbar-item.component';
+import { NavbarComponent } from '../shared-components/navbar/navbar.component';
+
+import { MainComponent } from './main.component';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -14,7 +15,7 @@ describe('MainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MainComponent, NavbarComponent, NavbarItemComponent, FooterComponent],
-      imports: [...materialImports, ...globalImports],
+      imports: [MaterialModule],
       providers: [
         {
           provide: 'SocialAuthServiceConfig',

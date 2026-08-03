@@ -1,9 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { globalImports, materialImports } from '../app.module';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { HomeComponent } from './home.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
+
+import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,7 +13,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent, SpacesGridComponent],
-      imports: [...materialImports, ...globalImports],
+      imports: [MaterialModule],
       providers: [
         {
           provide: 'SocialAuthServiceConfig',

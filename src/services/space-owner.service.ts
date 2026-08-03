@@ -1,9 +1,11 @@
-import { Deserialize, IJsonObject } from 'dcerialize';
-import { Observable, map } from 'rxjs';
-import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Deserialize, IJsonObject } from 'dcerialize';
+import { Observable, map } from 'rxjs';
+
 import { SpaceOwner } from '../models/space-owner';
+
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'

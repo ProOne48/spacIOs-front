@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TableService } from '../../src/services/table.service';
 import { of } from 'rxjs';
+
 import { Table, TableList } from '../../src/models/table';
+import { TableService } from '../../src/services/table.service';
 
 @Injectable({ providedIn: 'root' })
 export class TableServiceMock extends TableService {

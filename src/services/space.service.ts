@@ -1,11 +1,13 @@
-import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { Space, SpaceList, SpaceReduced } from '../models/space';
-import { ApiService } from './api.service';
-import { CreateSpaceInterface } from '../definitions/space.interface';
 import { Injectable } from '@angular/core';
+import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { Observable, map } from 'rxjs';
+
+import { CreateSpaceInterface } from '../definitions/space.interface';
+import { Space, SpaceList, SpaceReduced } from '../models/space';
 import { Table } from '../models/table';
+
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'

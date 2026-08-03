@@ -1,8 +1,11 @@
-import { ChartData, ChartType } from 'chart.js';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChartsModule } from '@modules/integrations/charts.module';
+import { ChartData, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-statistics-chart',
+  imports: [ChartsModule],
   templateUrl: './statistics-chart.component.html',
   styleUrls: ['./statistics-chart.component.scss']
 })

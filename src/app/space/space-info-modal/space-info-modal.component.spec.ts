@@ -1,7 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { globalImports, materialImports } from '../../app.module';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { SpaceInfoModalComponent } from './space-info-modal.component';
 
 describe('SpaceInfoModalComponent', () => {
@@ -11,7 +12,7 @@ describe('SpaceInfoModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SpaceInfoModalComponent],
-      imports: [...materialImports, ...globalImports],
+      imports: [MaterialModule, CommonModule],
       providers: [
         {
           provide: MatDialogRef,

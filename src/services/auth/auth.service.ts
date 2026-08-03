@@ -1,17 +1,18 @@
-import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
-import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
-import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
-import { ApiService } from '../api.service';
-import { GoogleCredentialsInterface } from '../../definitions/credentials.interface';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse } from '../../models/login-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { SpaceOwner } from '../../models/space-owner';
-import { SpaceOwnerService } from '../space-owner.service';
+import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
+
+import { GoogleCredentialsInterface } from '../../definitions/credentials.interface';
 import { environment } from '../../environments/environment';
+import { LoginResponse } from '../../models/login-response';
+import { SpaceOwner } from '../../models/space-owner';
+import { getStorageObject, removeStorageObject, setStorageObject } from '../../utils/storage-manager';
+import { ApiService } from '../api.service';
+import { SpaceOwnerService } from '../space-owner.service';
 
 @Injectable({
   providedIn: 'root'

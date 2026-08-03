@@ -1,10 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { QRCodeModalInterface } from '../../definitions/table.interface';
 import { Router } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { QRCodeModalInterface } from '../../definitions/table.interface';
 
 @Component({
   selector: 'app-qr-modal',
+  imports: [MaterialModule],
   templateUrl: './qr-modal.component.html',
   styleUrls: ['./qr-modal.component.scss']
 })

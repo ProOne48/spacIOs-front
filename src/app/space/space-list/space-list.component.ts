@@ -1,10 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 import { Space } from '../../../models/space';
 import { SpaceService } from '../../../services/space.service';
 
+import { SpaceItemComponent } from './space-item/space-item.component';
+
 @Component({
   selector: 'app-space-list',
+  imports: [MaterialModule, NgxSkeletonLoaderModule, SpaceItemComponent, CommonModule],
   templateUrl: './space-list.component.html',
   styleUrls: ['./space-list.component.scss']
 })

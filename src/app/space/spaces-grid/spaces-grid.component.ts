@@ -1,11 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 import { Space } from '../../../models/space';
 
 @Component({
   selector: 'app-spaces-grid',
+  imports: [NgxSkeletonLoaderModule, RouterModule, CommonModule, MaterialModule],
   templateUrl: './spaces-grid.component.html',
   styleUrls: ['./spaces-grid.component.scss']
 })

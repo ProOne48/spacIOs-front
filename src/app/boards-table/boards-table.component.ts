@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Table } from '../../models/table';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { TableModalInterface } from '../../definitions/table.interface';
+import { Table } from '../../models/table';
+import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 
 @Component({
   selector: 'app-boards-table',
+  imports: [MaterialModule],
   templateUrl: './boards-table.component.html',
   styleUrls: ['./boards-table.component.scss']
 })

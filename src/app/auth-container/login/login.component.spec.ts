@@ -1,10 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { globalImports, materialImports } from '../../app.module';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+import { GoogleLoginModule } from '@modules/integrations/google-login.module';
 
-import { AuthService } from '../../../services/auth/auth.service';
-import { LoginComponent } from './login.component';
 import { MockAuthService } from '../../../../test_assets/mocks/auth-service.mock';
+import { AuthService } from '../../../services/auth/auth.service';
+
+import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,7 +16,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [...materialImports, ...globalImports],
+      imports: [MaterialModule, GoogleLoginModule],
       providers: [
         { provide: AuthService, useValue: mockAuthService },
         {

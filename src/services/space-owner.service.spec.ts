@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
 
 import { SpaceOwnerService } from './space-owner.service';
-import { TestBed } from '@angular/core/testing';
 
 describe('SpaceOwnerService', () => {
   let service: SpaceOwnerService;

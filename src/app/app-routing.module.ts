@@ -1,15 +1,17 @@
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../services/auth/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './auth-container/login/login.component';
-import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuard } from '../services/auth/auth.guard';
+
+import { LoginComponent } from './auth-container/login/login.component';
+import { HomeComponent } from './home/home.component';
+import { MainComponent } from './main/main.component';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
-import { SpaceComponent } from './space/space.component';
 import { SpaceListComponent } from './space/space-list/space-list.component';
 import { SpaceReducedInfoComponent } from './space/space-reduced-info/space-reduced-info.component';
+import { SpaceComponent } from './space/space.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: MainComponent,

@@ -1,16 +1,19 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { lastValueFrom, of } from 'rxjs';
-import { CreateSpaceInterface } from '../../definitions/space.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Space } from '../../models/space';
-import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
-import { SpaceService } from '../../services/space.service';
-import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
+import { MaterialModule } from '@modules/angular/material.module';
+import { lastValueFrom, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { CreateSpaceInterface } from '../../definitions/space.interface';
+import { Space } from '../../models/space';
+import { SpaceService } from '../../services/space.service';
+import { SpaceInfoModalComponent } from '../space/space-info-modal/space-info-modal.component';
+import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component';
 
 @Component({
   selector: 'app-home',
+  imports: [MaterialModule, SpacesGridComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

@@ -1,10 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { Table } from '../../models/table';
 
 @Component({
   selector: 'app-board-info-modal',
+  imports: [MaterialModule, ReactiveFormsModule, CommonModule],
   templateUrl: './board-info-modal.component.html',
   styleUrls: ['./board-info-modal.component.scss']
 })

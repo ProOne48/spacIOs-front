@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Space, SpaceList } from '../../src/models/space';
 import { Observable, of } from 'rxjs';
+
+import { Space, SpaceList } from '../../src/models/space';
 import { SpaceService } from '../../src/services/space.service';
 
 @Injectable({ providedIn: 'root' })

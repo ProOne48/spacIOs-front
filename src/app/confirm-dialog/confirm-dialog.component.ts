@@ -1,6 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { ConfirmModalInterface, DialogType } from '../../definitions/dialog.interface';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { ConfirmModalInterface, DialogType } from '../../definitions/dialog.interface';
 
 interface ConfirmData {
   confirmText: string;
@@ -9,6 +12,7 @@ interface ConfirmData {
 
 @Component({
   selector: 'app-confirm-dialog',
+  imports: [MaterialModule, CommonModule],
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })

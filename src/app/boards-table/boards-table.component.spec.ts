@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
 
-import { globalImports, materialImports } from '../app.module';
 import { BoardsTableComponent } from './boards-table.component';
 
 describe('BoardsTableComponent', () => {
@@ -10,7 +10,7 @@ describe('BoardsTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardsTableComponent],
-      imports: [...materialImports, ...globalImports]
+      imports: [MaterialModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(BoardsTableComponent);

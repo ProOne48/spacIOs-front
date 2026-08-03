@@ -1,16 +1,16 @@
-import { AuthService } from './auth.service';
-
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { materialImports } from '../../app/app.module';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, ...materialImports],
+      imports: [HttpClientModule, MaterialModule],
       providers: [
         {
           provide: 'SocialAuthServiceConfig',

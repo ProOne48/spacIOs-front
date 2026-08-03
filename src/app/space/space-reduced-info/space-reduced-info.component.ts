@@ -1,17 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+import { StatisticsChartComponent } from 'src/app/statistics-chart/statistics-chart.component';
+
 import { Space } from '../../../models/space';
+import { StatisticsUsage } from '../../../models/statistics';
 import { SpaceService } from '../../../services/space.service';
 import { StatisticsService } from '../../../services/statistics.service';
-import { StatisticsUsage } from '../../../models/statistics';
 
 @Component({
   selector: 'app-space-reduced-info',
+  imports: [MaterialModule, StatisticsChartComponent, CommonModule],
   templateUrl: './space-reduced-info.component.html',
   styleUrls: ['./space-reduced-info.component.scss']
 })
 export class SpaceReducedInfoComponent implements OnInit {
-  // TODO: Add reserving functionality and  basic info about space
+  // TODO: Add reserving functionality and basic info about space
   space!: Space;
 
   statistics!: StatisticsUsage;

@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+import { ChartsModule } from '@modules/integrations/charts.module';
 
-import { globalImports, materialImports } from '../app.module';
 import { BoardsTableComponent } from '../boards-table/boards-table.component';
+
 import { SpaceComponent } from './space.component';
 
 describe('SpacesComponent', () => {
@@ -11,7 +13,7 @@ describe('SpacesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SpaceComponent, BoardsTableComponent],
-      imports: [...materialImports, ...globalImports]
+      imports: [MaterialModule, ChartsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SpaceComponent);

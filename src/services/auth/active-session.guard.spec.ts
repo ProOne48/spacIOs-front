@@ -1,7 +1,7 @@
-import { ActiveSessionGuard } from './active-session.guard';
-
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+
+import { ActiveSessionGuard } from './active-session.guard';
 
 describe('ActiveSessionGuard', () => {
   let guard: ActiveSessionGuard;

@@ -1,25 +1,42 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ConfirmModalInterface, DialogType } from '../../definitions/dialog.interface';
-import { QRCodeModalInterface, TableModalInterface } from '../../definitions/table.interface';
-import { StatisticsDate, StatisticsFormat, filters, formats } from '../../definitions/statistics.interface';
-import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
-import { QrModalComponent } from '../qr-modal/qr-modal.component';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+import { ChartsModule } from '@modules/integrations/charts.module';
+import { lastValueFrom } from 'rxjs';
+
+import { ConfirmModalInterface, DialogType } from '../../definitions/dialog.interface';
+import { StatisticsDate, StatisticsFormat, filters, formats } from '../../definitions/statistics.interface';
+import { QRCodeModalInterface, TableModalInterface } from '../../definitions/table.interface';
 import { Space } from '../../models/space';
-import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
-import { SpaceService } from '../../services/space.service';
-import { StatisticsService } from '../../services/statistics.service';
 import { StatisticsUsage } from '../../models/statistics';
 import { Table } from '../../models/table';
+import { SpaceService } from '../../services/space.service';
+import { StatisticsService } from '../../services/statistics.service';
 import { TableService } from '../../services/table.service';
-import { lastValueFrom } from 'rxjs';
+import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
+import { BoardsTableComponent } from '../boards-table/boards-table.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
+import { QrModalComponent } from '../qr-modal/qr-modal.component';
+import { StatisticsChartComponent } from '../statistics-chart/statistics-chart.component';
+
+import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.component';
 
 @Component({
   selector: 'app-space',
+  imports: [
+    MaterialModule,
+    ChartsModule,
+    BoardsTableComponent,
+    StatisticsChartComponent,
+    FormsModule,
+    RouterLink,
+    CommonModule
+  ],
   templateUrl: './space.component.html',
   styleUrls: ['./space.component.scss']
 })

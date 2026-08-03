@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MaterialModule } from '@modules/angular/material.module';
+import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
 
 @Component({
   selector: 'app-pdf-form-modal',
+  imports: [MaterialModule, PdfViewerModule, CommonModule],
   templateUrl: './pdf-form-modal.component.html',
   styleUrls: ['./pdf-form-modal.component.scss']
 })

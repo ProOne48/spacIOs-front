@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { NavbarItemInterface, navbarItems } from '../../../definitions/navbar.interface';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { NavigationEnd, Router } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+
+import { NavbarItemInterface, navbarItems } from '../../../definitions/navbar.interface';
 import { AuthService } from '../../../services/auth/auth.service';
 import { rotate180Animation } from '../../../utils/animations';
 
+import { NavbarItemComponent } from './navbar-item/navbar-item.component';
+
 @Component({
   selector: 'app-navbar',
+  imports: [MaterialModule, NavbarItemComponent, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   animations: [rotate180Animation]

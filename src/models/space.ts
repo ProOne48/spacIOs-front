@@ -1,4 +1,5 @@
 import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+
 import { Table } from './table';
 
 export class Space {

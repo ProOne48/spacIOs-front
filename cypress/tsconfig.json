@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress", "node"],
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "inlineSources": true,
+    "noEmit": false
+  },
+  "include": ["**/*.ts", "../cypress.config.ts"]
+}

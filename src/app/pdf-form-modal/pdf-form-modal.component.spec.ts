@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { globalImports, materialImports } from '../app.module';
+import { MaterialModule } from '@modules/angular/material.module';
+import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
+
 import { PdfFormModalComponent } from './pdf-form-modal.component';
 
 describe('PdfFormModalComponent', () => {
@@ -11,7 +12,7 @@ describe('PdfFormModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PdfFormModalComponent],
-      imports: [...globalImports, ...materialImports],
+      imports: [PdfViewerModule, MaterialModule],
       providers: [
         {
           provide: MatDialogRef,

@@ -1,10 +1,12 @@
-import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
-import { Observable, map } from 'rxjs';
-import { Statistics, StatisticsUsage } from '../models/statistics';
-import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { Observable, map } from 'rxjs';
+
 import { StatisticsFormat } from '../definitions/statistics.interface';
+import { Statistics, StatisticsUsage } from '../models/statistics';
+
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'

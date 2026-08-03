@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
 
-import { globalImports, materialImports } from '../app.module';
-import { PdfViewComponent } from './pdf-view.component';
-import { SpaceService } from '../../services/space.service';
 import { SpaceServiceMock } from '../../../test_assets/mocks/space-service.mock';
+import { SpaceService } from '../../services/space.service';
+
+import { PdfViewComponent } from './pdf-view.component';
 
 describe('PdfViewComponent', () => {
   let component: PdfViewComponent;
@@ -13,7 +15,7 @@ describe('PdfViewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PdfViewComponent],
-      imports: [...globalImports, ...materialImports],
+      imports: [PdfViewerModule, MaterialModule],
       providers: [{ provide: SpaceService, useValue: spaceServiceMock }]
     }).compileComponents();
 

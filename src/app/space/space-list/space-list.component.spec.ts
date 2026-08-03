@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
-import { globalImports, materialImports } from '../../app.module';
-import { SpaceListComponent } from './space-list.component';
 import { SpaceServiceMock } from '../../../../test_assets/mocks/space-service.mock';
+
+import { SpaceItemComponent } from './space-item/space-item.component';
+import { SpaceListComponent } from './space-list.component';
 
 describe('SpaceListComponent', () => {
   let component: SpaceListComponent;
@@ -11,8 +14,8 @@ describe('SpaceListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SpaceListComponent],
-      imports: [...materialImports, ...globalImports],
+      declarations: [SpaceListComponent, SpaceItemComponent],
+      imports: [MaterialModule, NgxSkeletonLoaderModule],
       providers: [{ provide: SpaceServiceMock, useValue: spaceServiceMock }]
     }).compileComponents();
 

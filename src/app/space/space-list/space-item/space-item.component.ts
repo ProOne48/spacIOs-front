@@ -1,8 +1,12 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { Space } from '../../../../models/space';
 
 @Component({
   selector: 'app-space-item',
+  imports: [MaterialModule, RouterLink],
   templateUrl: './space-item.component.html',
   styleUrls: ['./space-item.component.scss']
 })

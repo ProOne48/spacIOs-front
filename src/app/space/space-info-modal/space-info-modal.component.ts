@@ -1,10 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MaterialModule } from '@modules/angular/material.module';
+
 import { Space } from '../../../models/space';
 
 @Component({
   selector: 'app-space-info-modal',
+  imports: [MaterialModule, ReactiveFormsModule, CommonModule],
   templateUrl: './space-info-modal.component.html',
   styleUrls: ['./space-info-modal.component.scss']
 })

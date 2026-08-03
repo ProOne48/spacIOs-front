@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@modules/angular/material.module';
 
-import { globalImports, materialImports } from '../../../app.module';
-import { NavbarItemComponent } from './navbar-item.component';
 import { NavbarItemInterface } from '../../../../definitions/navbar.interface';
+
+import { NavbarItemComponent } from './navbar-item.component';
 
 describe('NavbarItemComponent', () => {
   let component: NavbarItemComponent;
@@ -18,7 +19,7 @@ describe('NavbarItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarItemComponent],
-      imports: [...materialImports, ...globalImports]
+      imports: [MaterialModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarItemComponent);
