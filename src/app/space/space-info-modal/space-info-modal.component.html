@@ -10,9 +10,9 @@
             <mat-form-field class="form-input">
               <mat-label>Space name</mat-label>
               <input matInput placeholder="Space Name" formControlName="name" />
-              <mat-error *ngIf="form.get('name')?.hasError('required')">
-                This name for the space is required
-              </mat-error>
+              @if (form.get('name')?.hasError('required')) {
+              <mat-error> This name for the space is required </mat-error>
+              }
             </mat-form-field>
           </mat-grid-tile>
 

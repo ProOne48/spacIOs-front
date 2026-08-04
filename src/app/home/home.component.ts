@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -18,11 +18,13 @@ import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit {
+  private spaceService = inject(SpaceService);
+  private dialog = inject(MatDialog);
+  private snackbar = inject(MatSnackBar);
+
   spaces?: Space[];
 
   @ViewChild('spacesTable') spacesTable?: SpacesGridComponent;
-
-  constructor(private spaceService: SpaceService, private dialog: MatDialog, private snackbar: MatSnackBar) {}
 
   ngAfterViewInit(): void {
     this.spaceService.getActualSpaces().subscribe((spaces) => {

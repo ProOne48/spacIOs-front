@@ -1,5 +1,5 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -8,12 +8,13 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private router = inject(Router);
+  private inj = inject(Injector);
+
   /**
    * Auth service, used to refresh the token
    */
   authService: AuthService | undefined;
-
-  constructor(private router: Router, private inj: Injector) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     // We should get the AuthService like this to avoid circular dependencies

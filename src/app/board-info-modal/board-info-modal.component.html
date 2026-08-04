@@ -7,12 +7,11 @@
           <mat-label>Table Number</mat-label>
           <input matInput placeholder="Table number" formControlName="tableNumber" type="number" [min]="1" />
 
-          <mat-error *ngIf="form.get('tableNumber')?.hasError('required')">
-            Table number is <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="form.get('tableNumber')?.hasError('min')">
-            Table number must be <strong>greater than 0</strong>
-          </mat-error>
+          @if (form.get('tableNumber')?.hasError('required')) {
+          <mat-error> Table number is <strong>required</strong> </mat-error>
+          } @if (form.get('tableNumber')?.hasError('min')) {
+          <mat-error> Table number must be <strong>greater than 0</strong> </mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field>

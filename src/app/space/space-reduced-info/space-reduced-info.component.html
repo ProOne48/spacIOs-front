@@ -11,19 +11,21 @@
       <h3>Capacity:</h3>
       <section class="statistics-data">{{ space.capacity }} / {{ space.maxCapacity }}</section>
     </section>
-    <section class="section__statistics" *ngIf="statistics">
+    @if (statistics) {
+    <section class="section__statistics">
+      @if (statistics) {
       <app-statistics-chart
-        *ngIf="statistics"
         [data]="averageSpaceUseData"
         [labels]="labels"
         [dataLabel]="'Average Occupancy'"
       ></app-statistics-chart>
+      } @if (statistics) {
       <app-statistics-chart
-        *ngIf="statistics"
         [data]="totalSpaceUseData"
         [labels]="labels"
         [dataLabel]="'Total Occupancy'"
       ></app-statistics-chart>
+      }
       <section class="statistics">
         <span class="no-margin text-lg"
           >Total use of the space: <span class="statistics-data">{{ statistics.totalSpaceUse }}</span></span
@@ -33,5 +35,6 @@
         >
       </section>
     </section>
+    }
   </div>
 </div>

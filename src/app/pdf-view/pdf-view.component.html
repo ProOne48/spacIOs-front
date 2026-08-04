@@ -1,21 +1,20 @@
-<ng-container *ngIf="dataLoaded">
-  <div data-cy="pdf-viewer" *ngIf="pdfSrc">
-    <ngx-extended-pdf-viewer
-      [src]="pdfSrc"
-      [height]="'auto'"
-      [filenameForDownload]="space.name + '.pdf'"
-      [showOpenFileButton]="false"
-      [enableDragAndDrop]="false"
-    >
-    </ngx-extended-pdf-viewer>
-  </div>
-
-  <div *ngIf="!pdfSrc">
-    <p>PDF not found</p>
-  </div>
-</ng-container>
-<ng-container *ngIf="!dataLoaded">
-  <div class="spinner">
-    <mat-spinner></mat-spinner>
-  </div>
-</ng-container>
+@if (dataLoaded) { @if (pdfSrc) {
+<div data-cy="pdf-viewer">
+  <ngx-extended-pdf-viewer
+    [src]="pdfSrc"
+    [height]="'auto'"
+    [filenameForDownload]="space.name + '.pdf'"
+    [showOpenFileButton]="false"
+    [enableDragAndDrop]="false"
+  >
+  </ngx-extended-pdf-viewer>
+</div>
+} @if (!pdfSrc) {
+<div>
+  <p>PDF not found</p>
+</div>
+} } @if (!dataLoaded) {
+<div class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+}

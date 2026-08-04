@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
 
@@ -13,6 +13,8 @@ import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.co
   styleUrls: ['./boards-table.component.scss']
 })
 export class BoardsTableComponent {
+  private dialog = inject(MatDialog);
+
   @Input() boards: Table[] = [];
 
   @Output() getQR: EventEmitter<Table> = new EventEmitter<Table>();
@@ -22,8 +24,6 @@ export class BoardsTableComponent {
   @Output() deleteBoard: EventEmitter<Table> = new EventEmitter<Table>();
 
   displayedColumns: string[] = ['table_number', 'n_chairs', 'status', 'reservable', 'actions'];
-
-  constructor(private dialog: MatDialog) {}
 
   edit(board: Table): void {
     const dialogRef = this.dialog.open(BoardInfoModalComponent, { data: board, width: '25%' });

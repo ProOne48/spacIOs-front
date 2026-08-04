@@ -1,6 +1,5 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MaterialModule } from '@modules/angular/material.module';
 import { GoogleLoginModule } from '@modules/integrations/google-login.module';
 
@@ -11,13 +10,14 @@ import { fadeInAnimation, slideInUpwardsAnimation } from '../../../utils/animati
 
 @Component({
   selector: 'app-login',
-  imports: [GoogleLoginModule, MaterialModule, CommonModule],
+  imports: [GoogleLoginModule, MaterialModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [fadeInAnimation, slideInUpwardsAnimation]
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private socialAuthService: SocialAuthService) {}
+  private authService = inject(AuthService);
+  private socialAuthService = inject(SocialAuthService);
 
   ngOnInit(): void {
     this.socialAuthService.authState.subscribe((user: SocialUser) => {

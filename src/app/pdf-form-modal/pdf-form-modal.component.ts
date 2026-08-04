@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -7,19 +6,17 @@ import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
 
 @Component({
   selector: 'app-pdf-form-modal',
-  imports: [MaterialModule, PdfViewerModule, CommonModule],
+  imports: [MaterialModule, PdfViewerModule],
   templateUrl: './pdf-form-modal.component.html',
   styleUrls: ['./pdf-form-modal.component.scss']
 })
 export class PdfFormModalComponent {
+  private snackBar = inject(MatSnackBar);
+  private dialogRef = inject<MatDialogRef<PdfFormModalComponent>>(MatDialogRef);
+  private changeDetector = inject(ChangeDetectorRef);
+
   file?: File;
   isDragging = false;
-
-  constructor(
-    private snackBar: MatSnackBar,
-    private dialogRef: MatDialogRef<PdfFormModalComponent>,
-    private changeDetector: ChangeDetectorRef
-  ) {}
 
   onDragOver(event: DragEvent): void {
     event.preventDefault();

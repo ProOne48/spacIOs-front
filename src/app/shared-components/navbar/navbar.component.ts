@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NavigationEnd, Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -12,17 +11,18 @@ import { NavbarItemComponent } from './navbar-item/navbar-item.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MaterialModule, NavbarItemComponent, CommonModule],
+  imports: [MaterialModule, NavbarItemComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   animations: [rotate180Animation]
 })
 export class NavbarComponent implements OnInit {
+  private router = inject(Router);
+  private authService = inject(AuthService);
+
   @Input() navbarItems?: NavbarItemInterface[];
 
   menuOpen = false;
-
-  constructor(private router: Router, private authService: AuthService) {}
 
   logout(): void {
     this.authService.logout();

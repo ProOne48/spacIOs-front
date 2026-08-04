@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { StatisticsChartComponent } from 'src/app/statistics-chart/statistics-chart.component';
@@ -11,11 +10,15 @@ import { StatisticsService } from '../../../services/statistics.service';
 
 @Component({
   selector: 'app-space-reduced-info',
-  imports: [MaterialModule, StatisticsChartComponent, CommonModule],
+  imports: [MaterialModule, StatisticsChartComponent],
   templateUrl: './space-reduced-info.component.html',
   styleUrls: ['./space-reduced-info.component.scss']
 })
 export class SpaceReducedInfoComponent implements OnInit {
+  private spaceService = inject(SpaceService);
+  private route = inject(ActivatedRoute);
+  private statisticsService = inject(StatisticsService);
+
   // TODO: Add reserving functionality and basic info about space
   space!: Space;
 
@@ -26,12 +29,6 @@ export class SpaceReducedInfoComponent implements OnInit {
   totalSpaceUseData: number[] = [];
 
   labels: string[] = [];
-
-  constructor(
-    private spaceService: SpaceService,
-    private route: ActivatedRoute,
-    private statisticsService: StatisticsService
-  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

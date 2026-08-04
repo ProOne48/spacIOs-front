@@ -1,6 +1,6 @@
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
@@ -18,6 +18,13 @@ import { SpaceOwnerService } from '../space-owner.service';
   providedIn: 'root'
 })
 export class AuthService {
+  private http = inject(HttpClient);
+  private snackbar = inject(MatSnackBar);
+  private router = inject(Router);
+  private apiService = inject(ApiService);
+  private socialAuthService = inject(SocialAuthService);
+  private spaceOwnerService = inject(SpaceOwnerService);
+
   /**
    * API path
    */
@@ -33,14 +40,7 @@ export class AuthService {
    * @param socialAuthService
    * @param spaceOwnerService
    */
-  constructor(
-    private http: HttpClient,
-    private snackbar: MatSnackBar,
-    private router: Router,
-    private apiService: ApiService,
-    private socialAuthService: SocialAuthService,
-    private spaceOwnerService: SpaceOwnerService
-  ) {
+  constructor() {
     this.path = this.apiService.getApiUrl() + this.path;
   }
 

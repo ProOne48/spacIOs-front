@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -7,7 +6,7 @@ import { GeneralDialogInterface } from '../../definitions/dialog.interface';
 
 @Component({
   selector: 'app-general-dialog',
-  imports: [MaterialModule, CommonModule],
+  imports: [MaterialModule],
   templateUrl: './general-dialog.component.html',
   styleUrls: ['./general-dialog.component.scss']
 })

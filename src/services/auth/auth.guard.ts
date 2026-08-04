@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
@@ -7,7 +7,9 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard {
-  constructor(private auth: AuthService, private router: Router) {}
+  private auth = inject(AuthService);
+  private router = inject(Router);
+
   public canActivate(_route: ActivatedRouteSnapshot): boolean {
     if (!this.auth.loggedIn()) {
       this.router.navigate(['/login']);

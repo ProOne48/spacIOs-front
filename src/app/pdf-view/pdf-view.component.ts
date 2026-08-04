@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
@@ -15,21 +14,19 @@ import { getDayOfWeek } from '../../utils/functions';
 
 @Component({
   selector: 'app-pdf-view',
-  imports: [PdfViewerModule, MaterialModule, CommonModule],
+  imports: [PdfViewerModule, MaterialModule],
   templateUrl: './pdf-view.component.html',
   styleUrls: ['./pdf-view.component.scss']
 })
 export class PdfViewComponent implements OnInit {
+  private spaceService = inject(SpaceService);
+  private routerParams = inject(ActivatedRoute);
+  private statisticsService = inject(StatisticsService);
+
   pdfSrc!: ArrayBuffer;
   space!: SpaceReduced;
   table?: Table;
   dataLoaded = false;
-
-  constructor(
-    private spaceService: SpaceService,
-    private routerParams: ActivatedRoute,
-    private statisticsService: StatisticsService
-  ) {}
 
   ngOnInit(): void {
     this.dataLoaded = false;

@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -11,14 +10,15 @@ import { SpaceItemComponent } from './space-item/space-item.component';
 
 @Component({
   selector: 'app-space-list',
-  imports: [MaterialModule, NgxSkeletonLoaderModule, SpaceItemComponent, CommonModule],
+  imports: [MaterialModule, NgxSkeletonLoaderModule, SpaceItemComponent],
   templateUrl: './space-list.component.html',
   styleUrls: ['./space-list.component.scss']
 })
 export class SpaceListComponent implements OnInit {
-  spaces?: Space[];
+  private spaceService = inject(SpaceService);
+  private router = inject(Router);
 
-  constructor(private spaceService: SpaceService, private router: Router) {}
+  spaces?: Space[];
 
   ngOnInit(): void {
     this.spaceService.getSpaces().subscribe((spaces) => {

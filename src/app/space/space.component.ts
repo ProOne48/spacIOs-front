@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,19 +27,19 @@ import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.com
 
 @Component({
   selector: 'app-space',
-  imports: [
-    MaterialModule,
-    ChartsModule,
-    BoardsTableComponent,
-    StatisticsChartComponent,
-    FormsModule,
-    RouterLink,
-    CommonModule
-  ],
+  imports: [MaterialModule, ChartsModule, BoardsTableComponent, StatisticsChartComponent, FormsModule, RouterLink],
   templateUrl: './space.component.html',
   styleUrls: ['./space.component.scss']
 })
 export class SpaceComponent implements OnInit {
+  private spaceService = inject(SpaceService);
+  private tableService = inject(TableService);
+  private statisticsService = inject(StatisticsService);
+  private routerParams = inject(ActivatedRoute);
+  private dialog = inject(MatDialog);
+  private router = inject(Router);
+  private snackbar = inject(MatSnackBar);
+
   space: Space = new Space();
 
   statistics!: StatisticsUsage;
@@ -53,15 +52,6 @@ export class SpaceComponent implements OnInit {
 
   statisticsDate: StatisticsDate = StatisticsDate.Week;
   statisticsFormat: StatisticsFormat = StatisticsFormat.DAY;
-  constructor(
-    private spaceService: SpaceService,
-    private tableService: TableService,
-    private statisticsService: StatisticsService,
-    private routerParams: ActivatedRoute,
-    private dialog: MatDialog,
-    private router: Router,
-    private snackbar: MatSnackBar
-  ) {}
 
   ngOnInit(): void {
     this.routerParams.params.subscribe(async (params) => {

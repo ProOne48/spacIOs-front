@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Deserialize, IJsonObject } from 'dcerialize';
 import { Observable, map } from 'rxjs';
 
@@ -11,9 +11,12 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SpaceOwnerService {
+  private http = inject(HttpClient);
+  private apiService = inject(ApiService);
+
   path = '/space-owner';
 
-  constructor(private http: HttpClient, private apiService: ApiService) {
+  constructor() {
     this.path = this.apiService.getApiUrl() + this.path;
   }
 

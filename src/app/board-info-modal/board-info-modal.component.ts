@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -8,17 +7,17 @@ import { Table } from '../../models/table';
 
 @Component({
   selector: 'app-board-info-modal',
-  imports: [MaterialModule, ReactiveFormsModule, CommonModule],
+  imports: [MaterialModule, ReactiveFormsModule],
   templateUrl: './board-info-modal.component.html',
   styleUrls: ['./board-info-modal.component.scss']
 })
 export class BoardInfoModalComponent {
+  private builder = inject(FormBuilder);
+  data = inject<Table>(MAT_DIALOG_DATA);
+  private dialogRef = inject<MatDialogRef<BoardInfoModalComponent>>(MatDialogRef);
+
   form: FormGroup;
-  constructor(
-    private builder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: Table,
-    private dialogRef: MatDialogRef<BoardInfoModalComponent>
-  ) {
+  constructor() {
     this.form = this.builder.group({
       tableNumber: this.builder.control(this.data?.tableNumber ? this.data.tableNumber : '', [Validators.required]),
       nChairs: this.builder.control(this.data?.nChairs ? this.data.nChairs : '', [Validators.required]),

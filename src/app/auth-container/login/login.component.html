@@ -8,15 +8,11 @@
       <mat-divider></mat-divider>
       <div class="column gap-sm vertical-center">
         <asl-google-signin-button type="standard" shape="pill" size="large"></asl-google-signin-button>
-        <button
-          *ngIf="!environment.production"
-          data-cy="login-mock"
-          mat-raised-button
-          class="btn btn--primary"
-          (click)="loginMock()"
-        >
+        @if (!environment.production) {
+        <button data-cy="login-mock" mat-raised-button class="btn btn--primary" (click)="loginMock()">
           Login Mock
         </button>
+        }
       </div>
     </mat-card>
   </section>

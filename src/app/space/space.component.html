@@ -7,13 +7,17 @@
     <mat-form-field class="form-input">
       <mat-label> <mat-icon>calendar_today</mat-icon> Date </mat-label>
       <mat-select [(ngModel)]="statisticsDate" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
-        <mat-option *ngFor="let filter of filters" [value]="filter.value">{{ filter.label }}</mat-option>
+        @for (filter of filters; track filter) {
+        <mat-option [value]="filter.value">{{ filter.label }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field class="form-input">
       <mat-label> Format </mat-label>
       <mat-select [(ngModel)]="statisticsFormat" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
-        <mat-option *ngFor="let format of formats" [value]="format.value">{{ format.label }}</mat-option>
+        @for (format of formats; track format) {
+        <mat-option [value]="format.value">{{ format.label }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </section>
@@ -25,20 +29,23 @@
       >Average use of the space: <span class="statistics-data">{{ statistics.averageSpaceUse }}</span></span
     >
   </section>
-  <section class="section__statistics" *ngIf="statistics">
+  @if (statistics) {
+  <section class="section__statistics">
+    @if (statistics) {
     <app-statistics-chart
-      *ngIf="statistics"
       [data]="totalSpaceUseData"
       [labels]="labels"
       [dataLabel]="'Total Occupancy'"
     ></app-statistics-chart>
+    } @if (statistics) {
     <app-statistics-chart
-      *ngIf="statistics"
       [data]="averageSpaceUseData"
       [labels]="labels"
       [dataLabel]="'Average Occupancy'"
     ></app-statistics-chart>
+    }
   </section>
+  }
 </section>
 <section class="gap">
   <section class="horizontal-end">
@@ -62,13 +69,17 @@
     </button>
   </section>
   <mat-card class="padding-sm">
-    <mat-card-title *ngIf="space?.description">Space Description</mat-card-title>
+    @if (space?.description) {
+    <mat-card-title>Space Description</mat-card-title>
+    }
     <mat-card-content>
       <span class=""
         ><b class="title">{{ space.capacity }} / {{ space.maxCapacity }}</b></span
       >
       <p>{{ space.description }}</p>
-      <mat-divider *ngIf="space.description" />
+      @if (space.description) {
+      <mat-divider />
+      }
       <header class="vertical-center row">
         <h2 class="table-title"><strong>Boards</strong></h2>
         <div class="horizontal-end">

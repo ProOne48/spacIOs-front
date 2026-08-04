@@ -1,4 +1,9 @@
-import { GoogleLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  SOCIAL_AUTH_CONFIG,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from '@abacritt/angularx-social-login';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig, CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -25,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(SocialLoginModule),
     {
-      provide: 'SocialAuthServiceConfig',
+      provide: SOCIAL_AUTH_CONFIG,
       useValue: {
         autoLogin: false,
         providers: [
@@ -34,7 +39,7 @@ export const appConfig: ApplicationConfig = {
             provider: new GoogleLoginProvider(environment.googleClientId)
           }
         ]
-      }
+      } satisfies SocialAuthServiceConfig
     }
   ]
 };

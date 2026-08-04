@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
 import { Observable, map } from 'rxjs';
 
@@ -11,8 +11,11 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class TableService {
+  private apiService = inject(ApiService);
+  private http = inject(HttpClient);
+
   path = '/table';
-  constructor(private apiService: ApiService, private http: HttpClient) {
+  constructor() {
     this.path = this.apiService.getApiUrl() + this.path;
   }
 

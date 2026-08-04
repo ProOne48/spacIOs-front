@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
@@ -10,16 +9,18 @@ import { Space } from '../../../models/space';
 
 @Component({
   selector: 'app-spaces-grid',
-  imports: [NgxSkeletonLoaderModule, RouterModule, CommonModule, MaterialModule],
+  imports: [NgxSkeletonLoaderModule, RouterModule, MaterialModule],
   templateUrl: './spaces-grid.component.html',
   styleUrls: ['./spaces-grid.component.scss']
 })
 export class SpacesGridComponent {
+  private router = inject(Router);
+  private snackbar = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
+
   @Input() spaces?: Space[];
 
   gridSkeleton = new Array(8);
-
-  constructor(private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) {}
 
   goToSpace(id?: number): void {
     this.router.navigate(['/space', id]);

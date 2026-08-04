@@ -1,9 +1,12 @@
-<mat-icon *ngIf="data.icon">{{ data.icon }}</mat-icon>
-<h2 *ngIf="data.title">{{ data.title }}</h2>
-<p *ngIf="data.message">{{ data.message }}</p>
-<ng-container *ngIf="data.action">
-  <button mat-raised-button (click)="data.action()">
-    {{ data.confirmText }}
-  </button>
-</ng-container>
+@if (data.icon) {
+<mat-icon>{{ data.icon }}</mat-icon>
+} @if (data.title) {
+<h2>{{ data.title }}</h2>
+} @if (data.message) {
+<p>{{ data.message }}</p>
+} @if (data.action) {
+<button mat-raised-button (click)="data.action()">
+  {{ data.confirmText }}
+</button>
+}
 <button mat-raised-button (click)="closeDialog()">Cancel</button>

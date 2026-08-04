@@ -4,9 +4,9 @@
       <div class="image-container">
         <img src="../../../assets/images/SpacIOs-logo.png" alt="logo" class="spacIOs-logo" routerLink="/login" />
       </div>
-      <ng-container *ngFor="let item of navbarItems">
-        <app-navbar-item [item]="item"></app-navbar-item>
-      </ng-container>
+      @for (item of navbarItems; track item) {
+      <app-navbar-item [item]="item"></app-navbar-item>
+      }
     </div>
     <mat-menu #menu="matMenu" yPosition="below" class="menu">
       <button mat-menu-item routerLink="/profile">
@@ -22,11 +22,13 @@
         <span>Logout</span>
       </button>
     </mat-menu>
-    <div class="menu-container" *ngIf="isLogged">
+    @if (isLogged) {
+    <div class="menu-container">
       <button mat-button [matMenuTriggerFor]="menu" (menuOpened)="toggleMenu()" (menuClosed)="toggleMenu()" class="btn">
         <img src="../../../assets/images/male-default-icon.png" alt="profile-photo" class="profile-img" />
         <mat-icon [@rotate180]="menuOpen ? 'expanded' : 'collapsed'">expand_more</mat-icon>
       </button>
     </div>
+    }
   </div>
 </mat-toolbar>

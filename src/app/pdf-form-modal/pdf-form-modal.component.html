@@ -4,7 +4,9 @@
     <div class="center">
       <div class="drag-container column vertical-center" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
         <div class="drop-area">
-          <p *ngIf="!file">Drag and drop your PDF here</p>
+          @if (!file) {
+          <p>Drag and drop your PDF here</p>
+          }
         </div>
         <div class="drag-container__icon">
           <mat-icon>cloud_upload</mat-icon>
