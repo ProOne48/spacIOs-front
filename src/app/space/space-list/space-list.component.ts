@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -12,6 +12,7 @@ import { SpaceItemComponent } from './space-item/space-item.component';
   selector: 'app-space-list',
   imports: [MaterialModule, NgxSkeletonLoaderModule, SpaceItemComponent],
   templateUrl: './space-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./space-list.component.scss']
 })
 export class SpaceListComponent implements OnInit {

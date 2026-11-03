@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { Space } from '../../../models/space';
   selector: 'app-spaces-grid',
   imports: [NgxSkeletonLoaderModule, RouterModule, MaterialModule],
   templateUrl: './spaces-grid.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./spaces-grid.component.scss']
 })
 export class SpacesGridComponent {

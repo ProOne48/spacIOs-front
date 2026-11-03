@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
@@ -16,6 +16,7 @@ import { getDayOfWeek } from '../../utils/functions';
   selector: 'app-pdf-view',
   imports: [PdfViewerModule, MaterialModule],
   templateUrl: './pdf-view.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./pdf-view.component.scss']
 })
 export class PdfViewComponent implements OnInit {

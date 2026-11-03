@@ -2,10 +2,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "paths": {
-      "@utils/*": ["src/utils/*"],
-      "@modules/*": ["src/modules/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@modules/*": ["./src/modules/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

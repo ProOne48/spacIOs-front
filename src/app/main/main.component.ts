@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 
@@ -9,6 +9,7 @@ import { NavbarComponent } from '../shared-components/navbar/navbar.component';
   selector: 'app-main',
   imports: [RouterOutlet, MaterialModule, NavbarComponent, FooterComponent],
   templateUrl: './main.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {}

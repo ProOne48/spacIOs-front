@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
 
@@ -8,6 +8,7 @@ import { GeneralDialogInterface } from '../../definitions/dialog.interface';
   selector: 'app-general-dialog',
   imports: [MaterialModule],
   templateUrl: './general-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./general-dialog.component.scss']
 })
 export class GeneralDialogComponent {

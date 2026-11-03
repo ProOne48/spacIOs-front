@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -9,6 +9,7 @@ import { Table } from '../../models/table';
   selector: 'app-board-info-modal',
   imports: [MaterialModule, ReactiveFormsModule],
   templateUrl: './board-info-modal.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./board-info-modal.component.scss']
 })
 export class BoardInfoModalComponent {

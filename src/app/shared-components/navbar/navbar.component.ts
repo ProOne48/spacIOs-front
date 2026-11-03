@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NavigationEnd, Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -14,6 +14,7 @@ import { NavbarItemComponent } from './navbar-item/navbar-item.component';
   imports: [MaterialModule, NavbarItemComponent],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [rotate180Animation]
 })
 export class NavbarComponent implements OnInit {

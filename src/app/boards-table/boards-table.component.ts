@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
 
@@ -10,6 +10,7 @@ import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.co
   selector: 'app-boards-table',
   imports: [MaterialModule],
   templateUrl: './boards-table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./boards-table.component.scss']
 })
 export class BoardsTableComponent {

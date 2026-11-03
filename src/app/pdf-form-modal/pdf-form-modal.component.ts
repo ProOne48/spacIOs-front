@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -8,6 +8,7 @@ import { PdfViewerModule } from '@modules/integrations/pdf-viewer.module';
   selector: 'app-pdf-form-modal',
   imports: [MaterialModule, PdfViewerModule],
   templateUrl: './pdf-form-modal.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./pdf-form-modal.component.scss']
 })
 export class PdfFormModalComponent {

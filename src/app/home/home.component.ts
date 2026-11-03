@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -15,6 +15,7 @@ import { SpacesGridComponent } from '../space/spaces-grid/spaces-grid.component'
   selector: 'app-home',
   imports: [MaterialModule, SpacesGridComponent],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit {

@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
 
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import angulareslint from 'angular-eslint';
 import importPlugin from 'eslint-plugin-import';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,19 +26,17 @@ export default defineConfig([
       import: importPlugin
     },
 
-    extends: compat.extends(
-      'plugin:@typescript-eslint/recommended',
-      'plugin:@angular-eslint/recommended',
-      'plugin:@angular-eslint/template/process-inline-templates'
-    ),
+    extends: [eslint.configs.recommended, ...tseslint.configs.recommended, ...angulareslint.configs.tsRecommended],
+
+    processor: angulareslint.processInlineTemplates,
 
     languageOptions: {
       ecmaVersion: 5,
       sourceType: 'script',
 
       parserOptions: {
-        project: ['tsconfig.json'],
-        createDefaultProgram: true
+        projectService: true,
+        tsconfigRootDirectory: __dirname
       }
     },
 
@@ -192,7 +193,7 @@ export default defineConfig([
   },
   {
     files: ['**/*.html'],
-    extends: compat.extends('plugin:@angular-eslint/template/recommended'),
+    extends: [eslint.configs.recommended, ...angulareslint.configs.templateRecommended],
     rules: {}
   }
 ]);

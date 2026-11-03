@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -9,6 +9,7 @@ import { Space } from '../../../models/space';
   selector: 'app-space-info-modal',
   imports: [MaterialModule, ReactiveFormsModule],
   templateUrl: './space-info-modal.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./space-info-modal.component.scss']
 })
 export class SpaceInfoModalComponent {

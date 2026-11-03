@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
@@ -9,6 +9,7 @@ import { QRCodeModalInterface } from '../../definitions/table.interface';
   selector: 'app-qr-modal',
   imports: [MaterialModule],
   templateUrl: './qr-modal.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./qr-modal.component.scss']
 })
 export class QrModalComponent implements OnInit {

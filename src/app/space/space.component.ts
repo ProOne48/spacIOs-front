@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -29,6 +29,7 @@ import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.com
   selector: 'app-space',
   imports: [MaterialModule, ChartsModule, BoardsTableComponent, StatisticsChartComponent, FormsModule, RouterLink],
   templateUrl: './space.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./space.component.scss']
 })
 export class SpaceComponent implements OnInit {
