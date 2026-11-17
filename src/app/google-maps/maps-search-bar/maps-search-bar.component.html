@@ -1,0 +1,5 @@
+<input type="text" placeholder="Search places..." (input)="onSearch($event)" />
+
+@for (place of places$(); track place.placeId) {
+<app-place-card [place]="place" />
+}

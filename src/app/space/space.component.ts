@@ -13,12 +13,14 @@ import { QRCodeModalInterface, TableModalInterface } from '../../definitions/tab
 import { Space } from '../../models/space';
 import { StatisticsUsage } from '../../models/statistics';
 import { Table } from '../../models/table';
+import { GoogleMapsService } from '../../services/google-maps.service';
 import { SpaceService } from '../../services/space.service';
 import { StatisticsService } from '../../services/statistics.service';
 import { TableService } from '../../services/table.service';
 import { BoardInfoModalComponent } from '../board-info-modal/board-info-modal.component';
 import { BoardsTableComponent } from '../boards-table/boards-table.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MapsSearchBarComponent } from '../google-maps/maps-search-bar/maps-search-bar.component';
 import { PdfFormModalComponent } from '../pdf-form-modal/pdf-form-modal.component';
 import { QrModalComponent } from '../qr-modal/qr-modal.component';
 import { StatisticsChartComponent } from '../statistics-chart/statistics-chart.component';
@@ -27,7 +29,15 @@ import { SpaceInfoModalComponent } from './space-info-modal/space-info-modal.com
 
 @Component({
   selector: 'app-space',
-  imports: [MaterialModule, ChartsModule, BoardsTableComponent, StatisticsChartComponent, FormsModule, RouterLink],
+  imports: [
+    MaterialModule,
+    ChartsModule,
+    BoardsTableComponent,
+    StatisticsChartComponent,
+    FormsModule,
+    RouterLink,
+    MapsSearchBarComponent
+  ],
   templateUrl: './space.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./space.component.scss']
@@ -40,6 +50,7 @@ export class SpaceComponent implements OnInit {
   private dialog = inject(MatDialog);
   private router = inject(Router);
   private snackbar = inject(MatSnackBar);
+  private googleMapsService = inject(GoogleMapsService);
 
   space: Space = new Space();
 

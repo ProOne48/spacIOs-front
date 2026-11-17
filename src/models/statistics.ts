@@ -75,7 +75,6 @@ export class StatisticsUsage {
    * Average Space Use per day
    */
   @autoserializeAsArray(() => StatisticsDay, () => Array, 'average_space_use_per_day')
-  // eslint-disable-next-line indent
   averageSpaceUsePerDay?: StatisticsDay[];
 
   /**

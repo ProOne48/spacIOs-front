@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'utils/mixins';
-@import 'components/button';
-@import 'components/select';
-@import 'components/forms';
-@import 'components/modals';
-@import 'components/grid';
-@import 'components/card';
-@import 'components/displays';
-@import 'theme';
+@use 'utils/mixins' as mixins;
+@use 'components/button' as button;
+@use 'components/select' as select;
+@use 'components/forms' as forms;
+@use 'components/modals' as modals;
+@use 'components/grid' as grid;
+@use 'components/card' as card;
+@use 'components/displays' as displays;
+@use 'theme' as theme;
 
 * {
   font-size: 16px;

@@ -1,8 +1,6 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
 
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -11,11 +9,6 @@ import importPlugin from 'eslint-plugin-import';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
-});
 
 export default defineConfig([
   globalIgnores(['projects/**/*', 'node_modules/**/*', 'dist/**/*', 'coverage/**/*', 'build/**/*', '.angular/**/*']),
@@ -26,13 +19,13 @@ export default defineConfig([
       import: importPlugin
     },
 
-    extends: [eslint.configs.recommended, ...tseslint.configs.recommended, ...angulareslint.configs.tsRecommended],
+    extends: [...tseslint.configs.recommended, ...angulareslint.configs.tsRecommended],
 
     processor: angulareslint.processInlineTemplates,
 
     languageOptions: {
-      ecmaVersion: 5,
-      sourceType: 'script',
+      ecmaVersion: 'latest',
+      sourceType: 'module',
 
       parserOptions: {
         projectService: true,
@@ -43,13 +36,6 @@ export default defineConfig([
     rules: {
       curly: ['error', 'all'],
       'lines-between-class-members': 'off',
-
-      'max-len': [
-        'error',
-        {
-          code: 120
-        }
-      ],
 
       'no-restricted-imports': [
         'error',
@@ -78,40 +64,6 @@ export default defineConfig([
         }
       ],
 
-      indent: [
-        'error',
-        2,
-        {
-          SwitchCase: 1
-        }
-      ],
-
-      'no-trailing-spaces': [
-        'error',
-        {
-          ignoreComments: true
-        }
-      ],
-
-      'object-curly-spacing': ['error', 'always'],
-      'jsx-quotes': ['error', 'prefer-single'],
-
-      quotes: [
-        'error',
-        'single',
-        {
-          avoidEscape: true
-        }
-      ],
-
-      'key-spacing': [
-        'error',
-        {
-          beforeColon: false,
-          afterColon: true
-        }
-      ],
-
       'padding-line-between-statements': [
         'error',
         {
@@ -121,7 +73,6 @@ export default defineConfig([
         }
       ],
 
-      '@typescript-eslint/camelcase': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-member-accessibility': 'off',
       '@typescript-eslint/no-explicit-any': 'off',

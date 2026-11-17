@@ -1,9 +1,9 @@
-@import 'src/scss/utils/mixins';
+@use 'src/scss/utils/mixins' as mixins;
 
 :host {
-  @include column;
-  @include gap-sm;
-  @include center;
+  @include mixins.column;
+  @include mixins.gap-sm;
+  @include mixins.center;
 }
 
 mat-icon {

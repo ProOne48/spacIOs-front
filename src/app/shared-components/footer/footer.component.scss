@@ -1,8 +1,8 @@
-@import '../../../scss/utils/mixins';
-@import '../../../scss/palette';
+@use '../../../scss/utils/mixins' as mixins;
+@use '../../../scss/palette' as *;
 
 :host {
-  @include row;
-  @include primary-background(400);
+  @include mixins.row;
+  @include mixins.primary-background(400);
   padding: 1.5rem;
 }

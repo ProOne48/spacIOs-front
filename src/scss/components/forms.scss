@@ -1,19 +1,19 @@
 @use '@angular/material' as mat;
-@import 'src/scss/utils/mixins';
+@use 'src/scss/utils/mixins' as mixins;
 
 /**
   Angular Material overrides and default styling
  */
 
 .form-wrapper {
-  @include column;
+  @include mixins.column;
 
   width: 100%;
 }
 
 .form-container {
-  @include row;
-  @include gap;
+  @include mixins.row;
+  @include mixins.gap;
   padding: 0 1rem;
 }
 

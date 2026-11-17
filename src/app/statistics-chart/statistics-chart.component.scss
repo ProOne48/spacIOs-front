@@ -1,18 +1,18 @@
-@import '../../scss/utils/mixins';
+@use '../../scss/utils/mixins' as mixins;
 
 .background-statistics {
   background-color: white;
-  @include padding;
-  @include container-border-radius;
-  @include shadow;
+  @include mixins.padding;
+  @include mixins.container-border-radius;
+  @include mixins.shadow;
   display: flex;
 
-  @include desktop-sm {
+  @include mixins.desktop-sm {
     width: 35vw;
     max-width: 40vw;
   }
 
-  @include desktop-lg {
+  @include mixins.desktop-lg {
     width: 35vw;
     max-width: 42vw;
   }

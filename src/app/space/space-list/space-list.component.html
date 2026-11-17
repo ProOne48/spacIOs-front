@@ -1,8 +1,8 @@
-@if (dataLoaded) { @for (space of spaces; track space) {
+@if (dataLoaded()) { @for (space of spaces(); track space) {
 <app-space-item [space]="space"></app-space-item>
 } }
 <ng-container class="column gap-lg">
-  @if (!dataLoaded) {
+  @if (!dataLoaded()) {
   <ngx-skeleton-loader [count]="8" [theme]="{ height: '5rem', width: '100%' }"></ngx-skeleton-loader>
   }
 </ng-container>

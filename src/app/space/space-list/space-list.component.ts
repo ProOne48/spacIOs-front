@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, WritableSignal, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialModule } from '@modules/angular/material.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -19,15 +19,13 @@ export class SpaceListComponent implements OnInit {
   private spaceService = inject(SpaceService);
   private router = inject(Router);
 
-  spaces?: Space[];
+  spaces: WritableSignal<Space[] | null> = signal<Space[] | null>(null);
+
+  readonly dataLoaded = computed(() => this.spaces());
 
   ngOnInit(): void {
     this.spaceService.getSpaces().subscribe((spaces) => {
-      this.spaces = spaces.items;
+      this.spaces.set(spaces.items);
     });
-  }
-
-  get dataLoaded(): boolean {
-    return !!this.spaces;
   }
 }

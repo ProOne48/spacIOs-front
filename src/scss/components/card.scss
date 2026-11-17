@@ -1,4 +1,4 @@
-@import '../utils/mixins';
+@use '../utils/mixins' as mixins;
 
 .mat-card {
   width: calc(100% - 2rem);
@@ -6,7 +6,7 @@
 }
 
 .mat-mdc-card-actions {
-  @include row;
-  @include gap;
-  @include horizontal-center;
+  @include mixins.row;
+  @include mixins.gap;
+  @include mixins.horizontal-center;
 }

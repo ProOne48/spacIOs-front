@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, InputSignal, Signal, computed, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
@@ -19,19 +19,14 @@ export class SpacesGridComponent {
   private snackbar = inject(MatSnackBar);
   private dialog = inject(MatDialog);
 
-  @Input() spaces?: Space[];
+  spaces: InputSignal<Space[]> = input.required<Space[]>();
+
+  readonly dataLoaded = computed(() => this.spaces());
+  readonly hasSpaces = computed(() => this.spaces() && this.spaces()?.length > 0);
 
   gridSkeleton = new Array(8);
 
   goToSpace(id?: number): void {
     this.router.navigate(['/space', id]);
-  }
-
-  get dataLoaded(): boolean {
-    return !!this.spaces;
-  }
-
-  get hasSpaces(): boolean | undefined {
-    return this.spaces && this.spaces?.length > 0;
   }
 }

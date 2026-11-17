@@ -1,13 +1,13 @@
-@import '../../../scss/utils/mixins';
+@use '../../../scss/utils/mixins' as mixins;
 
 .grid {
-  @include gap;
+  @include mixins.gap;
 }
 
 .card {
-  @include column;
-  @include primary-background(300);
-  @include container-border-radius;
+  @include mixins.column;
+  @include mixins.primary-background(300);
+  @include mixins.container-border-radius;
   box-shadow: lightgray 0.5rem 0.3rem 0.2rem;
   height: 80%;
   width: 90%;

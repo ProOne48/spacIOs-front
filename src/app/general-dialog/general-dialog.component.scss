@@ -1,4 +1,4 @@
-@import 'src/scss/utils/mixins';
+@use 'src/scss/utils/mixins';
 
 :host {
   @include column;

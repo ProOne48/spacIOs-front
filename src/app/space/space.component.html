@@ -3,23 +3,29 @@
 </header>
 <section class="column gap-sm">
   <h2 class="table-title">Statistics</h2>
-  <section class="row gap">
-    <mat-form-field class="form-input">
-      <mat-label> <mat-icon>calendar_today</mat-icon> Date </mat-label>
-      <mat-select [(ngModel)]="statisticsDate" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
-        @for (filter of filters; track filter) {
-        <mat-option [value]="filter.value">{{ filter.label }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="form-input">
-      <mat-label> Format </mat-label>
-      <mat-select [(ngModel)]="statisticsFormat" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
-        @for (format of formats; track format) {
-        <mat-option [value]="format.value">{{ format.label }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+  <section class="row gap space-between">
+    <div>
+      <mat-form-field class="form-input">
+        <mat-label> <mat-icon>calendar_today</mat-icon> Date </mat-label>
+        <mat-select [(ngModel)]="statisticsDate" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
+          @for (filter of filters; track filter) {
+          <mat-option [value]="filter.value">{{ filter.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-input">
+        <mat-label> Format </mat-label>
+        <mat-select [(ngModel)]="statisticsFormat" (ngModelChange)="updateStatistics()" class="horizontal-fit-content">
+          @for (format of formats; track format) {
+          <mat-option [value]="format.value">{{ format.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <app-maps-search-bar></app-maps-search-bar>
+    </div>
   </section>
   <section class="statistics">
     <span class="no-margin text-lg"

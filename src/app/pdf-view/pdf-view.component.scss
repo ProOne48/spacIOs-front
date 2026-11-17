@@ -1,7 +1,7 @@
-@import 'src/scss/utils/mixins';
+@use 'src/scss/utils/mixins' as mixins;
 
 .spinner {
-  @include center;
-  @include full-height-width;
+  @include mixins.center;
+  @include mixins.full-height-width;
   z-index: 100;
 }

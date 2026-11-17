@@ -1,12 +1,12 @@
-@import '../../../../scss/utils/mixins';
+@use '../../../../scss/utils/mixins' as mixins;
 
 .item-container {
-  @include row();
-  @include vertical-center();
-  @include container-border-radius;
-  @include gap();
-  @include padding-sm();
-  @include shadow;
+  @include mixins.row();
+  @include mixins.vertical-center();
+  @include mixins.container-border-radius;
+  @include mixins.gap();
+  @include mixins.padding-sm();
+  @include mixins.shadow;
   background: whitesmoke;
 
   &:hover {

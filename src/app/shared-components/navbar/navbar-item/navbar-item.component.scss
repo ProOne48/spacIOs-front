@@ -1,8 +1,8 @@
-@import '../../../../scss/utils/mixins';
+@use '../../../../scss/utils/mixins' as mixins;
 
 .navbar-item {
-  @include row();
-  @include vertical-center();
+  @include mixins.row();
+  @include mixins.vertical-center();
   gap: 0.5rem;
   margin-left: 0.5rem;
   text-decoration: None;

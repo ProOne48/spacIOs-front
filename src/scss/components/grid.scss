@@ -1,19 +1,19 @@
-@import '../utils/mixins';
+@use '../utils/mixins' as mixins;
 
 .mat-grid-list {
-  @include gap;
+  @include mixins.gap;
 }
 
 .mat-grid-tile {
-  @include column;
-  @include gap;
+  @include mixins.column;
+  @include mixins.gap;
 
   height: fit-content;
 }
 
 .mat-grid-tile-content {
-  @include center;
-  @include column;
-  @include gap;
-  @include padding;
+  @include mixins.center;
+  @include mixins.column;
+  @include mixins.gap;
+  @include mixins.padding;
 }

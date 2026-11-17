@@ -1,16 +1,16 @@
-@import 'src/scss/utils/mixins';
+@use 'src/scss/utils/mixins' as mixins;
 
 :host {
-  @include column;
-  @include padding;
-  @include gap;
+  @include mixins.column;
+  @include mixins.padding;
+  @include mixins.gap;
 }
 
 .profile {
-  @include column;
-  @include gap;
-  @include padding;
-  @include primary-background(300);
+  @include mixins.column;
+  @include mixins.gap;
+  @include mixins.padding;
+  @include mixins.primary-background(300);
 
   flex: 1 1 25rem;
 
@@ -18,9 +18,9 @@
 }
 
 .spaces {
-  @include column;
-  @include gap;
-  @include padding;
+  @include mixins.column;
+  @include mixins.gap;
+  @include mixins.padding;
 
   margin: 0 1rem;
 

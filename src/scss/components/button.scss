@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
-@import 'src/scss/utils/mixins';
-@import 'src/scss/palette';
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/palette' as palette;
 
 %button {
   border-radius: 18px !important;
@@ -20,11 +20,11 @@
 
   &.mat-primary,
   &.btn--primary {
-    background: $button-primary-gradient !important;
-    color: mat.m2-get-contrast-color-from-palette($primary-palette, 600) !important;
+    background: palette.$button-primary-gradient !important;
+    color: mat.m2-get-contrast-color-from-palette(palette.$primary-palette, 600) !important;
 
     &:hover:enabled {
-      background-color: mat.m2-get-color-from-palette($primary-palette, 700) !important;
+      background-color: mat.m2-get-color-from-palette(palette.$primary-palette, 700) !important;
     }
   }
 

@@ -1,18 +1,18 @@
-@import '../utils/mixins';
+@use '../utils/mixins' as mixins;
 /**
   * Modals
   */
 
 .mat-mdc-dialog-surface {
-  @include shadow;
+  @include mixins.shadow;
   border-radius: 1rem !important;
   padding: 1.4em;
   overflow-y: hidden !important;
 }
 
 .mat-dialog-actions {
-  @include gap;
-  @include horizontal-end;
-  @include vertical-center;
+  @include mixins.gap;
+  @include mixins.horizontal-end;
+  @include mixins.vertical-center;
   margin-top: 1rem;
 }
